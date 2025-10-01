@@ -1,1 +1,1 @@
-# SKA-Tech.com
+# SKA-Tech.ru
