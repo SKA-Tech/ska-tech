@@ -282,11 +282,10 @@
         </div>
     </header>
 
-    <!-- Hero Section (исправленный слой и видимость 3D объектов) -->
+    <!-- Hero Section (адаптив: мобильные читаемый текст + объекты вокруг, десктоп по центру) -->
     <div class="relative isolate px-4 pt-20 lg:px-8 lg:pt-14 overflow-hidden">
-        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/30 to-transparent lg:hidden z-10 pointer-events-none"></div>
         <!-- Градиентный фон ниже всего -->
-<!--        <div class="absolute inset-0 z-0 bg-gradient-to-br from-blue-50 via-white to-purple-50"></div>-->
+        <div class="absolute inset-0 z-0 bg-gradient-to-br from-blue-50 via-white to-purple-50"></div>
 
         <!-- Декор (точки/линии) — над фоном, но под объектами -->
         <div class="absolute top-0 left-0 w-full h-full z-10 pointer-events-none overflow-hidden">
@@ -298,50 +297,94 @@
             <div class="absolute bottom-1/3 left-1/4 w-20 h-px bg-gradient-to-r from-transparent via-purple-300 to-transparent opacity-40"></div>
         </div>
 
-        <!-- 3D-объекты — поверх декора, но под текстом -->
-        <div class="absolute inset-0 z-20 pointer-events-none">
-            <!-- Ноутбук слева -->
-            <picture class="absolute left-[5%] lg:left-[10%] top-1/4 w-36 md:w-48 xl:w-56 select-none">
-                <source srcset="./images/hero/sample-32.png" type="image/png"/>
-                <img src="./images/hero/sample-32.png" alt="3D-ноутбук" loading="lazy"
-                     class="w-full h-auto opacity-80 md:opacity-60 animate-float-slow hero-thing" />
-            </picture>
+        <!-- Мобильная подложка читаемости (градиент) -->
+        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/30 to-transparent lg:hidden z-20 pointer-events-none"></div>
 
-            <!-- Дрон справа -->
-            <picture class="absolute right-[5%] lg:right-[10%] top-1/3 w-36 md:w-48 xl:w-56 select-none">
-                <source srcset="./images/hero/sample-46.png" type="image/png"/>
-                <img src="./images/hero/sample-46.png" alt="3D-дрон" loading="lazy"
-                     class="w-full h-auto opacity-90 md:opacity-70 animate-float-medium hero-thing" />
-            </picture>
-
-            <!-- Плашка с кодом снизу слева -->
-            <picture class="absolute left-[20%] bottom-8 md:bottom-12 w-36 md:w-48 xl:w-56 select-none">
-                <source srcset="./images/hero/PC.png" type="image/png"/>
-                <img src="./images/hero/PC.png" alt="Карточка кода" loading="lazy"
-                     class="w-full h-auto opacity-80 md:opacity-60 animate-float-slow hero-thing" />
-            </picture>
-
-            <!-- Смартфон сверху -->
-            <picture class="absolute left-[45%] -top-6 md:-top-10 w-32 md:w-42 xl:w-48 select-none">
+        <!-- 3D-объекты — МОБИЛЬНЫЕ (расположены вокруг текста, не под ним) -->
+        <div class="absolute inset-0 z-20 pointer-events-none block lg:hidden">
+            <!-- сверху по центру — телефон (выше заголовка) -->
+            <picture class="absolute left-1/2 -translate-x-1/2 top-6 w-16 select-none">
                 <source srcset="./images/hero/sample-13.png" type="image/png">
                 <img src="./images/hero/sample-13.png" alt="3D-смартфон" loading="lazy"
-                     class="w-full h-auto opacity-80 md:opacity-60 animate-float-fast hero-thing" />
+                     class="w-full h-auto opacity-80 animate-float-fast hero-thing" />
             </picture>
 
-            <!-- Шестерёнка -->
-            <picture class="absolute right-[30%] bottom-[20%] w-32 md:w-42 xl:w-48 select-none">
+            <!-- сверху справа — дрон -->
+            <picture class="absolute right-3 top-20 w-20 select-none">
+                <source srcset="./images/hero/sample-46.png" type="image/png"/>
+                <img src="./images/hero/sample-46.png" alt="3D-дрон" loading="lazy"
+                     class="w-full h-auto opacity-90 animate-float-medium hero-thing" />
+            </picture>
+
+            <!-- слева ниже текста — ноутбук -->
+            <picture class="absolute left-3 bottom-28 w-24 select-none">
+                <source srcset="./images/hero/sample-32.png" type="image/png"/>
+                <img src="./images/hero/sample-32.png" alt="3D-ноутбук" loading="lazy"
+                     class="w-full h-auto opacity-80 animate-float-slow hero-thing" />
+            </picture>
+
+            <!-- справа ниже текста — шестерёнка -->
+            <picture class="absolute right-6 bottom-24 w-16 select-none">
                 <source srcset="./images/hero/sample-20.png" type="image/png"/>
                 <img src="./images/hero/sample-20.png" alt="Вращающаяся шестерёнка" loading="lazy"
-                     class="w-full h-auto opacity-80 md:opacity-60 animate-spin-slow hero-thing" />
+                     class="w-full h-auto opacity-80 animate-spin-slow hero-thing" />
+            </picture>
+
+            <!-- внизу слева — карточка кода -->
+            <picture class="absolute left-1/4 bottom-6 w-32 select-none">
+                <source srcset="./images/hero/PC.png" type="image/png"/>
+                <img src="./images/hero/PC.png" alt="Карточка кода" loading="lazy"
+                     class="w-full h-auto opacity-80 animate-float-slow hero-thing" />
             </picture>
         </div>
 
+        <!-- 3D-объекты — ДЕСКТОП (чуть ближе к центру) -->
+        <div class="absolute inset-0 z-20 pointer-events-none hidden lg:block">
+            <!-- Ноутбук слева -->
+            <picture class="absolute left-[10%] top-1/4 w-48 xl:w-56 select-none">
+                <source srcset="./images/hero/sample-32.png" type="image/png"/>
+                <img src="./images/hero/sample-32.png" alt="3D-ноутбук" loading="lazy"
+                     class="w-full h-auto opacity-60 animate-float-slow hero-thing" />
+            </picture>
+
+            <!-- Дрон справа -->
+            <picture class="absolute right-[10%] top-1/3 w-48 xl:w-56 select-none">
+                <source srcset="./images/hero/sample-46.png" type="image/png"/>
+                <img src="./images/hero/sample-46.png" alt="3D-дрон" loading="lazy"
+                     class="w-full h-auto opacity-70 animate-float-medium hero-thing" />
+            </picture>
+
+            <!-- Плашка с кодом снизу слева -->
+            <picture class="absolute left-[22%] bottom-12 w-48 xl:w-56 select-none">
+                <source srcset="./images/hero/PC.png" type="image/png"/>
+                <img src="./images/hero/PC.png" alt="Карточка кода" loading="lazy"
+                     class="w-full h-auto opacity-60 animate-float-slow hero-thing" />
+            </picture>
+
+            <!-- Смартфон сверху -->
+            <picture class="absolute left-[45%] -top-8 w-24 xl:w-28 select-none">
+                <source srcset="./images/hero/sample-13.png" type="image/png">
+                <img src="./images/hero/sample-13.png" alt="3D-смартфон" loading="lazy"
+                     class="w-full h-auto opacity-60 animate-float-fast hero-thing" />
+            </picture>
+
+            <!-- Шестерёнка -->
+            <picture class="absolute right-[30%] bottom-[20%] w-24 xl:w-28 select-none">
+                <source srcset="./images/hero/sample-20.png" type="image/png"/>
+                <img src="./images/hero/sample-20.png" alt="Вращающаяся шестерёнка" loading="lazy"
+                     class="w-full h-auto opacity-60 animate-spin-slow hero-thing" />
+            </picture>
+        </div>
 
         <!-- Контент — поверх всего -->
         <div class="mx-auto max-w-2xl py-20 sm:py-24 lg:py-32 relative z-30">
             <div class="text-center mobile-padding">
-                <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-6xl">IT-Решения и Обучение: От Идеи до Реализации</h1>
-                <p class="mt-4 text-base leading-7 text-gray-600 sm:text-lg sm:leading-8 lg:mt-6 lg:text-lg lg:leading-8">Программируй будущее вместе с нами. Мы делаем сайты и помогаем тебе создавать свои.</p>
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-6xl">
+                    IT-Решения и Обучение: От Идеи до Реализации
+                </h1>
+                <p class="mt-4 text-base leading-7 text-gray-700 sm:text-lg sm:leading-8 lg:mt-6 lg:text-lg lg:leading-8">
+                    Программируй будущее вместе с нами. Мы делаем сайты и помогаем тебе создавать свои.
+                </p>
                 <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-x-6">
                     <a href="#services"
                        class="rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-full sm:w-auto text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5">
@@ -354,6 +397,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- About Us Section -->
     <div class="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24">
