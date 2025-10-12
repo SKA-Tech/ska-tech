@@ -1,1163 +1,1945 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
+  <head>
     <title>SKA-Tech</title>
-    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 
     <style>
-        .line-clamp-3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+      .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .animate-fadeIn {
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Улучшения для мобильной версии */
+      @media (max-width: 768px) {
+        .mobile-padding {
+          padding-left: 1rem;
+          padding-right: 1rem;
         }
 
+        .mobile-text-center {
+          text-align: center;
+        }
+
+        .mobile-stack {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .mobile-full-width {
+          width: 100%;
+        }
+      }
+
+      @keyframes float-slow {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(5deg);
+        }
+      }
+
+      @keyframes float-medium {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-15px) rotate(-3deg);
+        }
+      }
+
+      @keyframes float-fast {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(2deg);
+        }
+      }
+
+      @keyframes spin-slow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .animate-float-slow {
+        animation: float-slow 6s ease-in-out infinite;
+      }
+      .animate-float-medium {
+        animation: float-medium 4s ease-in-out infinite;
+      }
+      .animate-float-fast {
+        animation: float-fast 3s ease-in-out infinite;
+      }
+      .animate-spin-slow {
+        animation: spin-slow 20s linear infinite;
+      }
+
+      /* Уважение к prefers-reduced-motion */
+      @media (prefers-reduced-motion: reduce) {
+        .animate-float-slow,
+        .animate-float-medium,
+        .animate-float-fast,
+        .animate-spin-slow,
         .animate-fadeIn {
-            animation: fadeIn 0.5s ease-in-out;
+          animation: none !important;
         }
+      }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+      /* Улучшение видимости "3D" объектов */
+      .hero-thing {
+        filter: drop-shadow(0 8px 20px rgba(31, 41, 55, 0.25));
+      }
 
-        /* Улучшения для мобильной версии */
-        @media (max-width: 768px) {
-            .mobile-padding {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
+      /* Стили для переключателя языка */
+      .language-switcher {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        border: 1px solid #e5e7eb;
+        background: white;
+      }
 
-            .mobile-text-center {
-                text-align: center;
-            }
+      .language-switcher:hover {
+        border-color: #3b82f6;
+        box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
+      }
 
-            .mobile-stack {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .mobile-full-width {
-                width: 100%;
-            }
-        }
-
-        @keyframes float-slow {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        @keyframes float-medium {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(-3deg); }
-        }
-
-        @keyframes float-fast {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(2deg); }
-        }
-
-        @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
-        .animate-float-medium { animation: float-medium 4s ease-in-out infinite; }
-        .animate-float-fast { animation: float-fast 3s ease-in-out infinite; }
-        .animate-spin-slow { animation: spin-slow 20s linear infinite; }
-
-        /* Уважение к prefers-reduced-motion */
-        @media (prefers-reduced-motion: reduce) {
-            .animate-float-slow,
-            .animate-float-medium,
-            .animate-float-fast,
-            .animate-spin-slow,
-            .animate-fadeIn { animation: none !important; }
-        }
-
-        /* Улучшение видимости "3D" объектов */
-        .hero-thing { filter: drop-shadow(0 8px 20px rgba(31, 41, 55, 0.25)); }
-
-        /* Стили для переключателя языка */
-        .language-switcher {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            cursor: pointer;
-            padding: 8px 12px;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-            border: 1px solid #e5e7eb;
-            background: white;
-        }
-
-        .language-switcher:hover {
-            border-color: #3b82f6;
-            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
-        }
-
-        .language-flag {
-            width: 20px;
-            height: 15px;
-            border-radius: 2px;
-            margin-right: 8px;
-            background-size: cover;
-            background-position: center;
-            border: 1px solid #e5e7eb;
-        }
+      .language-flag {
+        width: 20px;
+        height: 15px;
+        border-radius: 2px;
+        margin-right: 8px;
+        background-size: cover;
+        background-position: center;
+        border: 1px solid #e5e7eb;
+      }
     </style>
 
     <script>
-        // Тексты для перевода
-        const translations = {
-            ru: {
-                // Навигация
-                "nav-services": "Услуги",
-                "nav-courses": "Курсы",
-                "nav-about": "О нас",
-                "nav-contact": "Свяжитесь с нами",
-                "nav-phone": "+7 996 938-93-24",
-
-                // Hero секция
-                "hero-title": "IT-Решения и Обучение: От Идеи до Реализации",
-                "hero-subtitle": "Программируй будущее вместе с нами. Мы делаем сайты и помогаем тебе создавать свои.",
-                "hero-start": "Начать",
-                "hero-learn-more": "Узнать больше",
-
-                // О нас
-                "about-title": "Работайте с нами",
-                "about-description": "Мы — ваша комплексная IT-студия. Мы не только разрабатываем сайты, приложения и программное обеспечение под ваши задачи, но и обучаем программированию с нуля.",
-                "about-staff": "Коллеги, работающие полный рабочий день",
-                "about-services": "Услуги",
-                "about-courses": "Обучаемые курсы",
-
-                // Услуги
-                "services-title": "Мы делаем всё в IT",
-                "services-subtitle": "Разработка, поддержка и обучение — полный цикл услуг для вашего бизнеса и карьеры в IT.",
-                "service-web": "Создание и разработка сайтов",
-                "service-web-desc": "Мы создаём современные и удобные сайты: корпоративные, лендинги и интернет-магазины. Каждый проект разрабатывается индивидуально, с учётом потребностей вашего бизнеса.",
-                "service-support": "Поддержка и сопровождение",
-                "service-support-desc": "Обеспечиваем стабильную работу ваших проектов: обновления, техническая поддержка и защита от сбоев. Вы можете быть уверены, что ваш сайт всегда будет работать без перебоев.",
-                "service-design": "Дизайн и брендинг",
-                "service-design-desc": "Разрабатываем уникальный дизайн и фирменный стиль для вашего бизнеса. Создаём интерфейсы, логотипы и визуальные решения, которые делают ваш бренд узнаваемым и современным.",
-                "service-apps": "Разработка приложений",
-                "service-apps-desc": "Мы создаём мобильные и веб-приложения под ваши задачи: удобные, функциональные и современные. Каждое приложение разрабатывается так, чтобы улучшать работу вашего бизнеса и радовать пользователей.",
-
-                // Курсы
-                "courses-title": "Курсы Академии",
-                "courses-subtitle": "Выберите свой путь обучения и развивайте навыки во Frontend, Backend, мобильной разработке или начните с нашей программы для детей.",
-                "course-html": "HTML и CSS",
-                "course-html-desc": "Изучите строительные блоки веба",
-                "course-js": "JavaScript",
-                "course-js-desc": "Освойте язык веб-программирования",
-                "course-react": "React",
-                "course-react-desc": "Современная фронтенд-библиотека",
-                "course-kids": "Программирование для детей",
-                "course-kids-desc": "Увлекательное обучение с нуля",
-                "course-design": "Графический дизайн",
-                "course-design-desc": "Создавайте визуальный контент",
-                "course-golang": "Golang",
-                "course-golang-desc": "Высокопроизводительный язык",
-                "course-cpp": "Основы C++",
-                "course-cpp-desc": "Мощный системный язык",
-                "course-csharp": "Основы C#",
-                "course-csharp-desc": "Универсальный язык от Microsoft",
-                "course-python": "Python",
-                "course-python-desc": "Популярный язык для всех задач",
-                "course-git": "Git",
-                "course-git-desc": "Система контроля версий",
-                "course-start": "Начать курс",
-                "show-more": "Показать больше курсов",
-                "show-less": "Скрыть курсы",
-
-                // Контактная форма
-                "contact-title": "Бесплатная консультация",
-                "contact-subtitle": "Оставьте свои контактные данные, мы перезвоним вам и ответим на все ваши вопросы",
-                "first-name": "Имя *",
-                "first-name-placeholder": "Введите ваше имя",
-                "last-name": "Фамилия",
-                "last-name-placeholder": "Введите вашу фамилию",
-                "phone": "Номер телефона *",
-                "phone-placeholder": "900 123-45-67",
-                "message": "Сообщение",
-                "message-placeholder": "Расскажите о ваших вопросах или целях обучения...",
-                "privacy": "Я соглашаюсь с",
-                "privacy-policy": "политикой конфиденциальности",
-                "submit": "Отправить заявку",
-                "required-fields": "* Обязательные для заполнения поля",
-
-                // Футер
-                "footer-description": "IT-академия и студия разработки. Мы создаем цифровые решения и обучаем будущих специалистов.",
-                "footer-courses": "Курсы",
-                "footer-services": "Услуги",
-                "footer-frontend": "Frontend разработка",
-                "footer-backend": "Backend разработка",
-                "footer-design": "Дизайн",
-                "footer-web-dev": "Разработка сайтов",
-                "footer-mobile": "Мобильные приложения",
-                "footer-support": "Техническая поддержка",
-                "footer-copyright": "© 2025 SKA-Tech. Все права защищены.",
-                "footer-about": "О нас",
-                "footer-privacy": "Политика конфиденциальности",
-                "footer-contact": "Контакты"
-            },
-            tj: {
-                // Навигация
-                "nav-services": "Хизматҳо",
-                "nav-courses": "Курсҳо",
-                "nav-about": "Дар бораи мо",
-                "nav-contact": "Бо мо тамос гиред",
-                "nav-phone": "+7 996 938-93-24",
-
-                // Hero секция
-                "hero-title": "Аз идея то воқеият — IT-корҳо ва омӯзиш барои шумо",
-                "hero-subtitle": "Бо мо ояндаро созед — омӯзед, барномарезӣ кунед ва орзуятонро амали гардонед.",
-                "hero-start": "Оғоз",
-                "hero-learn-more": "Маълумоти бештар",
-
-                // О нас
-                "about-title": "Ба мо ҳамроҳ шавед",
-                "about-description": "Мо — студияи IT-и шумо. Мо на танҳо вебсайтҳо, барномаҳо ва нармафзорҳоро барои вазифаҳои шумо таҳия мекунем, балки ба шумо барномасоз шуданро меомӯзонем.",
-                "about-staff": "Кормандоне, ки пурра вақт кор мекунанд",
-                "about-services": "Хизматҳо",
-                "about-courses": "Курсҳои таҳсилӣ",
-
-                // Услуги
-                "services-title": "Мо ҳама чизро дар IT мекунем",
-                "services-subtitle": "Таҳия, дастгирӣ ва таҳсил — силсилаи пурраи хизматҳо барои тиҷорат ва касби шумо дар IT.",
-                "service-web": "Эҷод ва таҳияи вебсайтҳо",
-                "service-web-desc": "    Мо вебсайтҳое месозем, ки на танҳо зебо, балки барои корбар осон ва дӯстдошта бошанд: корпоративӣ, лендингҳо ва мағозаҳои интернетӣ. Ҳар як лоиҳа ба таври инфиродӣ, бо назардошти эҳтиёҷоти тиҷорати шумо таҳия мешавад.",
-                "service-support": "Дастгирӣ ва ҳамроҳӣ",
-                "service-support-desc": "Мо кори устувори лоиҳаҳои шуморо таъмин мекунем: навсозӣ, дастгирии техникӣ ва муҳофизат аз ихтилол. Шумо метавонед бовар дошта бошед, ки вебсайти шумо ҳамеша бе ихтилол кор хоҳад кард.",
-                "service-design": "Тарроҳӣ ва брендсозӣ",
-                "service-design-desc": "Мо тарроҳии беназир ва услуби брендиро барои тиҷорати шумо таҳия мекунем. Мо интерфейсҳо, логотипҳо ва ҳалли визуалиро месозем, ки бренди шуморо шинохта ва муосир мекунад.",
-                "service-apps": "Таҳияи барномаҳо",
-                "service-apps-desc": "Мо барномаҳои мобилӣ ва вебӣ месозем, ки барои корбар осон ва барои тиҷорат самарабахш бошанд. Ҳар як барнома ба таври алоҳида барои беҳтар кардани кори шумо ва хурсандии корбарон таҳия мешавад.",
-
-                // Курсы
-                "courses-title": "Курсҳои Академия",
-                "courses-subtitle": "Роҳи таҳсили худро интихоб кунед ва дар Frontend, Backend, таҳияи барномаҳои мобилӣ ё бо барномаи мо барои кӯдакон маҳорат ҳосил кунед.",
-                "course-html": "HTML ва CSS",
-                "course-html-desc": "Блокҳои сохтмонии вебро омӯзед",
-                "course-js": "JavaScript",
-                "course-js-desc": "Забони барномасози барои вебсайтҳои интерактивӣ-ро омӯзед",
-                "course-react": "React",
-                "course-react-desc": "Китобхонаи муосири фронтенд",
-                "course-kids": "Барномасозӣ барои кӯдакон",
-                "course-kids-desc": "Омӯзиши ҷолиб аз сифр",
-                "course-design": "Дизайни графикӣ",
-                "course-design-desc": "Контентҳои визуалӣ эҷод кунед",
-                "course-golang": "Golang",
-                "course-golang-desc": "Забони баланд суръати Google",
-                "course-cpp": "Асосҳои C++",
-                "course-cpp-desc": "Забони қаввии системавӣ",
-                "course-csharp": "Асосҳои C#",
-                "course-csharp-desc": "Забони универсалии Microsoft",
-                "course-python": "Python",
-                "course-python-desc": "Забони машҳур барои ҳама вазифаҳо",
-                "course-git": "Git",
-                "course-git-desc": "Системаи назорати версияҳо",
-                "course-start": "Оғози курс",
-                "show-more": "Курсҳои бештар нишон диҳед",
-                "show-less": "Курсҳоро пинҳон кунед",
-
-                // Контактная форма
-                "contact-title": "Маслиҳати ройгон",
-                "contact-subtitle": "Маълумоти тамоси худро гузоред, мо ба шумо занг мезанем ва ба ҳама саволҳои шумо ҷавоб медиҳем",
-                "first-name": "Ном *",
-                "first-name-placeholder": "Номи худро ворид кунед",
-                "last-name": "Насаб",
-                "last-name-placeholder": "Насаби худро ворид кунед",
-                "phone": "Рақами телефон *",
-                "phone-placeholder": "900 123-45-67",
-                "message": "Паём",
-                "message-placeholder": "Дар бораи саволҳо ё мақсадҳои таҳсили худ нақл кунед...",
-                "privacy": "Ман розӣ ҳастам бо",
-                "privacy-policy": "сиёсати махфият",
-                "submit": "Фиристодани дархост",
-                "required-fields": "* Майдонҳои ҳатмӣ барои пур кардан",
-
-                // Футер
-                "footer-description": "Академияи IT ва студияи таҳия. Мо ҳалли рақамӣ эҷод мекунем ва мутахассисони ояндаро таҳсил медиҳем.",
-                "footer-courses": "Курсҳо",
-                "footer-services": "Хизматҳо",
-                "footer-frontend": "Таҳияи Frontend",
-                "footer-backend": "Таҳияи Backend",
-                "footer-design": "Тарроҳӣ",
-                "footer-web-dev": "Таҳияи вебсайтҳо",
-                "footer-mobile": "Барномаҳои мобилӣ",
-                "footer-support": "Дастгирии техникӣ",
-                "footer-copyright": "© 2025 SKA-Tech. Ҳама ҳуқуқҳо ҳифз шудаанд.",
-                "footer-about": "Дар бораи мо",
-                "footer-privacy": "Сиёсати махфият",
-                "footer-contact": "Тамос"
-            }
-        };
-
-        let currentLang = 'ru';
-
-        function changeLanguage(lang) {
-            currentLang = lang;
-            document.documentElement.lang = lang;
-
-            // Обновляем все элементы с data-i18n атрибутом
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = translations[lang][key];
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
-                }
-            });
-
-            // Обновляем переключатель языка
-            updateLanguageSwitcher(lang);
-
-            // Сохраняем выбор языка в localStorage
-            localStorage.setItem('preferred-language', lang);
-        }
-
-        function updateLanguageSwitcher(lang) {
-            const switcher = document.getElementById('language-switcher');
-            const flag = document.getElementById('language-flag');
-            const text = document.getElementById('language-text');
-
-            if (lang === 'ru') {
-                flag.src = './images/flags/russia.png';
-                flag.srcset = '/images/flags/russia.png 2x';
-                flag.alt = 'Русский флаг';
-                text.textContent = 'РУС';
-            } else {
-                flag.src = './images/flags/tajikistan.png';
-                flag.srcset = './images/flags/tajikistan.png 2x';
-                flag.alt = 'Флаг Таджикистана';
-                text.textContent = 'ТҶК';
-            }
-        }
-
-        function toggleLanguage() {
-            const newLang = currentLang === 'ru' ? 'tj' : 'ru';
-            changeLanguage(newLang);
-        }
-
-        function openMenu() {
-            document.getElementById('mobile-menu').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMenu() {
-            document.getElementById('mobile-menu').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Закрытие меню при нажатии на Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeMenu();
-            }
-        });
-
-        // Плавная навигация по якорям
-        document.addEventListener('DOMContentLoaded', function() {
-            // Загружаем сохраненный язык
-            const savedLang = localStorage.getItem('preferred-language') || 'ru';
-            changeLanguage(savedLang);
-
-            // Функция для кнопок "Узнать больше"
-            const readMoreButtons = document.querySelectorAll('.read-more-btn');
-            readMoreButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const card = this.closest('article');
-                    const description = card.querySelector('p');
-                    description.classList.toggle('line-clamp-3');
-                    this.textContent = description.classList.contains('line-clamp-3') ?
-                        (currentLang === 'ru' ? 'Узнать больше' : 'Маълумоти бештар') :
-                        (currentLang === 'ru' ? 'Свернуть' : 'Фуруд овардан');
-                });
-            });
-
-            // Функция для кнопки "Показать больше курсов"
-            const showMoreBtn = document.getElementById('show-more-btn');
-            const courseItems = document.querySelectorAll('.course-item');
-            let isExpanded = false;
-
-            if (showMoreBtn) {
-                showMoreBtn.addEventListener('click', function() {
-                    if (!isExpanded) {
-                        courseItems.forEach(item => {
-                            item.classList.remove('hidden');
-                            item.classList.add('animate-fadeIn');
-                        });
-                        showMoreBtn.setAttribute('data-i18n', 'show-less');
-                        showMoreBtn.textContent = currentLang === 'ru' ? 'Скрыть курсы' : 'Курсҳоро пинҳон кунед';
-                        isExpanded = true;
-                    } else {
-                        courseItems.forEach(item => {
-                            item.classList.add('hidden');
-                            item.classList.remove('animate-fadeIn');
-                        });
-                        showMoreBtn.setAttribute('data-i18n', 'show-more');
-                        showMoreBtn.textContent = currentLang === 'ru' ? 'Показать больше курсов' : 'Курсҳои бештар нишон диҳед';
-                        isExpanded = false;
-                    }
-                });
-            }
-
-            // Форматирование номера телефона
-            const phoneInput = document.getElementById('phone-number');
-            const countrySelect = document.getElementById('country');
-
-            if (phoneInput && countrySelect) {
-                phoneInput.addEventListener('input', function(e) {
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (countrySelect.value === '+7') {
-                        if (value.length > 0) {
-                            value = value.substring(0, 10);
-                            let formatted = value.substring(0, 3);
-                            if (value.length > 3) formatted += ' ' + value.substring(3, 6);
-                            if (value.length > 6) formatted += '-' + value.substring(6, 8);
-                            if (value.length > 8) formatted += '-' + value.substring(8, 10);
-                            e.target.value = formatted;
-                        }
-                    } else {
-                        if (value.length > 0) {
-                            value = value.substring(0, 9);
-                            let formatted = value.substring(0, 2);
-                            if (value.length > 2) formatted += ' ' + value.substring(2, 5);
-                            if (value.length > 5) formatted += ' ' + value.substring(5, 7);
-                            if (value.length > 7) formatted += ' ' + value.substring(7, 9);
-                            e.target.value = formatted;
-                        }
-                    }
-                });
-
-                countrySelect.addEventListener('change', function() {
-                    phoneInput.value = '';
-                    phoneInput.placeholder = this.value === '+7' ? '900 123-45-67' : '90 123 45 67';
-                });
-            }
-
-            // Плавная навигация по якорям
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const headerHeight = document.querySelector('header').offsetHeight;
-                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
-</head>
-
-<body class="bg-white">
-<div class="bg-white">
-    <header class="absolute inset-x-0 top-0 z-50">
-        <nav class="flex items-center justify-between p-4 lg:px-8" aria-label="Global">
-            <div class="flex lg:flex-1">
-                <a href="#" class="-m-1.5 p-1.5">
-                    <span class="sr-only">SKA-Tech</span>
-                    <span class="font-bold text-2xl lg:text-2xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">SKA-Tech</span>
-                </a>
-            </div>
-
-            <div class="hidden lg:flex lg:gap-x-8">
-                <a href="#services" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors duration-200" data-i18n="nav-services">Услуги</a>
-                <a href="#courses" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors duration-200" data-i18n="nav-courses">Курсы</a>
-                <a href="#about-us" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors duration-200" data-i18n="nav-about">О нас</a>
-                <a href="#contact-us" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors duration-200" data-i18n="nav-contact">Свяжитесь с нами</a>
-            </div>
-
-            <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
-                <!-- Переключатель языка для десктопа -->
-                <button id="language-switcher" onclick="toggleLanguage()" class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center">
-                    <img id="language-flag" src="./images/flags/russia.png" srcset="./images/flags/russia.png 2x" width="20" height="15" alt="Русский флаг" class="mr-2 rounded">
-                    <span id="language-text" class="font-medium">РУС</span>
-                </button>
-
-                <a href="tel:+79969389324" class="text-sm  font-semibold leading-6 text-blue-600 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                    </svg>
-                    <span data-i18n="nav-phone">+7 996 938-93-24</span>
-                </a>
-            </div>
-
-            <div class="flex lg:hidden items-center gap-4">
-                <!-- Переключатель языка для мобильной версии -->
-                <button onclick="toggleLanguage()" class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center p-2">
-                    <img id="mobile-language-flag" src="./images/flags/russia.png" srcset="./images/flags/russia.png 2x" width="20" height="15" alt="Русский флаг" class="mr-2 rounded">
-                    <span id="mobile-language-text" class="font-medium text-sm">РУС</span>
-                </button>
-
-                <button type="button"
-                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:text-blue-600 transition-colors duration-200"
-                        onclick="openMenu()">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                         aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
-                </button>
-            </div>
-        </nav>
-
-        <!-- Mobile menu -->
-        <div class="lg:hidden hidden" role="dialog" aria-modal="true" id="mobile-menu">
-            <div class="fixed inset-0 z-50 bg-black bg-opacity-50" onclick="closeMenu()"></div>
-            <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transform transition-transform duration-300 ease-in-out">
-                <div class="flex items-center justify-between">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <span class="sr-only">SKA-Tech</span>
-                        <span class="font-bold text-2xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">SKA-Tech</span>
-                    </a>
-                    <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700 hover:text-blue-600 transition-colors duration-200" onclick="closeMenu()">
-                        <span class="sr-only">Close menu</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="mt-6 flow-root">
-                    <div class="-my-6 divide-y divide-gray-500/10">
-                        <div class="space-y-2 py-6">
-                            <a href="#services" onclick="closeMenu()"
-                               class="-mx-3 block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200" data-i18n="nav-services">Услуги</a>
-                            <a href="#courses" onclick="closeMenu()"
-                               class="-mx-3 block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200" data-i18n="nav-courses">Курсы</a>
-                            <a href="#about-us" onclick="closeMenu()"
-                               class="-mx-3 block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200" data-i18n="nav-about">О нас</a>
-                            <a href="#contact-us" onclick="closeMenu()"
-                               class="-mx-3 block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200" data-i18n="nav-contact">Свяжитесь с нами</a>
-                        </div>
-                        <div class="py-6">
-                            <a href="tel:+79969389324" class="-mx-3 block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                </svg>
-                                <span data-i18n="nav-phone">+7 996 938-93-24</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <div class="relative isolate px-4 pt-20 lg:px-8 lg:pt-14 overflow-hidden">
-        <!-- Градиентный фон ниже всего -->
-        <div class="absolute inset-0 z-0 bg-gradient-to-br from-blue-50 via-white to-purple-50"></div>
-
-        <!-- Декор (точки/линии) -->
-        <div class="absolute top-0 left-0 w-full h-full z-10 pointer-events-none overflow-hidden">
-            <div class="absolute top-20 left-10 w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-pulse"></div>
-            <div class="absolute top-40 right-20 w-3 h-3 bg-purple-400 rounded-full opacity-50 animate-pulse delay-75"></div>
-            <div class="absolute bottom-32 left-20 w-2 h-2 bg-green-400 rounded-full opacity-60 animate-pulse delay-150"></div>
-            <div class="absolute bottom-20 right-32 w-3 h-3 bg-orange-400 rounded-full opacity-60 animate-pulse delay-200"></div>
-            <div class="absolute top-1/4 right-1/3 w-px h-20 bg-gradient-to-b from-transparent via-blue-300 to-transparent opacity-40"></div>
-            <div class="absolute bottom-1/3 left-1/4 w-20 h-px bg-gradient-to-r from-transparent via-purple-300 to-transparent opacity-40"></div>
-        </div>
-
-        <!-- 3D-объекты для мобильной версии - расположены вокруг текста -->
-        <div class="absolute inset-0 z-20 pointer-events-none lg:hidden">
-            <!-- Смартфон сверху слева -->
-            <picture class="absolute left-40 top-16 w-32 select-none">
-                <source srcset="./images/hero/sample-13.png" type="image/png">
-                <img src="./images/hero/sample-13.png" alt="3D-смартфон" loading="lazy"
-                     class="w-full h-auto opacity-80 animate-float-fast hero-thing" />
-            </picture>
-
-            <!-- Дрон сверху справа -->
-            <picture class="absolute right-4 top-20 w-28 select-none">
-                <source srcset="./images/hero/sample-46.png" type="image/png"/>
-                <img src="./images/hero/sample-46.png" alt="3D-дрон" loading="lazy"
-                     class="w-full h-auto opacity-90 animate-float-medium hero-thing" />
-            </picture>
-
-            <!-- Ноутбук слева по центру -->
-            <picture class="absolute left-2 top-10 w-32 select-none">
-                <source srcset="./images/hero/sample-32.png" type="image/png"/>
-                <img src="./images/hero/sample-32.png" alt="3D-ноутбук" loading="lazy"
-                     class="w-full h-auto opacity-80 animate-float-slow hero-thing" />
-            </picture>
-
-            <!-- Шестерёнка справа по центру -->
-            <picture class="absolute right-3 bottom-0 w-32 select-none">
-                <source srcset="./images/hero/sample-20.png" type="image/png"/>
-                <img src="./images/hero/sample-20.png" alt="Вращающаяся шестерёнка" loading="lazy"
-                     class="w-full h-auto opacity-80 animate-spin-slow hero-thing" />
-            </picture>
-
-            <!-- Карточка кода снизу слева -->
-            <picture class="absolute left-6 bottom-0 w-32 select-none">
-                <source srcset="./images/hero/PC.png" type="image/png"/>
-                <img src="./images/hero/PC.png" alt="Карточка кода" loading="lazy"
-                     class="w-full h-auto opacity-80 animate-float-slow hero-thing" />
-            </picture>
-        </div>
-
-        <!-- 3D-объекты для десктопной версии -->
-        <div class="absolute inset-0 z-20 pointer-events-none hidden lg:block">
-            <picture class="absolute left-[10%] top-1/4 w-48 xl:w-56 select-none">
-                <source srcset="./images/hero/sample-32.png" type="image/png"/>
-                <img src="./images/hero/sample-32.png" alt="3D-ноутбук" loading="lazy"
-                     class="w-full h-auto opacity-60 animate-float-slow hero-thing" />
-            </picture>
-
-            <picture class="absolute right-[10%] top-1/3 w-48 xl:w-56 select-none">
-                <source srcset="./images/hero/sample-46.png" type="image/png"/>
-                <img src="./images/hero/sample-46.png" alt="3D-дрон" loading="lazy"
-                     class="w-full h-auto opacity-70 animate-float-medium hero-thing" />
-            </picture>
-
-            <picture class="absolute left-[22%] bottom-12 w-48 xl:w-56 select-none">
-                <source srcset="./images/hero/PC.png" type="image/png"/>
-                <img src="./images/hero/PC.png" alt="Карточка кода" loading="lazy"
-                     class="w-full h-auto opacity-60 animate-float-slow hero-thing" />
-            </picture>
-
-            <picture class="absolute left-[45%] -top-8 w-24 xl:w-28 select-none">
-                <source srcset="./images/hero/sample-13.png" type="image/png">
-                <img src="./images/hero/sample-13.png" alt="3D-смартфон" loading="lazy"
-                     class="w-full h-auto opacity-60 animate-float-fast hero-thing" />
-            </picture>
-
-            <picture class="absolute right-[30%] bottom-[20%] w-24 xl:w-28 select-none">
-                <source srcset="./images/hero/sample-20.png" type="image/png"/>
-                <img src="./images/hero/sample-20.png" alt="Вращающаяся шестерёнка" loading="lazy"
-                     class="w-full h-auto opacity-60 animate-spin-slow hero-thing" />
-            </picture>
-        </div>
-
-        <!-- Контент -->
-        <div class="mx-auto max-w-2xl py-20 sm:py-24 lg:py-32 relative z-30">
-            <div class="text-center mobile-padding">
-                <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-6xl" data-i18n="hero-title">
-                    IT-Решения и Обучение: От Идеи до Реализации
-                </h1>
-                <p class="mt-4 text-lg leading-8 text-gray-900 sm:text-xl sm:leading-9 lg:mt-6 lg:text-2xl lg:leading-10" data-i18n="hero-subtitle">
-                    Программируй будущее вместе с нами. Мы делаем сайты и помогаем тебе создавать свои.
-                </p>
-                <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-x-6">
-                    <a href="#services"
-                       class="rounded-md bg-indigo-600 px-4 py-2.5 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-full sm:w-auto text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5" data-i18n="hero-start">
-                        Начать
-                    </a>
-                    <a href="#about-us" class="text-sm font-semibold leading-6 lg:text-gray-900 w-full sm:w-auto text-center hover:text-indigo-600 lg:hover:text-indigo-600 transition-colors duration-200" data-i18n="hero-learn-more">
-                        Узнать больше <span aria-hidden="true">→</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Остальные секции остаются без изменений -->
-    <!-- About Us Section -->
-    <div class="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24">
-        <img src="./images/bg.jpeg"
-             alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
-
-        <div id="about-us" class="relative mx-auto max-w-7xl px-4 lg:px-8 scroll-mt-24">
-            <div class="relative pt-10 pb-8 lg:pt-20 lg:pb-16">
-                <div class="mx-auto max-w-2xl lg:mx-0 mobile-text-center">
-                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-6xl" data-i18n="about-title">Работайте с нами</h2>
-                    <p class="mt-4 text-lg leading-7 text-gray-300 sm:text-lg sm:leading-8 lg:mt-6 lg:text-lg lg:leading-8" data-i18n="about-description">Мы — ваша комплексная IT-студия. Мы не только разрабатываем сайты, приложения и программное обеспечение под ваши задачи, но и обучаем программированию с нуля.</p>
-                </div>
-                <div class="mx-auto mt-8 max-w-2xl lg:mx-0 lg:max-w-none">
-                    <dl class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        <div class="flex flex-col-reverse items-center text-center sm:items-start sm:text-left">
-                            <dt class="text-lg leading-6 text-gray-300 mt-2" data-i18n="about-staff">Коллеги, работающие полный рабочий день</dt>
-                            <dd class="text-2xl font-bold leading-9 tracking-tight text-white">10+</dd>
-                        </div>
-                        <div class="flex flex-col-reverse items-center text-center sm:items-start sm:text-left">
-                            <dt class="text-lg leading-6 text-gray-300 mt-2" data-i18n="about-services">Услуги</dt>
-                            <dd class="text-2xl font-bold leading-9 tracking-tight text-white">4</dd>
-                        </div>
-                        <div class="flex flex-col-reverse items-center text-center sm:items-start sm:text-left">
-                            <dt class="text-lg leading-6 text-gray-300 mt-2" data-i18n="about-courses">Обучаемые курсы</dt>
-                            <dd class="text-2xl font-bold leading-9 tracking-tight text-white">10</dd>
-                        </div>
-                    </dl>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Services Section -->
-    <div class="bg-white py-16 sm:py-24" id="services">
-        <div class="mx-auto max-w-7xl px-4 lg:px-8">
-            <div class="mx-auto max-w-2xl lg:mx-0 mobile-text-center">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl" data-i18n="services-title">Мы делаем всё в IT</h2>
-                <p class="mt-3 text-lg leading-7 text-gray-600 sm:text-lg sm:leading-8 lg:mt-4 lg:text-lg lg:leading-8" data-i18n="services-subtitle">Разработка, поддержка и обучение — полный цикл услуг для вашего бизнеса и карьеры в IT.</p>
-            </div>
-            <div class="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 border-t border-gray-200 pt-8 sm:mt-12 sm:pt-12 lg:mx-0 lg:max-w-none lg:grid-cols-2 xl:grid-cols-3">
-                <article class="flex max-w-xl flex-col items-start justify-between">
-                    <div class="group relative rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16 px-6">
-                        <div class="mb-4">
-                            <img src="images/web.jpg"
-                                 class="mx-auto w-32 h-32 object-cover rounded-full shadow" alt="Разработка сайтов" />
-                        </div>
-                        <h3 class="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600" data-i18n="service-web">
-                            Создание и разработка сайтов
-                        </h3>
-                        <p class="mt-5 text-base leading-6 text-gray-600" data-i18n="service-web-desc">Мы создаём современные и удобные сайты: корпоративные, лендинги и интернет-магазины. Каждый проект разрабатывается индивидуально, с учётом потребностей вашего бизнеса.</p>
-                    </div>
-                </article>
-                <article class="flex max-w-xl flex-col items-start justify-between">
-                    <div class="group relative rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16 px-6">
-                        <div class="mb-4">
-                            <img src="images/support.jpg"
-                                 class="mx-auto w-32 h-32 object-cover rounded-full shadow" alt="Техническая поддержка" />
-                        </div>
-                        <h3 class="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600" data-i18n="service-support">
-                            Поддержка и сопровождение
-                        </h3>
-                        <p class="mt-5 text-base leading-6 text-gray-600" data-i18n="service-support-desc">Обеспечиваем стабильную работу ваших проектов: обновления, техническая поддержка и защита от сбоев. Вы можете быть уверены, что ваш сайт всегда будет работать без перебоев.</p>
-                    </div>
-                </article>
-                <article class="flex max-w-xl flex-col items-start justify-between">
-                    <div class="group relative rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16 px-6">
-                        <div class="mb-4">
-                            <img src="images/ux.jpg"
-                                 class="mx-auto w-32 h-32 object-cover rounded-full shadow" alt="Дизайн и брендинг" />
-                        </div>
-                        <h3 class="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600" data-i18n="service-design">
-                            Дизайн и брендинг
-                        </h3>
-                        <p class="mt-5 text-base leading-6 text-gray-600" data-i18n="service-design-desc">Разрабатываем уникальный дизайн и фирменный стиль для вашего бизнеса. Создаём интерфейсы, логотипы и визуальные решения, которые делают ваш бренд узнаваемым и современным.</p>
-                    </div>
-                </article>
-
-                <article class="flex max-w-xl flex-col items-start justify-between lg:col-start-2">
-                    <div class="group relative rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16 px-6">
-                        <div class="mb-4">
-                            <img src="images/mobile.jpg"
-                                 class="mx-auto w-32 h-32 object-cover rounded-full shadow" alt="Разработка приложений" />
-                        </div>
-                        <h3 class="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600" data-i18n="service-apps">
-                            Разработка приложений
-                        </h3>
-                        <p class="mt-5 text-base leading-6 text-gray-600" data-i18n="service-apps-desc">Мы создаём мобильные и веб-приложения под ваши задачи: удобные, функциональные и современные. Каждое приложение разрабатывается так, чтобы улучшать работу вашего бизнеса и радовать пользователей.</p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-
-    <!-- Courses Section -->
-    <section class="bg-white" id="courses">
-        <div class="mx-auto max-w-7xl px-4 lg:px-6">
-            <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12 mobile-padding">
-                <h2 class="mb-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl" data-i18n="courses-title">Курсы Академии</h2>
-                <p class="mb-5 text-lg text-gray-500 sm:text-lg" data-i18n="courses-subtitle">Выберите свой путь обучения и развивайте навыки во Frontend, Backend, мобильной разработке или начните с нашей программы для детей.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6" id="courses-container">
-                <!-- Курсы с переводами -->
-                <div class="flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="mb-3">
-                        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center shadow-md">
-                            <span class="text-white font-bold text-sm">< / ></span>
-                        </div>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold" data-i18n="course-html">HTML и CSS</h3>
-                    <p class="font-light text-gray-500 text-base mb-3" data-i18n="course-html-desc">Изучите строительные блоки веба</p>
-
-                    <div class="mt-auto">
-                        <div class="flex justify-center items-baseline mb-3">
-                            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full" data-i18n="course-frontend">Фронтенд</span>
-                            <span class="ml-2 text-xs text-gray-500">1 месяц</span>
-                        </div>
-                        <a href="./courses/html_css.html" class="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full" data-i18n="course-start">
-                            Начать курс
-                        </a>
-                    </div>
-                </div>
-
-                <!-- JavaScript -->
-                <div class="flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="mb-3">
-                        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-md">
-                            <span class="text-white font-bold text-sm">JS</span>
-                        </div>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold" data-i18n="course-js">JavaScript</h3>
-                    <p class="font-light text-gray-500 text-base mb-3" data-i18n="course-js-desc">Освойте язык веб-программирования</p>
-
-                    <div class="mt-auto">
-                        <div class="flex justify-center items-baseline mb-3">
-                            <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full" data-i18n="course-frontend">Фронтенд</span>
-                            <span class="ml-2 text-xs text-gray-500">2 месяца</span>
-                        </div>
-                        <a href="./courses/javascript.html" class="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full" data-i18n="course-start">
-                            Начать курс
-                        </a>
-                    </div>
-                </div>
-
-                <!-- React -->
-                <div class="flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="mb-3">
-                        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center shadow-md">
-                            <span class="text-white font-bold text-sm">⚛</span>
-                        </div>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold" data-i18n="course-react">React</h3>
-                    <p class="font-light text-gray-500 text-base mb-3" data-i18n="course-react-desc">Современная фронтенд-библиотека</p>
-
-                    <div class="mt-auto">
-                        <div class="flex justify-center items-baseline mb-3">
-                            <span class="px-2 py-1 bg-cyan-100 text-cyan-800 text-xs font-medium rounded-full" data-i18n="course-frontend">Фронтенд</span>
-                            <span class="ml-2 text-xs text-gray-500">2 месяца</span>
-                        </div>
-                        <a href="./courses/react.html" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full" data-i18n="course-start">
-                            Начать курс
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Программирование для детей -->
-                <div class="flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="mb-3">
-                        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-yellow-300 to-pink-400 rounded-full flex items-center justify-center shadow-md">
-                            <span class="text-white font-bold text-sm">👶</span>
-                        </div>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold" data-i18n="course-kids">Программирование для детей</h3>
-                    <p class="font-light text-gray-500 text-base mb-3" data-i18n="course-kids-desc">Увлекательное обучение с нуля</p>
-
-                    <div class="mt-auto">
-                        <div class="flex justify-center items-baseline mb-3">
-                            <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full" data-i18n="course-kids-category">Дети</span>
-                            <span class="ml-2 text-xs text-gray-500">6 месяцев</span>
-                        </div>
-                        <a href="./courses/kids.html" class="bg-gradient-to-r from-yellow-400 to-pink-500 hover:from-yellow-500 hover:to-pink-600 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full" data-i18n="course-start">
-                            Начать курс
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Графический дизайн -->
-                <div class="flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="mb-3">
-                        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-pink-400 to-purple-600 rounded-full flex items-center justify-center shadow-md">
-                            <span class="text-white font-bold text-sm">🎨</span>
-                        </div>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold" data-i18n="course-design">Графический дизайн</h3>
-                    <p class="font-light text-gray-500 text-base mb-3" data-i18n="course-design-desc">Создавайте визуальный контент</p>
-
-                    <div class="mt-auto">
-                        <div class="flex justify-center items-baseline mb-3">
-                            <span class="px-2 py-1 bg-pink-100 text-pink-800 text-xs font-medium rounded-full" data-i18n="course-design-category">Дизайн</span>
-                            <span class="ml-2 text-xs text-gray-500">1.5 месяца</span>
-                        </div>
-                        <a href="./courses/graphic-design.html" class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full" data-i18n="course-start">
-                            Начать курс
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Golang -->
-                <div class="flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="mb-3">
-                        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-cyan-500 to-blue-700 rounded-full flex items-center justify-center shadow-md">
-                            <span class="text-white font-bold text-sm">Go</span>
-                        </div>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold" data-i18n="course-golang">Golang</h3>
-                    <p class="font-light text-gray-500 text-base mb-3" data-i18n="course-golang-desc">Высокопроизводительный язык</p>
-
-                    <div class="mt-auto">
-                        <div class="flex justify-center items-baseline mb-3">
-                            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full" data-i18n="course-backend">Бэкенд</span>
-                            <span class="ml-2 text-xs text-gray-500">3 месяца</span>
-                        </div>
-                        <a href="./courses/golang.html" class="bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-700 hover:to-blue-800 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full" data-i18n="course-start">
-                            Начать курс
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Основы C++ -->
-                <div class="hidden course-item flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="mb-3">
-                        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-blue-500 to-blue-800 rounded-full flex items-center justify-center shadow-md">
-                            <span class="text-white font-bold text-sm">C++</span>
-                        </div>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold" data-i18n="course-cpp">Основы C++</h3>
-                    <p class="font-light text-gray-500 text-base mb-3" data-i18n="course-cpp-desc">Мощный системный язык</p>
-
-                    <div class="mt-auto">
-                        <div class="flex justify-center items-baseline mb-3">
-                            <span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full" data-i18n="course-basics">Основы</span>
-                            <span class="ml-2 text-xs text-gray-500">2 месяца</span>
-                        </div>
-                        <a href="./courses/cpp-basics.html" class="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full" data-i18n="course-start">
-                            Начать курс
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Основы C# -->
-                <div class="hidden course-item flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="mb-3">
-                        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center shadow-md">
-                            <span class="text-white font-bold text-sm">C#</span>
-                        </div>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold" data-i18n="course-csharp">Основы C#</h3>
-                    <p class="font-light text-gray-500 text-base mb-3" data-i18n="course-csharp-desc">Универсальный язык от Microsoft</p>
-
-                    <div class="mt-auto">
-                        <div class="flex justify-center items-baseline mb-3">
-                            <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded-full" data-i18n="course-basics">Основы</span>
-                            <span class="ml-2 text-xs text-gray-500">2 месяца</span>
-                        </div>
-                        <a href="./courses/csharp-basics.html" class="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full" data-i18n="course-start">
-                            Начать курс
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Python -->
-                <div class="hidden course-item flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="mb-3">
-                        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center shadow-md">
-                            <span class="text-white font-bold text-sm">Py</span>
-                        </div>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold" data-i18n="course-python">Python</h3>
-                    <p class="font-light text-gray-500 text-base mb-3" data-i18n="course-python-desc">Популярный язык для всех задач</p>
-
-                    <div class="mt-auto">
-                        <div class="flex justify-center items-baseline mb-3">
-                            <span class="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full" data-i18n="course-universal">Универсал</span>
-                            <span class="ml-2 text-xs text-gray-500">2 месяца</span>
-                        </div>
-                        <a href="./courses/python.html" class="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full" data-i18n="course-start">
-                            Начать курс
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Git -->
-                <div class="hidden course-item flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="mb-3">
-                        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-md">
-                            <span class="text-white font-bold text-sm">Git</span>
-                        </div>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold" data-i18n="course-git">Git</h3>
-                    <p class="font-light text-gray-500 text-base mb-3" data-i18n="course-git-desc">Система контроля версий</p>
-
-                    <div class="mt-auto">
-                        <div class="flex justify-center items-baseline mb-3">
-                            <span class="px-2 py-1 bg-orange-100 text-orange-800 text-xs font-medium rounded-full" data-i18n="course-tool">Инструмент</span>
-                            <span class="ml-2 text-xs text-gray-500">3 недели</span>
-                        </div>
-                        <a href="./courses/git.html" class="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full" data-i18n="course-start">
-                            Начать курс
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Кнопка "Показать больше" -->
-            <div class="text-center mt-8">
-                <button id="show-more-btn" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium rounded-lg px-6 py-2.5 text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto" data-i18n="show-more">
-                    Показать больше курсов
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form -->
-    <div class="isolate bg-white px-4 py-16 sm:py-24 lg:px-8" id="contact-us">
-        <div class="mx-auto max-w-2xl text-center mobile-padding">
-            <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl" data-i18n="contact-title">Бесплатная консультация</h2>
-            <p class="mt-3 text-base leading-7 text-gray-600 sm:text-lg sm:leading-8" data-i18n="contact-subtitle">Оставьте свои контактные данные, мы перезвоним вам и ответим на все ваши вопросы</p>
-        </div>
-        <form action="#" method="POST" class="mx-auto mt-8 max-w-xl sm:mt-8 mobile-padding">
-            <div class="grid grid-cols-1 gap-6">
-                <div>
-                    <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900" data-i18n="first-name">Имя *</label>
-                    <div class="mt-2">
-                        <input type="text" name="first-name" id="first-name" autocomplete="given-name" required
-                               class="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200"
-                               data-i18n="first-name-placeholder" placeholder="Введите ваше имя">
-                    </div>
-                </div>
-                <div>
-                    <label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900" data-i18n="last-name">Фамилия</label>
-                    <div class="mt-2">
-                        <input type="text" name="last-name" id="last-name" autocomplete="family-name"
-                               class="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200"
-                               data-i18n="last-name-placeholder" placeholder="Введите вашу фамилию">
-                    </div>
-                </div>
-                <div>
-                    <label for="phone-number" class="block text-sm font-semibold leading-6 text-gray-900" data-i18n="phone">Номер телефона *</label>
-                    <div class="mt-2 mobile-stack gap-3">
-                        <div class="w-full sm:w-32">
-                            <select id="country" name="country"
-                                    class="block w-full rounded-md border-0 px-3 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200 bg-gray-50">
-                                <option value="+7">🇷🇺 +7</option>
-                                <option value="+992">🇹🇯 +992</option>
-                            </select>
-                        </div>
-                        <div class="flex-1">
-                            <input type="tel" name="phone-number" id="phone-number" autocomplete="tel" required
-                                   class="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200"
-                                   data-i18n="phone-placeholder" placeholder="900 123-45-67">
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <label for="message" class="block text-sm font-semibold leading-6 text-gray-900" data-i18n="message">Сообщение</label>
-                    <div class="mt-2">
-                            <textarea name="message" id="message" rows="4"
-                                      class="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200"
-                                      data-i18n="message-placeholder" placeholder="Расскажите о ваших вопросах или целях обучения..."></textarea>
-                    </div>
-                </div>
-                <div class="flex gap-x-4">
-                    <div class="flex h-6 items-center">
-                        <input type="checkbox" id="privacy-policy" name="privacy-policy" required
-                               class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
-                    </div>
-                    <label for="privacy-policy" class="text-sm leading-6 text-gray-600">
-                        <span data-i18n="privacy">Я соглашаюсь с</span>
-                        <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500 transition-colors duration-200" data-i18n="privacy-policy">политикой конфиденциальности</a>
-                        *
-                    </label>
-                </div>
-            </div>
-            <div class="mt-8">
-                <button type="submit"
-                        class="block w-full rounded-md bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-3 px-4 text-center transition-all duration-200 shadow-md hover:shadow-lg" data-i18n="submit">
-                    Отправить заявку
-                </button>
-            </div>
-            <p class="mt-4 text-center text-sm text-gray-500" data-i18n="required-fields">
-                * Обязательные для заполнения поля
-            </p>
-        </form>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white">
-        <div class="w-full max-w-screen-xl mx-auto px-4 py-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                <div class="md:col-span-2">
-                    <a href="/" class="flex items-center mb-4 space-x-3">
-                        <span class="font-bold text-xl bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">SKA-Tech</span>
-                    </a>
-                    <p class="text-gray-400 mb-4 text-sm" data-i18n="footer-description">
-                        IT-академия и студия разработки. Мы создаем цифровые решения и обучаем будущих специалистов.
-                    </p>
-                    <div class="flex space-x-4">
-                        <!-- Соцсети -->
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-semibold mb-3" data-i18n="footer-courses">Курсы</h3>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#courses" class="hover:text-white transition-colors duration-200" data-i18n="footer-frontend">Frontend разработка</a></li>
-                        <li><a href="#courses" class="hover:text-white transition-colors duration-200" data-i18n="footer-backend">Backend разработка</a></li>
-                        <li><a href="#courses" class="hover:text-white transition-colors duration-200" data-i18n="footer-design">Дизайн</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-semibold mb-3" data-i18n="footer-services">Услуги</h3>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#services" class="hover:text-white transition-colors duration-200" data-i18n="footer-web-dev">Разработка сайтов</a></li>
-                        <li><a href="#services" class="hover:text-white transition-colors duration-200" data-i18n="footer-mobile">Мобильные приложения</a></li>
-                        <li><a href="#services" class="hover:text-white transition-colors duration-200" data-i18n="footer-support">Техническая поддержка</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <hr class="my-6 border-gray-700" />
-
-            <div class="sm:flex sm:items-center sm:justify-between mobile-text-center mobile-stack gap-4">
-                    <span class="text-sm text-gray-400" data-i18n="footer-copyright">
-                        © 2025 <a href="/" class="hover:text-white transition-colors duration-200">SKA-Tech</a>. Все права защищены.
-                    </span>
-                <ul class="flex flex-wrap justify-center items-center text-sm font-medium text-gray-400 space-x-4 sm:space-x-6">
-                    <li>
-                        <a href="#about-us" class="hover:text-white transition-colors duration-200" data-i18n="footer-about">О нас</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hover:text-white transition-colors duration-200" data-i18n="footer-privacy">Политика конфиденциальности</a>
-                    </li>
-                    <li>
-                        <a href="#contact-us" class="hover:text-white transition-colors duration-200" data-i18n="footer-contact">Контакты</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-</div>
-
-<script>
-    // Функция для обновления мобильного переключателя языка
-    function updateLanguageSwitcher(lang) {
-        const flag = document.getElementById('language-flag');
-        const text = document.getElementById('language-text');
-
-        if (lang === 'ru') {
-            flag.src = './images/flags/russia.png';
-            flag.srcset = './images/flags/russia.png 2x';
-            flag.alt = 'Русский флаг';
-            text.textContent = 'РУС';
-        } else {
-            flag.src = './images/flags/tajikistan.png';
-            flag.srcset = './images/flags/tajikistan.png 2x';
-            flag.alt = 'Флаг Таджикистана';
-            text.textContent = 'ТҶК';
-        }
-    }
-
-    // Обновленная функция changeLanguage
-    function changeLanguage(lang) {
+      // Тексты для перевода
+      const translations = {
+        ru: {
+          // Навигация
+          "nav-services": "Услуги",
+          "nav-courses": "Курсы",
+          "nav-about": "О нас",
+          "nav-contact": "Свяжитесь с нами",
+          "nav-phone": "+7 996 938-93-24",
+
+          // Hero секция
+          "hero-title": "IT-Решения и Обучение: От Идеи до Реализации",
+          "hero-subtitle":
+            "Программируй будущее вместе с нами. Мы делаем сайты и помогаем тебе создавать свои.",
+          "hero-start": "Начать",
+          "hero-learn-more": "Узнать больше",
+
+          // О нас
+          "about-title": "Работайте с нами",
+          "about-description":
+            "Мы — ваша комплексная IT-студия. Мы не только разрабатываем сайты, приложения и программное обеспечение под ваши задачи, но и обучаем программированию с нуля.",
+          "about-staff": "Коллеги, работающие полный рабочий день",
+          "about-services": "Услуги",
+          "about-courses": "Обучаемые курсы",
+
+          // Услуги
+          "services-title": "Мы делаем всё в IT",
+          "services-subtitle":
+            "Разработка, поддержка и обучение — полный цикл услуг для вашего бизнеса и карьеры в IT.",
+          "service-web": "Создание и разработка сайтов",
+          "service-web-desc":
+            "Мы создаём современные и удобные сайты: корпоративные, лендинги и интернет-магазины. Каждый проект разрабатывается индивидуально, с учётом потребностей вашего бизнеса.",
+          "service-support": "Поддержка и сопровождение",
+          "service-support-desc":
+            "Обеспечиваем стабильную работу ваших проектов: обновления, техническая поддержка и защита от сбоев. Вы можете быть уверены, что ваш сайт всегда будет работать без перебоев.",
+          "service-design": "Дизайн и брендинг",
+          "service-design-desc":
+            "Разрабатываем уникальный дизайн и фирменный стиль для вашего бизнеса. Создаём интерфейсы, логотипы и визуальные решения, которые делают ваш бренд узнаваемым и современным.",
+          "service-apps": "Разработка приложений",
+          "service-apps-desc":
+            "Мы создаём мобильные и веб-приложения под ваши задачи: удобные, функциональные и современные. Каждое приложение разрабатывается так, чтобы улучшать работу вашего бизнеса и радовать пользователей.",
+
+          // Курсы
+          "courses-title": "Курсы Академии",
+          "courses-subtitle":
+            "Выберите свой путь обучения и развивайте навыки во Frontend, Backend, мобильной разработке или начните с нашей программы для детей.",
+          "course-html": "HTML и CSS",
+          "course-html-desc": "Изучите строительные блоки веба",
+          "course-js": "JavaScript",
+          "course-js-desc": "Освойте язык веб-программирования",
+          "course-react": "React",
+          "course-react-desc": "Современная фронтенд-библиотека",
+          "course-kids": "Программирование для детей",
+          "course-kids-desc": "Увлекательное обучение с нуля",
+          "course-design": "Графический дизайн",
+          "course-design-desc": "Создавайте визуальный контент",
+          "course-golang": "Golang",
+          "course-golang-desc": "Высокопроизводительный язык",
+          "course-cpp": "Основы C++",
+          "course-cpp-desc": "Мощный системный язык",
+          "course-csharp": "Основы C#",
+          "course-csharp-desc": "Универсальный язык от Microsoft",
+          "course-python": "Python",
+          "course-python-desc": "Популярный язык для всех задач",
+          "course-git": "Git",
+          "course-git-desc": "Система контроля версий",
+          "course-start": "Начать курс",
+          "show-more": "Показать больше курсов",
+          "show-less": "Скрыть курсы",
+
+          // Контактная форма
+          "contact-title": "Бесплатная консультация",
+          "contact-subtitle":
+            "Оставьте свои контактные данные, мы перезвоним вам и ответим на все ваши вопросы",
+          "first-name": "Имя *",
+          "first-name-placeholder": "Введите ваше имя",
+          "last-name": "Фамилия",
+          "last-name-placeholder": "Введите вашу фамилию",
+          phone: "Номер телефона *",
+          "phone-placeholder": "900 123-45-67",
+          message: "Сообщение",
+          "message-placeholder":
+            "Расскажите о ваших вопросах или целях обучения...",
+          privacy: "Я соглашаюсь с",
+          "privacy-policy": "политикой конфиденциальности",
+          submit: "Отправить заявку",
+          "required-fields": "* Обязательные для заполнения поля",
+
+          // Футер
+          "footer-description":
+            "IT-академия и студия разработки. Мы создаем цифровые решения и обучаем будущих специалистов.",
+          "footer-courses": "Курсы",
+          "footer-services": "Услуги",
+          "footer-frontend": "Frontend разработка",
+          "footer-backend": "Backend разработка",
+          "footer-design": "Дизайн",
+          "footer-web-dev": "Разработка сайтов",
+          "footer-mobile": "Мобильные приложения",
+          "footer-support": "Техническая поддержка",
+          "footer-copyright": "© 2025 SKA-Tech. Все права защищены.",
+          "footer-about": "О нас",
+          "footer-privacy": "Политика конфиденциальности",
+          "footer-contact": "Контакты",
+        },
+        tj: {
+          // Навигация
+          "nav-services": "Хизматҳо",
+          "nav-courses": "Курсҳо",
+          "nav-about": "Дар бораи мо",
+          "nav-contact": "Бо мо тамос гиред",
+          "nav-phone": "+7 996 938-93-24",
+
+          // Hero секция
+          "hero-title": "Аз идея то воқеият — IT-корҳо ва омӯзиш барои шумо",
+          "hero-subtitle":
+            "Бо мо ояндаро созед — омӯзед, барномарезӣ кунед ва орзуятонро амали гардонед.",
+          "hero-start": "Оғоз",
+          "hero-learn-more": "Маълумоти бештар",
+
+          // О нас
+          "about-title": "Ба мо ҳамроҳ шавед",
+          "about-description":
+            "Мо — студияи IT-и шумо. Мо на танҳо вебсайтҳо, барномаҳо ва нармафзорҳоро барои вазифаҳои шумо таҳия мекунем, балки ба шумо барномасоз шуданро меомӯзонем.",
+          "about-staff": "Кормандоне, ки пурра вақт кор мекунанд",
+          "about-services": "Хизматҳо",
+          "about-courses": "Курсҳои таҳсилӣ",
+
+          // Услуги
+          "services-title": "Мо ҳама чизро дар IT мекунем",
+          "services-subtitle":
+            "Таҳия, дастгирӣ ва таҳсил — силсилаи пурраи хизматҳо барои тиҷорат ва касби шумо дар IT.",
+          "service-web": "Эҷод ва таҳияи вебсайтҳо",
+          "service-web-desc":
+            "    Мо вебсайтҳое месозем, ки на танҳо зебо, балки барои корбар осон ва дӯстдошта бошанд: корпоративӣ, лендингҳо ва мағозаҳои интернетӣ. Ҳар як лоиҳа ба таври инфиродӣ, бо назардошти эҳтиёҷоти тиҷорати шумо таҳия мешавад.",
+          "service-support": "Дастгирӣ ва ҳамроҳӣ",
+          "service-support-desc":
+            "Мо кори устувори лоиҳаҳои шуморо таъмин мекунем: навсозӣ, дастгирии техникӣ ва муҳофизат аз ихтилол. Шумо метавонед бовар дошта бошед, ки вебсайти шумо ҳамеша бе ихтилол кор хоҳад кард.",
+          "service-design": "Тарроҳӣ ва брендсозӣ",
+          "service-design-desc":
+            "Мо тарроҳии беназир ва услуби брендиро барои тиҷорати шумо таҳия мекунем. Мо интерфейсҳо, логотипҳо ва ҳалли визуалиро месозем, ки бренди шуморо шинохта ва муосир мекунад.",
+          "service-apps": "Таҳияи барномаҳо",
+          "service-apps-desc":
+            "Мо барномаҳои мобилӣ ва вебӣ месозем, ки барои корбар осон ва барои тиҷорат самарабахш бошанд. Ҳар як барнома ба таври алоҳида барои беҳтар кардани кори шумо ва хурсандии корбарон таҳия мешавад.",
+
+          // Курсы
+          "courses-title": "Курсҳои Академия",
+          "courses-subtitle":
+            "Роҳи таҳсили худро интихоб кунед ва дар Frontend, Backend, таҳияи барномаҳои мобилӣ ё бо барномаи мо барои кӯдакон маҳорат ҳосил кунед.",
+          "course-html": "HTML ва CSS",
+          "course-html-desc": "Блокҳои сохтмонии вебро омӯзед",
+          "course-js": "JavaScript",
+          "course-js-desc":
+            "Забони барномасози барои вебсайтҳои интерактивӣ-ро омӯзед",
+          "course-react": "React",
+          "course-react-desc": "Китобхонаи муосири фронтенд",
+          "course-kids": "Барномасозӣ барои кӯдакон",
+          "course-kids-desc": "Омӯзиши ҷолиб аз сифр",
+          "course-design": "Дизайни графикӣ",
+          "course-design-desc": "Контентҳои визуалӣ эҷод кунед",
+          "course-golang": "Golang",
+          "course-golang-desc": "Забони баланд суръати Google",
+          "course-cpp": "Асосҳои C++",
+          "course-cpp-desc": "Забони қаввии системавӣ",
+          "course-csharp": "Асосҳои C#",
+          "course-csharp-desc": "Забони универсалии Microsoft",
+          "course-python": "Python",
+          "course-python-desc": "Забони машҳур барои ҳама вазифаҳо",
+          "course-git": "Git",
+          "course-git-desc": "Системаи назорати версияҳо",
+          "course-start": "Оғози курс",
+          "show-more": "Курсҳои бештар нишон диҳед",
+          "show-less": "Курсҳоро пинҳон кунед",
+
+          // Контактная форма
+          "contact-title": "Маслиҳати ройгон",
+          "contact-subtitle":
+            "Маълумоти тамоси худро гузоред, мо ба шумо занг мезанем ва ба ҳама саволҳои шумо ҷавоб медиҳем",
+          "first-name": "Ном *",
+          "first-name-placeholder": "Номи худро ворид кунед",
+          "last-name": "Насаб",
+          "last-name-placeholder": "Насаби худро ворид кунед",
+          phone: "Рақами телефон *",
+          "phone-placeholder": "900 123-45-67",
+          message: "Паём",
+          "message-placeholder":
+            "Дар бораи саволҳо ё мақсадҳои таҳсили худ нақл кунед...",
+          privacy: "Ман розӣ ҳастам бо",
+          "privacy-policy": "сиёсати махфият",
+          submit: "Фиристодани дархост",
+          "required-fields": "* Майдонҳои ҳатмӣ барои пур кардан",
+
+          // Футер
+          "footer-description":
+            "Академияи IT ва студияи таҳия. Мо ҳалли рақамӣ эҷод мекунем ва мутахассисони ояндаро таҳсил медиҳем.",
+          "footer-courses": "Курсҳо",
+          "footer-services": "Хизматҳо",
+          "footer-frontend": "Таҳияи Frontend",
+          "footer-backend": "Таҳияи Backend",
+          "footer-design": "Тарроҳӣ",
+          "footer-web-dev": "Таҳияи вебсайтҳо",
+          "footer-mobile": "Барномаҳои мобилӣ",
+          "footer-support": "Дастгирии техникӣ",
+          "footer-copyright": "© 2025 SKA-Tech. Ҳама ҳуқуқҳо ҳифз шудаанд.",
+          "footer-about": "Дар бораи мо",
+          "footer-privacy": "Сиёсати махфият",
+          "footer-contact": "Тамос",
+        },
+      };
+
+      let currentLang = "ru";
+
+      function changeLanguage(lang) {
         currentLang = lang;
         document.documentElement.lang = lang;
 
         // Обновляем все элементы с data-i18n атрибутом
-        document.querySelectorAll('[data-i18n]').forEach(element => {
-            const key = element.getAttribute('data-i18n');
-            if (translations[lang][key]) {
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    element.placeholder = translations[lang][key];
-                } else {
-                    element.textContent = translations[lang][key];
-                }
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          if (translations[lang][key]) {
+            if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+              element.placeholder = translations[lang][key];
+            } else {
+              element.textContent = translations[lang][key];
             }
+          }
+        });
+
+        // Обновляем переключатель языка
+        updateLanguageSwitcher(lang);
+
+        // Сохраняем выбор языка в localStorage
+        localStorage.setItem("preferred-language", lang);
+      }
+
+      function updateLanguageSwitcher(lang) {
+        const switcher = document.getElementById("language-switcher");
+        const flag = document.getElementById("language-flag");
+        const text = document.getElementById("language-text");
+
+        if (lang === "ru") {
+          flag.src = "./images/flags/russia.png";
+          flag.srcset = "/images/flags/russia.png 2x";
+          flag.alt = "Русский флаг";
+          text.textContent = "РУС";
+        } else {
+          flag.src = "./images/flags/tajikistan.png";
+          flag.srcset = "./images/flags/tajikistan.png 2x";
+          flag.alt = "Флаг Таджикистана";
+          text.textContent = "ТҶК";
+        }
+      }
+
+      function toggleLanguage() {
+        const newLang = currentLang === "ru" ? "tj" : "ru";
+        changeLanguage(newLang);
+      }
+
+      function openMenu() {
+        document.getElementById("mobile-menu").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMenu() {
+        document.getElementById("mobile-menu").classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+
+      // Закрытие меню при нажатии на Escape
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeMenu();
+        }
+      });
+
+      // Плавная навигация по якорям
+      document.addEventListener("DOMContentLoaded", function () {
+        // Загружаем сохраненный язык
+        const savedLang = localStorage.getItem("preferred-language") || "ru";
+        changeLanguage(savedLang);
+
+        // Функция для кнопок "Узнать больше"
+        const readMoreButtons = document.querySelectorAll(".read-more-btn");
+        readMoreButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const card = this.closest("article");
+            const description = card.querySelector("p");
+            description.classList.toggle("line-clamp-3");
+            this.textContent = description.classList.contains("line-clamp-3")
+              ? currentLang === "ru"
+                ? "Узнать больше"
+                : "Маълумоти бештар"
+              : currentLang === "ru"
+              ? "Свернуть"
+              : "Фуруд овардан";
+          });
+        });
+
+        // Функция для кнопки "Показать больше курсов"
+        const showMoreBtn = document.getElementById("show-more-btn");
+        const courseItems = document.querySelectorAll(".course-item");
+        let isExpanded = false;
+
+        if (showMoreBtn) {
+          showMoreBtn.addEventListener("click", function () {
+            if (!isExpanded) {
+              courseItems.forEach((item) => {
+                item.classList.remove("hidden");
+                item.classList.add("animate-fadeIn");
+              });
+              showMoreBtn.setAttribute("data-i18n", "show-less");
+              showMoreBtn.textContent =
+                currentLang === "ru" ? "Скрыть курсы" : "Курсҳоро пинҳон кунед";
+              isExpanded = true;
+            } else {
+              courseItems.forEach((item) => {
+                item.classList.add("hidden");
+                item.classList.remove("animate-fadeIn");
+              });
+              showMoreBtn.setAttribute("data-i18n", "show-more");
+              showMoreBtn.textContent =
+                currentLang === "ru"
+                  ? "Показать больше курсов"
+                  : "Курсҳои бештар нишон диҳед";
+              isExpanded = false;
+            }
+          });
+        }
+
+        // Форматирование номера телефона
+        const phoneInput = document.getElementById("phone-number");
+        const countrySelect = document.getElementById("country");
+
+        if (phoneInput && countrySelect) {
+          phoneInput.addEventListener("input", function (e) {
+            let value = e.target.value.replace(/\D/g, "");
+            if (countrySelect.value === "+7") {
+              if (value.length > 0) {
+                value = value.substring(0, 10);
+                let formatted = value.substring(0, 3);
+                if (value.length > 3) formatted += " " + value.substring(3, 6);
+                if (value.length > 6) formatted += "-" + value.substring(6, 8);
+                if (value.length > 8) formatted += "-" + value.substring(8, 10);
+                e.target.value = formatted;
+              }
+            } else {
+              if (value.length > 0) {
+                value = value.substring(0, 9);
+                let formatted = value.substring(0, 2);
+                if (value.length > 2) formatted += " " + value.substring(2, 5);
+                if (value.length > 5) formatted += " " + value.substring(5, 7);
+                if (value.length > 7) formatted += " " + value.substring(7, 9);
+                e.target.value = formatted;
+              }
+            }
+          });
+
+          countrySelect.addEventListener("change", function () {
+            phoneInput.value = "";
+            phoneInput.placeholder =
+              this.value === "+7" ? "900 123-45-67" : "90 123 45 67";
+          });
+        }
+
+        // Плавная навигация по якорям
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              const headerHeight =
+                document.querySelector("header").offsetHeight;
+              const targetPosition =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                headerHeight -
+                20;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </head>
+
+  <body class="bg-white">
+    <div class="bg-white">
+      <header
+        class="fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm"
+      >
+        <nav
+          class="flex items-center justify-between p-4 lg:px-8"
+          aria-label="Global"
+        >
+          <div class="flex lg:flex-1">
+            <a href="#" class="-m-1.5 p-1.5">
+              <span class="sr-only">SKA-Tech</span>
+              <span
+                class="font-bold text-2xl lg:text-2xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+                >SKA-Tech</span
+              >
+            </a>
+          </div>
+
+          <div class="hidden lg:flex lg:gap-x-8">
+            <a
+              href="#services"
+              class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors duration-200"
+              data-i18n="nav-services"
+              >Услуги</a
+            >
+            <a
+              href="#courses"
+              class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors duration-200"
+              data-i18n="nav-courses"
+              >Курсы</a
+            >
+            <a
+              href="#about-us"
+              class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors duration-200"
+              data-i18n="nav-about"
+              >О нас</a
+            >
+            <a
+              href="#contact-us"
+              class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors duration-200"
+              data-i18n="nav-contact"
+              >Свяжитесь с нами</a
+            >
+          </div>
+
+          <div
+            class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4"
+          >
+            <!-- Переключатель языка для десктопа -->
+            <button
+              id="language-switcher"
+              onclick="toggleLanguage()"
+              class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center"
+            >
+              <img
+                id="language-flag"
+                src="./images/flags/russia.png"
+                srcset="./images/flags/russia.png 2x"
+                width="20"
+                height="15"
+                alt="Русский флаг"
+                class="mr-2 rounded"
+              />
+              <span id="language-text" class="font-medium">РУС</span>
+            </button>
+
+            <a
+              href="tel:+79969389324"
+              class="text-sm font-semibold leading-6 text-blue-600 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                />
+              </svg>
+              <span data-i18n="nav-phone">+7 996 938-93-24</span>
+            </a>
+          </div>
+
+          <div class="flex lg:hidden items-center gap-4">
+            <!-- Переключатель языка для мобильной версии -->
+            <button
+              onclick="toggleLanguage()"
+              class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center p-2"
+            >
+              <img
+                id="mobile-language-flag"
+                src="./images/flags/russia.png"
+                srcset="./images/flags/russia.png 2x"
+                width="20"
+                height="15"
+                alt="Русский флаг"
+                class="mr-2 rounded"
+              />
+              <span id="mobile-language-text" class="font-medium text-sm"
+                >РУС</span
+              >
+            </button>
+
+            <button
+              type="button"
+              class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:text-blue-600 transition-colors duration-200"
+              onclick="openMenu()"
+            >
+              <span class="sr-only">Open main menu</span>
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div
+          class="lg:hidden hidden"
+          role="dialog"
+          aria-modal="true"
+          id="mobile-menu"
+        >
+          <div
+            class="fixed inset-0 z-50 bg-black bg-opacity-50"
+            onclick="closeMenu()"
+          ></div>
+          <div
+            class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transform transition-transform duration-300 ease-in-out"
+          >
+            <div class="flex items-center justify-between">
+              <a href="#" class="-m-1.5 p-1.5">
+                <span class="sr-only">SKA-Tech</span>
+                <span
+                  class="font-bold text-2xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+                  >SKA-Tech</span
+                >
+              </a>
+              <button
+                type="button"
+                class="-m-2.5 rounded-md p-2.5 text-gray-700 hover:text-blue-600 transition-colors duration-200"
+                onclick="closeMenu()"
+              >
+                <span class="sr-only">Close menu</span>
+                <svg
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="mt-6 flow-root">
+              <div class="-my-6 divide-y divide-gray-500/10">
+                <div class="space-y-2 py-6">
+                  <a
+                    href="#services"
+                    onclick="closeMenu()"
+                    class="-mx-3 block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200"
+                    data-i18n="nav-services"
+                    >Услуги</a
+                  >
+                  <a
+                    href="#courses"
+                    onclick="closeMenu()"
+                    class="-mx-3 block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200"
+                    data-i18n="nav-courses"
+                    >Курсы</a
+                  >
+                  <a
+                    href="#about-us"
+                    onclick="closeMenu()"
+                    class="-mx-3 block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200"
+                    data-i18n="nav-about"
+                    >О нас</a
+                  >
+                  <a
+                    href="#contact-us"
+                    onclick="closeMenu()"
+                    class="-mx-3 block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200"
+                    data-i18n="nav-contact"
+                    >Свяжитесь с нами</a
+                  >
+                </div>
+                <div class="py-6">
+                  <a
+                    href="tel:+79969389324"
+                    class="-mx-3 block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2"
+                  >
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                      />
+                    </svg>
+                    <span data-i18n="nav-phone">+7 996 938-93-24</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <div class="relative isolate px-4 pt-20 lg:px-8 lg:pt-14 overflow-hidden">
+        <!-- Градиентный фон ниже всего -->
+        <div
+          class="absolute inset-0 z-0 bg-gradient-to-br from-blue-50 via-white to-purple-50"
+        ></div>
+
+        <!-- Декор (точки/линии) -->
+        <div
+          class="absolute top-0 left-0 w-full h-full z-10 pointer-events-none overflow-hidden"
+        >
+          <div
+            class="absolute top-20 left-10 w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-pulse"
+          ></div>
+          <div
+            class="absolute top-40 right-20 w-3 h-3 bg-purple-400 rounded-full opacity-50 animate-pulse delay-75"
+          ></div>
+          <div
+            class="absolute bottom-32 left-20 w-2 h-2 bg-green-400 rounded-full opacity-60 animate-pulse delay-150"
+          ></div>
+          <div
+            class="absolute bottom-20 right-32 w-3 h-3 bg-orange-400 rounded-full opacity-60 animate-pulse delay-200"
+          ></div>
+          <div
+            class="absolute top-1/4 right-1/3 w-px h-20 bg-gradient-to-b from-transparent via-blue-300 to-transparent opacity-40"
+          ></div>
+          <div
+            class="absolute bottom-1/3 left-1/4 w-20 h-px bg-gradient-to-r from-transparent via-purple-300 to-transparent opacity-40"
+          ></div>
+        </div>
+
+        <!-- 3D-объекты для мобильной версии - расположены вокруг текста -->
+        <div class="absolute inset-0 z-20 pointer-events-none lg:hidden">
+          <!-- Смартфон сверху слева -->
+          <picture class="absolute left-40 top-16 w-32 select-none">
+            <source srcset="./images/hero/sample-13.png" type="image/png" />
+            <img
+              src="./images/hero/sample-13.png"
+              alt="3D-смартфон"
+              loading="lazy"
+              class="w-full h-auto opacity-80 animate-float-fast hero-thing"
+            />
+          </picture>
+
+          <!-- Дрон сверху справа -->
+          <picture class="absolute right-4 top-20 w-28 select-none">
+            <source srcset="./images/hero/sample-46.png" type="image/png" />
+            <img
+              src="./images/hero/sample-46.png"
+              alt="3D-дрон"
+              loading="lazy"
+              class="w-full h-auto opacity-90 animate-float-medium hero-thing"
+            />
+          </picture>
+
+          <!-- Ноутбук слева по центру -->
+          <picture class="absolute left-2 top-10 w-32 select-none">
+            <source srcset="./images/hero/sample-32.png" type="image/png" />
+            <img
+              src="./images/hero/sample-32.png"
+              alt="3D-ноутбук"
+              loading="lazy"
+              class="w-full h-auto opacity-80 animate-float-slow hero-thing"
+            />
+          </picture>
+
+          <!-- Шестерёнка справа по центру -->
+          <picture class="absolute right-3 bottom-0 w-32 select-none">
+            <source srcset="./images/hero/sample-20.png" type="image/png" />
+            <img
+              src="./images/hero/sample-20.png"
+              alt="Вращающаяся шестерёнка"
+              loading="lazy"
+              class="w-full h-auto opacity-80 animate-spin-slow hero-thing"
+            />
+          </picture>
+
+          <!-- Карточка кода снизу слева -->
+          <picture class="absolute left-6 bottom-0 w-32 select-none">
+            <source srcset="./images/hero/PC.png" type="image/png" />
+            <img
+              src="./images/hero/PC.png"
+              alt="Карточка кода"
+              loading="lazy"
+              class="w-full h-auto opacity-80 animate-float-slow hero-thing"
+            />
+          </picture>
+        </div>
+
+        <!-- 3D-объекты для десктопной версии -->
+        <div class="absolute inset-0 z-20 pointer-events-none hidden lg:block">
+          <picture class="absolute left-[10%] top-1/4 w-48 xl:w-56 select-none">
+            <source srcset="./images/hero/sample-32.png" type="image/png" />
+            <img
+              src="./images/hero/sample-32.png"
+              alt="3D-ноутбук"
+              loading="lazy"
+              class="w-full h-auto opacity-60 animate-float-slow hero-thing"
+            />
+          </picture>
+
+          <picture
+            class="absolute right-[10%] top-1/3 w-48 xl:w-56 select-none"
+          >
+            <source srcset="./images/hero/sample-46.png" type="image/png" />
+            <img
+              src="./images/hero/sample-46.png"
+              alt="3D-дрон"
+              loading="lazy"
+              class="w-full h-auto opacity-70 animate-float-medium hero-thing"
+            />
+          </picture>
+
+          <picture
+            class="absolute left-[22%] bottom-12 w-48 xl:w-56 select-none"
+          >
+            <source srcset="./images/hero/PC.png" type="image/png" />
+            <img
+              src="./images/hero/PC.png"
+              alt="Карточка кода"
+              loading="lazy"
+              class="w-full h-auto opacity-60 animate-float-slow hero-thing"
+            />
+          </picture>
+
+          <picture class="absolute left-[45%] -top-8 w-24 xl:w-28 select-none">
+            <source srcset="./images/hero/sample-13.png" type="image/png" />
+            <img
+              src="./images/hero/sample-13.png"
+              alt="3D-смартфон"
+              loading="lazy"
+              class="w-full h-auto opacity-60 animate-float-fast hero-thing"
+            />
+          </picture>
+
+          <picture
+            class="absolute right-[30%] bottom-[20%] w-24 xl:w-28 select-none"
+          >
+            <source srcset="./images/hero/sample-20.png" type="image/png" />
+            <img
+              src="./images/hero/sample-20.png"
+              alt="Вращающаяся шестерёнка"
+              loading="lazy"
+              class="w-full h-auto opacity-60 animate-spin-slow hero-thing"
+            />
+          </picture>
+        </div>
+
+        <!-- Контент -->
+        <div class="mx-auto max-w-2xl py-20 sm:py-24 lg:py-32 relative z-30">
+          <div class="text-center mobile-padding">
+            <h1
+              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-6xl"
+              data-i18n="hero-title"
+            >
+              IT-Решения и Обучение: От Идеи до Реализации
+            </h1>
+            <p
+              class="mt-4 text-lg leading-8 text-gray-900 sm:text-xl sm:leading-9 lg:mt-6 lg:text-2xl lg:leading-10"
+              data-i18n="hero-subtitle"
+            >
+              Программируй будущее вместе с нами. Мы делаем сайты и помогаем
+              тебе создавать свои.
+            </p>
+            <div
+              class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-x-6"
+            >
+              <a
+                href="#services"
+                class="rounded-md bg-indigo-600 px-4 py-2.5 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-full sm:w-auto text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
+                data-i18n="hero-start"
+              >
+                Начать
+              </a>
+              <a
+                href="#about-us"
+                class="text-sm font-semibold leading-6 lg:text-gray-900 w-full sm:w-auto text-center hover:text-indigo-600 lg:hover:text-indigo-600 transition-colors duration-200"
+                data-i18n="hero-learn-more"
+              >
+                Узнать больше <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Остальные секции остаются без изменений -->
+      <!-- About Us Section -->
+      <div class="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24">
+        <img
+          src="./images/bg.jpeg"
+          alt=""
+          class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
+        />
+
+        <div
+          id="about-us"
+          class="relative mx-auto max-w-7xl px-4 lg:px-8 scroll-mt-24"
+        >
+          <div class="relative pt-10 pb-8 lg:pt-20 lg:pb-16">
+            <div class="mx-auto max-w-2xl lg:mx-0 mobile-text-center">
+              <h2
+                class="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-6xl"
+                data-i18n="about-title"
+              >
+                Работайте с нами
+              </h2>
+              <p
+                class="mt-4 text-lg leading-7 text-gray-300 sm:text-lg sm:leading-8 lg:mt-6 lg:text-lg lg:leading-8"
+                data-i18n="about-description"
+              >
+                Мы — ваша комплексная IT-студия. Мы не только разрабатываем
+                сайты, приложения и программное обеспечение под ваши задачи, но
+                и обучаем программированию с нуля.
+              </p>
+            </div>
+            <div class="mx-auto mt-8 max-w-2xl lg:mx-0 lg:max-w-none">
+              <dl class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div
+                  class="flex flex-col-reverse items-center text-center sm:items-start sm:text-left"
+                >
+                  <dt
+                    class="text-lg leading-6 text-gray-300 mt-2"
+                    data-i18n="about-staff"
+                  >
+                    Коллеги, работающие полный рабочий день
+                  </dt>
+                  <dd
+                    class="text-2xl font-bold leading-9 tracking-tight text-white"
+                  >
+                    10+
+                  </dd>
+                </div>
+                <div
+                  class="flex flex-col-reverse items-center text-center sm:items-start sm:text-left"
+                >
+                  <dt
+                    class="text-lg leading-6 text-gray-300 mt-2"
+                    data-i18n="about-services"
+                  >
+                    Услуги
+                  </dt>
+                  <dd
+                    class="text-2xl font-bold leading-9 tracking-tight text-white"
+                  >
+                    4
+                  </dd>
+                </div>
+                <div
+                  class="flex flex-col-reverse items-center text-center sm:items-start sm:text-left"
+                >
+                  <dt
+                    class="text-lg leading-6 text-gray-300 mt-2"
+                    data-i18n="about-courses"
+                  >
+                    Обучаемые курсы
+                  </dt>
+                  <dd
+                    class="text-2xl font-bold leading-9 tracking-tight text-white"
+                  >
+                    10
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services Section -->
+      <div class="bg-white py-16 sm:py-24" id="services">
+        <div class="mx-auto max-w-7xl px-4 lg:px-8">
+          <div class="mx-auto max-w-2xl lg:mx-0 mobile-text-center">
+            <h2
+              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+              data-i18n="services-title"
+            >
+              Мы делаем всё в IT
+            </h2>
+            <p
+              class="mt-3 text-lg leading-7 text-gray-600 sm:text-lg sm:leading-8 lg:mt-4 lg:text-lg lg:leading-8"
+              data-i18n="services-subtitle"
+            >
+              Разработка, поддержка и обучение — полный цикл услуг для вашего
+              бизнеса и карьеры в IT.
+            </p>
+          </div>
+          <div
+            class="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 border-t border-gray-200 pt-8 sm:mt-12 sm:pt-12 lg:mx-0 lg:max-w-none lg:grid-cols-2 xl:grid-cols-3"
+          >
+            <article class="flex max-w-xl flex-col items-start justify-between">
+              <div
+                class="group relative rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16 px-6"
+              >
+                <div class="mb-4">
+                  <img
+                    src="images/web.jpg"
+                    class="mx-auto w-32 h-32 object-cover rounded-full shadow"
+                    alt="Разработка сайтов"
+                  />
+                </div>
+                <h3
+                  class="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600"
+                  data-i18n="service-web"
+                >
+                  Создание и разработка сайтов
+                </h3>
+                <p
+                  class="mt-5 text-base leading-6 text-gray-600"
+                  data-i18n="service-web-desc"
+                >
+                  Мы создаём современные и удобные сайты: корпоративные,
+                  лендинги и интернет-магазины. Каждый проект разрабатывается
+                  индивидуально, с учётом потребностей вашего бизнеса.
+                </p>
+              </div>
+            </article>
+            <article class="flex max-w-xl flex-col items-start justify-between">
+              <div
+                class="group relative rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16 px-6"
+              >
+                <div class="mb-4">
+                  <img
+                    src="images/support.jpg"
+                    class="mx-auto w-32 h-32 object-cover rounded-full shadow"
+                    alt="Техническая поддержка"
+                  />
+                </div>
+                <h3
+                  class="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600"
+                  data-i18n="service-support"
+                >
+                  Поддержка и сопровождение
+                </h3>
+                <p
+                  class="mt-5 text-base leading-6 text-gray-600"
+                  data-i18n="service-support-desc"
+                >
+                  Обеспечиваем стабильную работу ваших проектов: обновления,
+                  техническая поддержка и защита от сбоев. Вы можете быть
+                  уверены, что ваш сайт всегда будет работать без перебоев.
+                </p>
+              </div>
+            </article>
+            <article class="flex max-w-xl flex-col items-start justify-between">
+              <div
+                class="group relative rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16 px-6"
+              >
+                <div class="mb-4">
+                  <img
+                    src="images/ux.jpg"
+                    class="mx-auto w-32 h-32 object-cover rounded-full shadow"
+                    alt="Дизайн и брендинг"
+                  />
+                </div>
+                <h3
+                  class="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600"
+                  data-i18n="service-design"
+                >
+                  Дизайн и брендинг
+                </h3>
+                <p
+                  class="mt-5 text-base leading-6 text-gray-600"
+                  data-i18n="service-design-desc"
+                >
+                  Разрабатываем уникальный дизайн и фирменный стиль для вашего
+                  бизнеса. Создаём интерфейсы, логотипы и визуальные решения,
+                  которые делают ваш бренд узнаваемым и современным.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="flex max-w-xl flex-col items-start justify-between lg:col-start-2"
+            >
+              <div
+                class="group relative rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16 px-6"
+              >
+                <div class="mb-4">
+                  <img
+                    src="images/mobile.jpg"
+                    class="mx-auto w-32 h-32 object-cover rounded-full shadow"
+                    alt="Разработка приложений"
+                  />
+                </div>
+                <h3
+                  class="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600"
+                  data-i18n="service-apps"
+                >
+                  Разработка приложений
+                </h3>
+                <p
+                  class="mt-5 text-base leading-6 text-gray-600"
+                  data-i18n="service-apps-desc"
+                >
+                  Мы создаём мобильные и веб-приложения под ваши задачи:
+                  удобные, функциональные и современные. Каждое приложение
+                  разрабатывается так, чтобы улучшать работу вашего бизнеса и
+                  радовать пользователей.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- Courses Section -->
+      <section class="bg-white" id="courses">
+        <div class="mx-auto max-w-7xl px-4 lg:px-6">
+          <div
+            class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12 mobile-padding"
+          >
+            <h2
+              class="mb-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+              data-i18n="courses-title"
+            >
+              Курсы Академии
+            </h2>
+            <p
+              class="mb-5 text-lg text-gray-500 sm:text-lg"
+              data-i18n="courses-subtitle"
+            >
+              Выберите свой путь обучения и развивайте навыки во Frontend,
+              Backend, мобильной разработке или начните с нашей программы для
+              детей.
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6"
+            id="courses-container"
+          >
+            <!-- Курсы с переводами -->
+            <div
+              class="flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <div class="mb-3">
+                <div
+                  class="w-16 h-16 mx-auto bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center shadow-md"
+                >
+                  <span class="text-white font-bold text-sm">< / ></span>
+                </div>
+              </div>
+              <h3 class="mb-2 text-xl font-bold" data-i18n="course-html">
+                HTML и CSS
+              </h3>
+              <p
+                class="font-light text-gray-500 text-base mb-3"
+                data-i18n="course-html-desc"
+              >
+                Изучите строительные блоки веба
+              </p>
+
+              <div class="mt-auto">
+                <div class="flex justify-center items-baseline mb-3">
+                  <span
+                    class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full"
+                    data-i18n="course-frontend"
+                    >Фронтенд</span
+                  >
+                  <span class="ml-2 text-xs text-gray-500">1 месяц</span>
+                </div>
+                <a
+                  href="./courses/html_css.html"
+                  class="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full"
+                  data-i18n="course-start"
+                >
+                  Начать курс
+                </a>
+              </div>
+            </div>
+
+            <!-- JavaScript -->
+            <div
+              class="flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <div class="mb-3">
+                <div
+                  class="w-16 h-16 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-md"
+                >
+                  <span class="text-white font-bold text-sm">JS</span>
+                </div>
+              </div>
+              <h3 class="mb-2 text-xl font-bold" data-i18n="course-js">
+                JavaScript
+              </h3>
+              <p
+                class="font-light text-gray-500 text-base mb-3"
+                data-i18n="course-js-desc"
+              >
+                Освойте язык веб-программирования
+              </p>
+
+              <div class="mt-auto">
+                <div class="flex justify-center items-baseline mb-3">
+                  <span
+                    class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full"
+                    data-i18n="course-frontend"
+                    >Фронтенд</span
+                  >
+                  <span class="ml-2 text-xs text-gray-500">2 месяца</span>
+                </div>
+                <a
+                  href="./courses/javascript.html"
+                  class="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full"
+                  data-i18n="course-start"
+                >
+                  Начать курс
+                </a>
+              </div>
+            </div>
+
+            <!-- React -->
+            <div
+              class="flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <div class="mb-3">
+                <div
+                  class="w-16 h-16 mx-auto bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center shadow-md"
+                >
+                  <span class="text-white font-bold text-sm">⚛</span>
+                </div>
+              </div>
+              <h3 class="mb-2 text-xl font-bold" data-i18n="course-react">
+                React
+              </h3>
+              <p
+                class="font-light text-gray-500 text-base mb-3"
+                data-i18n="course-react-desc"
+              >
+                Современная фронтенд-библиотека
+              </p>
+
+              <div class="mt-auto">
+                <div class="flex justify-center items-baseline mb-3">
+                  <span
+                    class="px-2 py-1 bg-cyan-100 text-cyan-800 text-xs font-medium rounded-full"
+                    data-i18n="course-frontend"
+                    >Фронтенд</span
+                  >
+                  <span class="ml-2 text-xs text-gray-500">2 месяца</span>
+                </div>
+                <a
+                  href="./courses/react.html"
+                  class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full"
+                  data-i18n="course-start"
+                >
+                  Начать курс
+                </a>
+              </div>
+            </div>
+
+            <!-- Программирование для детей -->
+            <div
+              class="flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <div class="mb-3">
+                <div
+                  class="w-16 h-16 mx-auto bg-gradient-to-br from-yellow-300 to-pink-400 rounded-full flex items-center justify-center shadow-md"
+                >
+                  <span class="text-white font-bold text-sm">👶</span>
+                </div>
+              </div>
+              <h3 class="mb-2 text-xl font-bold" data-i18n="course-kids">
+                Программирование для детей
+              </h3>
+              <p
+                class="font-light text-gray-500 text-base mb-3"
+                data-i18n="course-kids-desc"
+              >
+                Увлекательное обучение с нуля
+              </p>
+
+              <div class="mt-auto">
+                <div class="flex justify-center items-baseline mb-3">
+                  <span
+                    class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full"
+                    data-i18n="course-kids-category"
+                    >Дети</span
+                  >
+                  <span class="ml-2 text-xs text-gray-500">6 месяцев</span>
+                </div>
+                <a
+                  href="./courses/kids.html"
+                  class="bg-gradient-to-r from-yellow-400 to-pink-500 hover:from-yellow-500 hover:to-pink-600 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full"
+                  data-i18n="course-start"
+                >
+                  Начать курс
+                </a>
+              </div>
+            </div>
+
+            <!-- Графический дизайн -->
+            <div
+              class="flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <div class="mb-3">
+                <div
+                  class="w-16 h-16 mx-auto bg-gradient-to-br from-pink-400 to-purple-600 rounded-full flex items-center justify-center shadow-md"
+                >
+                  <span class="text-white font-bold text-sm">🎨</span>
+                </div>
+              </div>
+              <h3 class="mb-2 text-xl font-bold" data-i18n="course-design">
+                Графический дизайн
+              </h3>
+              <p
+                class="font-light text-gray-500 text-base mb-3"
+                data-i18n="course-design-desc"
+              >
+                Создавайте визуальный контент
+              </p>
+
+              <div class="mt-auto">
+                <div class="flex justify-center items-baseline mb-3">
+                  <span
+                    class="px-2 py-1 bg-pink-100 text-pink-800 text-xs font-medium rounded-full"
+                    data-i18n="course-design-category"
+                    >Дизайн</span
+                  >
+                  <span class="ml-2 text-xs text-gray-500">1.5 месяца</span>
+                </div>
+                <a
+                  href="./courses/graphic-design.html"
+                  class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full"
+                  data-i18n="course-start"
+                >
+                  Начать курс
+                </a>
+              </div>
+            </div>
+
+            <!-- Golang -->
+            <div
+              class="flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <div class="mb-3">
+                <div
+                  class="w-16 h-16 mx-auto bg-gradient-to-br from-cyan-500 to-blue-700 rounded-full flex items-center justify-center shadow-md"
+                >
+                  <span class="text-white font-bold text-sm">Go</span>
+                </div>
+              </div>
+              <h3 class="mb-2 text-xl font-bold" data-i18n="course-golang">
+                Golang
+              </h3>
+              <p
+                class="font-light text-gray-500 text-base mb-3"
+                data-i18n="course-golang-desc"
+              >
+                Высокопроизводительный язык
+              </p>
+
+              <div class="mt-auto">
+                <div class="flex justify-center items-baseline mb-3">
+                  <span
+                    class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full"
+                    data-i18n="course-backend"
+                    >Бэкенд</span
+                  >
+                  <span class="ml-2 text-xs text-gray-500">3 месяца</span>
+                </div>
+                <a
+                  href="./courses/golang.html"
+                  class="bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-700 hover:to-blue-800 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full"
+                  data-i18n="course-start"
+                >
+                  Начать курс
+                </a>
+              </div>
+            </div>
+
+            <!-- Основы C++ -->
+            <div
+              class="hidden course-item flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <div class="mb-3">
+                <div
+                  class="w-16 h-16 mx-auto bg-gradient-to-br from-blue-500 to-blue-800 rounded-full flex items-center justify-center shadow-md"
+                >
+                  <span class="text-white font-bold text-sm">C++</span>
+                </div>
+              </div>
+              <h3 class="mb-2 text-xl font-bold" data-i18n="course-cpp">
+                Основы C++
+              </h3>
+              <p
+                class="font-light text-gray-500 text-base mb-3"
+                data-i18n="course-cpp-desc"
+              >
+                Мощный системный язык
+              </p>
+
+              <div class="mt-auto">
+                <div class="flex justify-center items-baseline mb-3">
+                  <span
+                    class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full"
+                    data-i18n="course-basics"
+                    >Основы</span
+                  >
+                  <span class="ml-2 text-xs text-gray-500">2 месяца</span>
+                </div>
+                <a
+                  href="./courses/cpp-basics.html"
+                  class="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full"
+                  data-i18n="course-start"
+                >
+                  Начать курс
+                </a>
+              </div>
+            </div>
+
+            <!-- Основы C# -->
+            <div
+              class="hidden course-item flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <div class="mb-3">
+                <div
+                  class="w-16 h-16 mx-auto bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center shadow-md"
+                >
+                  <span class="text-white font-bold text-sm">C#</span>
+                </div>
+              </div>
+              <h3 class="mb-2 text-xl font-bold" data-i18n="course-csharp">
+                Основы C#
+              </h3>
+              <p
+                class="font-light text-gray-500 text-base mb-3"
+                data-i18n="course-csharp-desc"
+              >
+                Универсальный язык от Microsoft
+              </p>
+
+              <div class="mt-auto">
+                <div class="flex justify-center items-baseline mb-3">
+                  <span
+                    class="px-2 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded-full"
+                    data-i18n="course-basics"
+                    >Основы</span
+                  >
+                  <span class="ml-2 text-xs text-gray-500">2 месяца</span>
+                </div>
+                <a
+                  href="./courses/csharp-basics.html"
+                  class="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full"
+                  data-i18n="course-start"
+                >
+                  Начать курс
+                </a>
+              </div>
+            </div>
+
+            <!-- Python -->
+            <div
+              class="hidden course-item flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <div class="mb-3">
+                <div
+                  class="w-16 h-16 mx-auto bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center shadow-md"
+                >
+                  <span class="text-white font-bold text-sm">Py</span>
+                </div>
+              </div>
+              <h3 class="mb-2 text-xl font-bold" data-i18n="course-python">
+                Python
+              </h3>
+              <p
+                class="font-light text-gray-500 text-base mb-3"
+                data-i18n="course-python-desc"
+              >
+                Популярный язык для всех задач
+              </p>
+
+              <div class="mt-auto">
+                <div class="flex justify-center items-baseline mb-3">
+                  <span
+                    class="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full"
+                    data-i18n="course-universal"
+                    >Универсал</span
+                  >
+                  <span class="ml-2 text-xs text-gray-500">2 месяца</span>
+                </div>
+                <a
+                  href="./courses/python.html"
+                  class="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full"
+                  data-i18n="course-start"
+                >
+                  Начать курс
+                </a>
+              </div>
+            </div>
+
+            <!-- Git -->
+            <div
+              class="hidden course-item flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <div class="mb-3">
+                <div
+                  class="w-16 h-16 mx-auto bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-md"
+                >
+                  <span class="text-white font-bold text-sm">Git</span>
+                </div>
+              </div>
+              <h3 class="mb-2 text-xl font-bold" data-i18n="course-git">Git</h3>
+              <p
+                class="font-light text-gray-500 text-base mb-3"
+                data-i18n="course-git-desc"
+              >
+                Система контроля версий
+              </p>
+
+              <div class="mt-auto">
+                <div class="flex justify-center items-baseline mb-3">
+                  <span
+                    class="px-2 py-1 bg-orange-100 text-orange-800 text-xs font-medium rounded-full"
+                    data-i18n="course-tool"
+                    >Инструмент</span
+                  >
+                  <span class="ml-2 text-xs text-gray-500">3 недели</span>
+                </div>
+                <a
+                  href="./courses/git.html"
+                  class="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full"
+                  data-i18n="course-start"
+                >
+                  Начать курс
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Кнопка "Показать больше" -->
+          <div class="text-center mt-8">
+            <button
+              id="show-more-btn"
+              class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium rounded-lg px-6 py-2.5 text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto"
+              data-i18n="show-more"
+            >
+              Показать больше курсов
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Form -->
+      <div class="isolate bg-white px-4 py-16 sm:py-24 lg:px-8" id="contact-us">
+        <div class="mx-auto max-w-2xl text-center mobile-padding">
+          <h2
+            class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+            data-i18n="contact-title"
+          >
+            Бесплатная консультация
+          </h2>
+          <p
+            class="mt-3 text-base leading-7 text-gray-600 sm:text-lg sm:leading-8"
+            data-i18n="contact-subtitle"
+          >
+            Оставьте свои контактные данные, мы перезвоним вам и ответим на все
+            ваши вопросы
+          </p>
+        </div>
+        <form
+          action="#"
+          method="POST"
+          class="mx-auto mt-8 max-w-xl sm:mt-8 mobile-padding"
+        >
+          <div class="grid grid-cols-1 gap-6">
+            <div>
+              <label
+                for="first-name"
+                class="block text-sm font-semibold leading-6 text-gray-900"
+                data-i18n="first-name"
+                >Имя *</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  autocomplete="given-name"
+                  required
+                  class="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200"
+                  data-i18n="first-name-placeholder"
+                  placeholder="Введите ваше имя"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                for="last-name"
+                class="block text-sm font-semibold leading-6 text-gray-900"
+                data-i18n="last-name"
+                >Фамилия</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="last-name"
+                  id="last-name"
+                  autocomplete="family-name"
+                  class="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200"
+                  data-i18n="last-name-placeholder"
+                  placeholder="Введите вашу фамилию"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                for="phone-number"
+                class="block text-sm font-semibold leading-6 text-gray-900"
+                data-i18n="phone"
+                >Номер телефона *</label
+              >
+              <div class="mt-2 mobile-stack gap-3">
+                <div class="w-full sm:w-32">
+                  <select
+                    id="country"
+                    name="country"
+                    class="block w-full rounded-md border-0 px-3 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200 bg-gray-50"
+                  >
+                    <option value="+7">🇷🇺 +7</option>
+                    <option value="+992">🇹🇯 +992</option>
+                  </select>
+                </div>
+                <div class="flex-1">
+                  <input
+                    type="tel"
+                    name="phone-number"
+                    id="phone-number"
+                    autocomplete="tel"
+                    required
+                    class="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200"
+                    data-i18n="phone-placeholder"
+                    placeholder="900 123-45-67"
+                  />
+                </div>
+              </div>
+            </div>
+            <div>
+              <label
+                for="message"
+                class="block text-sm font-semibold leading-6 text-gray-900"
+                data-i18n="message"
+                >Сообщение</label
+              >
+              <div class="mt-2">
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="4"
+                  class="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200"
+                  data-i18n="message-placeholder"
+                  placeholder="Расскажите о ваших вопросах или целях обучения..."
+                ></textarea>
+              </div>
+            </div>
+            <div class="flex gap-x-4">
+              <div class="flex h-6 items-center">
+                <input
+                  type="checkbox"
+                  id="privacy-policy"
+                  name="privacy-policy"
+                  required
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                />
+              </div>
+              <label
+                for="privacy-policy"
+                class="text-sm leading-6 text-gray-600"
+              >
+                <span data-i18n="privacy">Я соглашаюсь с</span>
+                <a
+                  href="#"
+                  class="font-semibold text-indigo-600 hover:text-indigo-500 transition-colors duration-200"
+                  data-i18n="privacy-policy"
+                  >политикой конфиденциальности</a
+                >
+                *
+              </label>
+            </div>
+          </div>
+          <div class="mt-8">
+            <button
+              type="submit"
+              class="block w-full rounded-md bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-3 px-4 text-center transition-all duration-200 shadow-md hover:shadow-lg"
+              data-i18n="submit"
+            >
+              Отправить заявку
+            </button>
+          </div>
+          <p
+            class="mt-4 text-center text-sm text-gray-500"
+            data-i18n="required-fields"
+          >
+            * Обязательные для заполнения поля
+          </p>
+        </form>
+      </div>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900 text-white">
+        <div class="w-full max-w-screen-xl mx-auto px-4 py-8">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="md:col-span-2">
+              <a href="/" class="flex items-center mb-4 space-x-3">
+                <span
+                  class="font-bold text-xl bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent"
+                  >SKA-Tech</span
+                >
+              </a>
+              <p
+                class="text-gray-400 mb-4 text-sm"
+                data-i18n="footer-description"
+              >
+                IT-академия и студия разработки. Мы создаем цифровые решения и
+                обучаем будущих специалистов.
+              </p>
+              <div class="flex space-x-4">
+                <!-- Соцсети -->
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-3" data-i18n="footer-courses">
+                Курсы
+              </h3>
+              <ul class="space-y-2 text-gray-400 text-sm">
+                <li>
+                  <a
+                    href="#courses"
+                    class="hover:text-white transition-colors duration-200"
+                    data-i18n="footer-frontend"
+                    >Frontend разработка</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#courses"
+                    class="hover:text-white transition-colors duration-200"
+                    data-i18n="footer-backend"
+                    >Backend разработка</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#courses"
+                    class="hover:text-white transition-colors duration-200"
+                    data-i18n="footer-design"
+                    >Дизайн</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3
+                class="text-lg font-semibold mb-3"
+                data-i18n="footer-services"
+              >
+                Услуги
+              </h3>
+              <ul class="space-y-2 text-gray-400 text-sm">
+                <li>
+                  <a
+                    href="#services"
+                    class="hover:text-white transition-colors duration-200"
+                    data-i18n="footer-web-dev"
+                    >Разработка сайтов</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    class="hover:text-white transition-colors duration-200"
+                    data-i18n="footer-mobile"
+                    >Мобильные приложения</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    class="hover:text-white transition-colors duration-200"
+                    data-i18n="footer-support"
+                    >Техническая поддержка</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <hr class="my-6 border-gray-700" />
+
+          <div
+            class="sm:flex sm:items-center sm:justify-between mobile-text-center mobile-stack gap-4"
+          >
+            <span class="text-sm text-gray-400" data-i18n="footer-copyright">
+              © 2025
+              <a
+                href="/"
+                class="hover:text-white transition-colors duration-200"
+                >SKA-Tech</a
+              >. Все права защищены.
+            </span>
+            <ul
+              class="flex flex-wrap justify-center items-center text-sm font-medium text-gray-400 space-x-4 sm:space-x-6"
+            >
+              <li>
+                <a
+                  href="#about-us"
+                  class="hover:text-white transition-colors duration-200"
+                  data-i18n="footer-about"
+                  >О нас</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-white transition-colors duration-200"
+                  data-i18n="footer-privacy"
+                  >Политика конфиденциальности</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact-us"
+                  class="hover:text-white transition-colors duration-200"
+                  data-i18n="footer-contact"
+                  >Контакты</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Функция для обновления мобильного переключателя языка
+      function updateLanguageSwitcher(lang) {
+        const flag = document.getElementById("language-flag");
+        const text = document.getElementById("language-text");
+
+        if (lang === "ru") {
+          flag.src = "./images/flags/russia.png";
+          flag.srcset = "./images/flags/russia.png 2x";
+          flag.alt = "Русский флаг";
+          text.textContent = "РУС";
+        } else {
+          flag.src = "./images/flags/tajikistan.png";
+          flag.srcset = "./images/flags/tajikistan.png 2x";
+          flag.alt = "Флаг Таджикистана";
+          text.textContent = "ТҶК";
+        }
+      }
+
+      // Обновленная функция changeLanguage
+      function changeLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+
+        // Обновляем все элементы с data-i18n атрибутом
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          if (translations[lang][key]) {
+            if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+              element.placeholder = translations[lang][key];
+            } else {
+              element.textContent = translations[lang][key];
+            }
+          }
         });
 
         // Обновляем переключатели языка
@@ -1165,48 +1947,47 @@
         updateMobileLanguageSwitcher(lang);
 
         // Сохраняем выбор языка в localStorage
-        localStorage.setItem('preferred-language', lang);
-    }
+        localStorage.setItem("preferred-language", lang);
+      }
 
-    function updateLanguageSwitcher(lang) {
-        const flag = document.getElementById('language-flag');
-        const text = document.getElementById('language-text');
+      function updateLanguageSwitcher(lang) {
+        const flag = document.getElementById("language-flag");
+        const text = document.getElementById("language-text");
 
-        if (lang === 'ru') {
-            flag.src = './images/flags/russia.png';
-            flag.srcset = './images/flags/russia.png 2x';
-            flag.alt = 'Русский флаг';
-            text.textContent = 'РУС';
+        if (lang === "ru") {
+          flag.src = "./images/flags/russia.png";
+          flag.srcset = "./images/flags/russia.png 2x";
+          flag.alt = "Русский флаг";
+          text.textContent = "РУС";
         } else {
-            flag.src = './images/flags/tajikistan.png';
-            flag.srcset = './images/flags/tajikistan.png 2x';
-            flag.alt = 'Флаг Таджикистана';
-            text.textContent = 'ТҶК';
+          flag.src = "./images/flags/tajikistan.png";
+          flag.srcset = "./images/flags/tajikistan.png 2x";
+          flag.alt = "Флаг Таджикистана";
+          text.textContent = "ТҶК";
         }
-    }
+      }
 
-    function updateMobileLanguageSwitcher(lang) {
-        const mobileFlag = document.getElementById('mobile-language-flag');
-        const mobileText = document.getElementById('mobile-language-text');
+      function updateMobileLanguageSwitcher(lang) {
+        const mobileFlag = document.getElementById("mobile-language-flag");
+        const mobileText = document.getElementById("mobile-language-text");
 
-        if (lang === 'ru') {
-            mobileFlag.src = './images/flags/russia.png';
-            mobileFlag.srcset = './images/flags/russia.png 2x';
-            mobileFlag.alt = 'Русский флаг';
-            mobileText.textContent = 'РУС';
+        if (lang === "ru") {
+          mobileFlag.src = "./images/flags/russia.png";
+          mobileFlag.srcset = "./images/flags/russia.png 2x";
+          mobileFlag.alt = "Русский флаг";
+          mobileText.textContent = "РУС";
         } else {
-            mobileFlag.src = './images/flags/tajikistan.png';
-            mobileFlag.srcset = './images/flags/tajikistan.png 2x';
-            mobileFlag.alt = 'Флаг Таджикистана';
-            mobileText.textContent = 'ТҶК';
+          mobileFlag.src = "./images/flags/tajikistan.png";
+          mobileFlag.srcset = "./images/flags/tajikistan.png 2x";
+          mobileFlag.alt = "Флаг Таджикистана";
+          mobileText.textContent = "ТҶК";
         }
-    }
+      }
 
-    function toggleLanguage() {
-        const newLang = currentLang === 'ru' ? 'tj' : 'ru';
+      function toggleLanguage() {
+        const newLang = currentLang === "ru" ? "tj" : "ru";
         changeLanguage(newLang);
-    }
-
-</script>
-</body>
+      }
+    </script>
+  </body>
 </html>
