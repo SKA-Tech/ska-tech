@@ -440,7 +440,7 @@ const translations = {
                 "module-2-list": "• Селекторы и специфичность\n• Box model и позиционирование\n• Flexbox и Grid layouts\n• Адаптивный дизайн\n• CSS переменные",
                 "module-3": "Модуль 3: Практика",
                 "module-3-list": "• Создание лендинга\n• Верстка по макету Figma\n• Адаптация под мобильные устройства\n• Оптимизация и производительность\n• Деплой проекта",
-                "course-price": "4 499 ₽",
+                "course-price": "5 999 ₽",
                 "price-description": "за весь курс",
                 "feature-1": "12 практических занятий",
                 "feature-2": "Доступ к материалам навсегда",
@@ -585,11 +585,11 @@ const translations = {
                 "module-2-list": "• Интихобкунандаҳо ва махсусӣ\n• Модели ҷаъба ва ҷойгиркунӣ\n• Flexbox ва Grid\n• Тарроҳии мувофиқшаванда\n• Тағирёбандаҳои CSS",
                 "module-3": "Модули 3: Амалиёт",
                 "module-3-list": "• Эҷоди лендинг\n• Верстка бо макети Figma\n• Мувофиқсозӣ барои дастгоҳҳои мобилӣ\n• Беҳтарсозӣ ва суръат\n• Деплои лоиҳа",
-                "course-price": "4 499 ₽",
+                "course-price": "699 с",
                 "price-description": "барои тамоми курс",
                 "feature-1": "12 дарси амалӣ",
                 "feature-2": "Дастрасӣ ба материалҳо барои ҳамеша",
-                "feature-3": "Шаҳодатнома дар бораи анҷом додан",
+                "feature-3": "Шаҳодатнома бораи хатми курс",
                 "feature-4": "Дастгирии омӯзгор",
                 "enroll-button": "Ба курс сабти ном кунед",
                 "course-details": "Тафсилоти курс",
@@ -661,13 +661,13 @@ const translations = {
             const text = document.getElementById("language-text");
 
             if (lang === "ru") {
-                flag.src = "./images/flags/russia.png";
-                flag.srcset = "./images/flags/russia.png 2x";
+                flag.src = "../images/flags/russia.png";
+                flag.srcset = "../images/flags/russia.png 2x";
                 flag.alt = "Русский флаг";
                 text.textContent = "РУС";
             } else {
-                flag.src = "./images/flags/tajikistan.png";
-                flag.srcset = "./images/flags/tajikistan.png 2x";
+                flag.src = "../images/flags/tajikistan.png";
+                flag.srcset = "../images/flags/tajikistan.png 2x";
                 flag.alt = "Флаг Таджикистана";
                 text.textContent = "ТҶК";
             }
@@ -678,13 +678,13 @@ const translations = {
             const mobileText = document.getElementById("mobile-language-text");
 
             if (lang === "ru") {
-                mobileFlag.src = "./images/flags/russia.png";
-                mobileFlag.srcset = "./images/flags/russia.png 2x";
+                mobileFlag.src = "../images/flags/russia.png";
+                mobileFlag.srcset = "../images/flags/russia.png 2x";
                 mobileFlag.alt = "Русский флаг";
                 mobileText.textContent = "РУС";
             } else {
-                mobileFlag.src = "./images/flags/tajikistan.png";
-                mobileFlag.srcset = "./images/flags/tajikistan.png 2x";
+                mobileFlag.src = "../images/flags/tajikistan.png";
+                mobileFlag.srcset = "../images/flags/tajikistan.png 2x";
                 mobileFlag.alt = "Флаг Таджикистана";
                 mobileText.textContent = "ТҶК";
             }
