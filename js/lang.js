@@ -292,15 +292,16 @@ const translations = {
 
         let currentLang = "ru";
 
+        // Обновленная функция changeLanguage
         function changeLanguage(lang) {
             currentLang = lang;
             document.documentElement.lang = lang;
 
             // Обновляем все элементы с data-i18n атрибутом
-            document.querySelectorAll("[data-i18n]").forEach((element) => {
-                const key = element.getAttribute("data-i18n");
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
-                    if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                         element.placeholder = translations[lang][key];
                     } else {
                         element.textContent = translations[lang][key];
@@ -308,12 +309,33 @@ const translations = {
                 }
             });
 
+            // Обновляем телефонные ссылки
+            updatePhoneLinks(lang);
+
             // Обновляем переключатели языка
             updateLanguageSwitcher(lang);
             updateMobileLanguageSwitcher(lang);
 
             // Сохраняем выбор языка в localStorage
-            localStorage.setItem("preferred-language", lang);
+            localStorage.setItem('preferred-language', lang);
+        }
+
+        // Новая функция для обновления телефонных ссылок
+        function updatePhoneLinks(lang) {
+            const phoneNumber = translations[lang]["nav-phone"];
+            const cleanPhoneNumber = phoneNumber.replace(/\s+/g, ''); // Убираем пробелы для href
+            
+            // Обновляем десктопную ссылку
+            const desktopLink = document.getElementById('desktop-phone-link');
+            if (desktopLink) {
+                desktopLink.href = `tel:${cleanPhoneNumber}`;
+            }
+            
+            // Обновляем мобильную ссылку
+            const mobileLink = document.getElementById('mobile-phone-link');
+            if (mobileLink) {
+                mobileLink.href = `tel:${cleanPhoneNumber}`;
+            }
         }
 
         function updateLanguageSwitcher(lang) {
