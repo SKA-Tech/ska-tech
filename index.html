@@ -130,8 +130,6 @@
         .hero-thing {
             filter: drop-shadow(0 8px 20px rgba(31, 41, 55, 0.25));
         }
-
-        
     </style>
 
     <script>
@@ -746,22 +744,22 @@
                         class="flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                         <div class="mb-3">
                             <div
-                                class="w-16 h-16 mx-auto bg-gradient-to-br from-pink-400 to-purple-600 rounded-full flex items-center justify-center shadow-md">
-                                <span class="text-white font-bold text-sm">🎨</span>
+                                class="w-16 h-16 mx-auto bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-md">
+                                <span class="text-white font-bold text-sm">Git</span>
                             </div>
                         </div>
-                        <h3 class="mb-2 text-xl font-bold" data-i18n="course-design">Графический дизайн</h3>
-                        <p class="font-light text-gray-500 text-base mb-3" data-i18n="course-design-desc">Создавайте
-                            визуальный контент</p>
+                        <h3 class="mb-2 text-xl font-bold" data-i18n="course-git">Git</h3>
+                        <p class="font-light text-gray-500 text-base mb-3" data-i18n="course-git-desc">Система контроля
+                            версий</p>
 
                         <div class="mt-auto">
                             <div class="flex justify-center items-baseline mb-3">
-                                <span class="px-2 py-1 bg-pink-100 text-pink-800 text-xs font-medium rounded-full"
-                                    data-i18n="course-design-category">Дизайн</span>
-                                <span class="ml-2 text-xs text-gray-500">1.5 месяца</span>
+                                <span class="px-2 py-1 bg-orange-100 text-orange-800 text-xs font-medium rounded-full"
+                                    data-i18n="course-tool">Инструмент</span>
+                                <span class="ml-2 text-xs text-gray-500">3 недели</span>
                             </div>
-                            <a href="./courses/graphic-design.html"
-                                class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full"
+                            <a href="./courses/git.html"
+                                class="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-medium rounded-lg text-base px-3 py-2 text-center transition-all duration-200 shadow-md hover:shadow-lg block w-full"
                                 data-i18n="course-start">
                                 Начать курс
                             </a>
@@ -877,7 +875,7 @@
                     </div>
 
                     <!-- Git -->
-                    <div
+                    <!-- <div
                         class="hidden course-item flex flex-col p-4 text-center text-gray-900 bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                         <div class="mb-3">
                             <div
@@ -901,7 +899,7 @@
                                 Начать курс
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- Кнопка "Показать больше" -->
@@ -916,14 +914,14 @@
         </section>
 
         <!-- Contact Form -->
-        <div class="isolate bg-white px-4 py-16 sm:py-24 lg:px-8" id="contact-us">
+        <!-- <div class="isolate bg-white px-4 py-16 sm:py-24 lg:px-8" id="contact-us">
             <div class="mx-auto max-w-2xl text-center mobile-padding">
                 <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
                     data-i18n="contact-title">Бесплатная консультация</h2>
                 <p class="mt-3 text-base leading-7 text-gray-600 sm:text-lg sm:leading-8" data-i18n="contact-subtitle">
                     Оставьте свои контактные данные, мы перезвоним вам и ответим на все ваши вопросы</p>
-            </div>
-            <form action="#" method="POST" class="mx-auto mt-8 max-w-xl sm:mt-8 mobile-padding">
+            </div> -->
+        <!-- <form action="#" method="POST" class="mx-auto mt-8 max-w-xl sm:mt-8 mobile-padding">
                 <div class="grid grid-cols-1 gap-6">
                     <div>
                         <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900"
@@ -995,8 +993,64 @@
                 <p class="mt-4 text-center text-sm text-gray-500" data-i18n="required-fields">
                     * Обязательные для заполнения поля
                 </p>
-            </form>
+            </form> -->
+        <div class="relative isolate bg-white overflow-hidden px-4 py-16 sm:py-20 lg:px-8" id="contact-us">
+            <!-- Background gradients (no top gradient) -->
+            <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+                <div
+                    class="absolute bottom-[-15%] right-[-10%] w-80 h-80 bg-gradient-to-tr from-blue-300/20 via-purple-200/20 to-pink-200/10 blur-3xl rounded-full">
+                </div>
+                <div
+                    class="absolute top-1/2 left-[10%] w-40 h-40 bg-gradient-to-br from-cyan-300/20 via-indigo-300/20 to-transparent blur-2xl rounded-full opacity-70">
+                </div>
+            </div>
+
+            <div class="mx-auto max-w-2xl text-center mobile-padding relative">
+                <h2 class="mb-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+                    data-i18n="contact-title">
+                    Бесплатная консультация
+                </h2>
+                <p class="mt-3 text-base sm:text-lg text-gray-600 leading-relaxed" data-i18n="contact-subtitle">
+                    Оставьте свои контактные данные, и мы свяжемся с вами, чтобы обсудить ваши цели и ответить на все
+                    вопросы.
+                </p>
+            </div>
+
+            <section class="relative mx-auto mt-10 max-w-lg px-6 text-center">
+                <!-- Floating Mail Image with gradient halo -->
+                <div class="relative flex justify-center items-center mb-6">
+                    <div class="absolute inset-0 flex justify-center items-center -z-10">
+                        <div
+                            class="w-64 h-64 sm:w-72 sm:h-72 bg-gradient-to-tr from-indigo-400/30 via-purple-300/30 to-pink-300/30 blur-3xl rounded-full">
+                        </div>
+                    </div>
+
+                    <!-- Mail Image -->
+                    <picture
+                        class="w-24 sm:w-44 md:w-44 animate-float-slow select-none pointer-events-none drop-shadow-lg mb-4 mt-4">
+                        <source srcset="./images/mail.png" type="image/png" />
+                        <img src="./images/mail.png" alt="Mail illustration" class="w-full h-auto opacity-95"
+                            loading="lazy" />
+                    </picture>
+                </div>
+
+                <!-- Button -->
+                <div>
+                    <button
+                        onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScv6iDEEeL4jxPwoQKnQp6Mm6-9iGVOhedXtnKlhg0FjJ8WXg/viewform?usp=dialog')"
+                        class="inline-block w-full sm:w-auto rounded-lg bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 text-white font-semibold py-2.5 px-16 text-sm transition-all duration-300 shadow-md hover:shadow-indigo-300/30">
+                        Отправить заявку
+                    </button>
+
+                    <p class="mt-3 text-sm text-gray-500" data-i18n="note">
+                        Нажмите кнопку, чтобы открыть форму в новой вкладке
+                    </p>
+                </div>
+            </section>
         </div>
+
+
+
 
         <!-- Footer -->
         <footer class="bg-gray-900 text-white">
