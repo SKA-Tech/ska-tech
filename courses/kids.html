@@ -189,7 +189,7 @@
                 'program-title': 'Барномаи курс',
                 'module-1-title': 'Модули 1: Аввалин қадамҳо дар барномасозӣ',
                 'module-1-item-1': '• Ошноӣ бо алгоритмҳо тавассути бозӣ',
-                'module-1-item-2': '• Барномасозии блоқӣ дар Scratch',
+                'module-1-item-2': '• Барномасозии блоки дар Scratch',
                 'module-1-item-3': '• Эҷоди аввалин аниматсияҳо ва бозӣҳо',
                 'module-1-item-4': '• Мантиқ ва пайдарпаии амалҳо',
                 'module-1-item-5': '• Масъалаҳои оддии математикӣ дар шакли бозӣ',
@@ -314,13 +314,13 @@
         function updatePhoneLinks(lang) {
             const phoneNumber = translations[lang]["nav-phone"];
             const cleanPhoneNumber = phoneNumber.replace(/\s+/g, ''); // Убираем пробелы для href
-            
+
             // Обновляем десктопную ссылку
             const desktopLink = document.getElementById('desktop-phone-link');
             if (desktopLink) {
                 desktopLink.href = `tel:${cleanPhoneNumber}`;
             }
-            
+
             // Обновляем мобильную ссылку
             const mobileLink = document.getElementById('mobile-phone-link');
             if (mobileLink) {
@@ -430,9 +430,8 @@
                 <!-- Переключатель языка для мобильной версии -->
                 <button onclick="toggleLanguage()"
                     class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center p-2">
-                    <img id="mobile-language-flag" src="./images/flags/russia.png"
-                        srcset="./images/flags/russia.png 2x" width="20" height="15" alt="Русский флаг"
-                        class="mr-2 rounded">
+                    <img id="mobile-language-flag" src="./images/flags/russia.png" srcset="./images/flags/russia.png 2x"
+                        width="20" height="15" alt="Русский флаг" class="mr-2 rounded">
                     <span id="mobile-language-text" class="font-medium text-sm">РУС</span>
                 </button>
 
@@ -464,8 +463,8 @@
                         class="-m-2.5 rounded-md p-2.5 text-gray-700 hover:text-blue-600 transition-colors duration-200"
                         onclick="closeMenu()">
                         <span class="sr-only">Close menu</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" aria-hidden="true">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
