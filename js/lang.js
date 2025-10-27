@@ -327,18 +327,25 @@ const translations = {
         // Новая функция для обновления телефонных ссылок
         function updatePhoneLinks(lang) {
             const phoneNumber = translations[lang]["nav-phone"];
-            const cleanPhoneNumber = phoneNumber.replace(/\s+/g, ''); // Убираем пробелы для href
-            
-            // Обновляем десктопную ссылку
+            const cleanPhoneNumber = phoneNumber.replace(/[\s\-()]/g, '');
+
             const desktopLink = document.getElementById('desktop-phone-link');
             if (desktopLink) {
                 desktopLink.href = `tel:${cleanPhoneNumber}`;
+                const phoneSpan = desktopLink.querySelector('[data-i18n="nav-phone"]');
+                if (phoneSpan) {
+                    phoneSpan.textContent = phoneNumber;
+                }
             }
-            
+
             // Обновляем мобильную ссылку
             const mobileLink = document.getElementById('mobile-phone-link');
             if (mobileLink) {
                 mobileLink.href = `tel:${cleanPhoneNumber}`;
+                const phoneSpan = mobileLink.querySelector('[data-i18n="nav-phone"]');
+                if (phoneSpan) {
+                    phoneSpan.textContent = phoneNumber;
+                }
             }
         }
 
