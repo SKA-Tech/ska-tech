@@ -291,125 +291,265 @@ const translations = {
         "module-3-item-5": "• Деплои лоиҳа",
                
         
-            }
+            },
+            en: {
+  // Navigation
+  "nav-services": "Services",
+  "nav-courses": "Courses",
+  "nav-about": "About",
+  "nav-contact": "Contact Us",
+  "nav-phone": "+992 800 55-77-77",
+
+  // Hero
+  "hero-title": "IT Solutions & Training: From Idea to Launch",
+  "hero-subtitle": "Code the future with us. We build websites — and help you build yours.",
+  "hero-start": "Get Started",
+  "hero-learn-more": "Learn More",
+
+  // About
+  "about-title": "Work with Us",
+  "about-description": "We’re your full-stack IT studio. We develop websites, apps, and custom software for your needs — and teach programming from scratch.",
+  "about-staff": "Full-time teammates",
+  "about-services": "Services",
+  "about-courses": "Courses Taught",
+
+  // Services
+  "services-title": "We Do It All in IT",
+  "services-subtitle": "Development, support, and training — a full service cycle for your business and IT career.",
+  "service-web": "Website Design & Development",
+  "service-web-desc": "We create modern, user-friendly websites: corporate sites, landing pages, and online stores. Every project is tailored to your business goals.",
+  "service-support": "Support & Maintenance",
+  "service-support-desc": "We keep your projects stable: updates, tech support, and outage protection — so your site stays online without interruptions.",
+  "service-design": "Design & Branding",
+  "service-design-desc": "We craft unique design and brand identity: interfaces, logos, and visuals that make your brand recognizable and current.",
+  "service-apps": "App Development",
+  "service-apps-desc": "We build mobile and web apps that are convenient, functional, and modern — improving your operations and delighting users.",
+
+  // Courses
+  "courses-title": "Academy Courses",
+  "courses-subtitle": "Choose your learning path — Frontend, Backend, Mobile, or start with our kids’ program.",
+  "course-html": "HTML & CSS",
+  "course-html-desc": "Learn the building blocks of the web",
+  "course-js": "JavaScript",
+  "course-js-desc": "Master the language of the web",
+  "course-react": "React",
+  "course-react-desc": "Modern frontend library",
+  "course-kids": "Programming for Kids",
+  "course-kids-desc": "Fun learning from zero",
+  "course-design": "Graphic Design",
+  "course-design-desc": "Create visual content",
+  "course-golang": "Golang",
+  "course-golang-desc": "High-performance language",
+  "course-cpp": "C++ Basics",
+  "course-cpp-desc": "Powerful systems language",
+  "course-csharp": "C# Basics",
+  "course-csharp-desc": "Universal language by Microsoft",
+  "course-python": "Python",
+  "course-python-desc": "A popular language for everything",
+  "course-git": "Git",
+  "course-git-desc": "Version control system",
+  "course-start": "Start Course",
+  "show-more": "Show More Courses",
+  "show-less": "Show Fewer Courses",
+
+  // Contact form
+  "contact-title": "Free Consultation",
+  "contact-subtitle": "Leave your contact details — we’ll call you back and answer all your questions.",
+  "mail-button": "Send Request",
+  "mail-note": "Click the button to open the form in a new tab",
+  "first-name": "First Name *",
+  "first-name-placeholder": "Enter your first name",
+  "last-name": "Last Name",
+  "last-name-placeholder": "Enter your last name",
+  phone: "Phone number *",
+  "phone-placeholder": "900 123-45-67",
+  message: "Message",
+  "message-placeholder": "Tell us about your questions or learning goals…",
+  privacy: "I agree to the",
+  "privacy-policy": "privacy policy",
+  submit: "Submit",
+  "required-fields": "* Required fields",
+
+  // Footer
+  "footer-description": "IT academy and development studio. We create digital solutions and train future professionals.",
+  "footer-courses": "Courses",
+  "footer-services": "Services",
+  "footer-frontend": "Frontend Development",
+  "footer-backend": "Backend Development",
+  "footer-design": "Design",
+  "footer-web-dev": "Website Development",
+  "footer-mobile": "Mobile Apps",
+  "footer-support": "Technical Support",
+  "footer-copyright": "© 2025 SKA-Tech. All rights reserved.",
+  "footer-about": "About",
+  "footer-privacy": "Privacy Policy",
+  "footer-contact": "Contacts",
+
+  // Course page: HTML & CSS
+  "course-page-title": "HTML & CSS",
+  "course-page-subtitle": "Master the basics of web development and build your first websites",
+  "course-program": "Course Program",
+
+  "module-1": "Module 1: HTML Basics",
+  "module-1-list": "• HTML document structure\n• Tags and attributes\n• Semantic layout\n• Forms and inputs\n• Meta tags and SEO basics",
+
+  "module-2": "Module 2: CSS Basics",
+  "module-2-list": "• Selectors and specificity\n• Box model and positioning\n• Flexbox and Grid layouts\n• Responsive design\n• CSS variables",
+
+  "module-3": "Module 3: Practice",
+  "module-3-list": "• Building a landing page\n• Coding from a Figma mockup\n• Mobile adaptation\n• Optimization and performance\n• Project deploy",
+
+  "course-price": "5,999 ₽",
+  "price-description": "for the entire course",
+  "feature-1": "12 practical lessons",
+  "feature-2": "Lifetime access to materials",
+  "feature-3": "Certificate of completion",
+  "feature-4": "Instructor support",
+  "enroll-button": "Enroll Now",
+  "course-details": "Course Details",
+  "level": "Level:",
+  "level-value": "Beginner",
+  "duration": "Duration:",
+  "duration-value": "4 weeks",
+  "classes-per-week": "Classes per week:",
+  "classes-value": "3 times",
+  "format": "Format:",
+  "format-value": "Online/Offline",
+  "course-for": "Who This Course Is For",
+  "for-beginners": "IT Beginners",
+  "for-beginners-desc": "Those who want to start a web-dev career",
+  "for-designers": "Designers",
+  "for-designers-desc": "Those who want to understand technical constraints",
+
+  // Module 1 items
+  "module-1-item-1": "• HTML document structure",
+  "module-1-item-2": "• Tags and attributes",
+  "module-1-item-3": "• Semantic layout",
+  "module-1-item-4": "• Forms and inputs",
+  "module-1-item-5": "• Meta tags and SEO basics",
+
+  // Module 2 items
+  "module-2-item-1": "• Selectors and specificity",
+  "module-2-item-2": "• Box model and positioning",
+  "module-2-item-3": "• Flexbox and Grid layouts",
+  "module-2-item-4": "• Responsive design",
+  "module-2-item-5": "• CSS variables",
+
+  // Module 3 items
+  "module-3-item-1": "• Building a landing page",
+  "module-3-item-2": "• Coding from a Figma mockup",
+  "module-3-item-3": "• Mobile adaptation",
+  "module-3-item-4": "• Optimization and performance",
+  "module-3-item-5": "• Project deploy"
+}
         };
 
         let currentLang = "ru";
 
-        // Обновленная функция changeLanguage
-        function changeLanguage(lang) {
-            currentLang = lang;
-            document.documentElement.lang = lang;
+function changeLanguage(lang) {
+  if (!translations[lang]) lang = "ru"; // fallback
+  currentLang = lang;
+  document.documentElement.lang = lang;
 
-            // Обновляем все элементы с data-i18n атрибутом
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = translations[lang][key];
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
-                }
-            });
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    const val = translations[lang][key];
+    if (!val) return; // skip missing keys
+    if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+      el.placeholder = val;
+    } else {
+      el.textContent = val;
+    }
+  });
 
-            // Обновляем телефонные ссылки
-            updatePhoneLinks(lang);
+  updatePhoneLinks(lang);
+  updateLanguageSwitcher(lang);
+  updateMobileLanguageSwitcher(lang);
+  localStorage.setItem("preferred-language", lang);
+}
 
-            // Обновляем переключатели языка
-            updateLanguageSwitcher(lang);
-            updateMobileLanguageSwitcher(lang);
+function updatePhoneLinks(lang) {
+  const phoneNumber = translations[lang]["nav-phone"];
+  const clean = phoneNumber.replace(/[\s\-()]/g, ""); // keep leading +
+  const desktopLink = document.getElementById("desktop-phone-link");
+  if (desktopLink) {
+    desktopLink.href = `tel:${clean}`;
+    const span = desktopLink.querySelector('[data-i18n="nav-phone"]');
+    if (span) span.textContent = phoneNumber;
+  }
+  const mobileLink = document.getElementById("mobile-phone-link");
+  if (mobileLink) {
+    mobileLink.href = `tel:${clean}`;
+    const span = mobileLink.querySelector('[data-i18n="nav-phone"]');
+    if (span) span.textContent = phoneNumber;
+  }
+}
 
-            // Сохраняем выбор языка в localStorage
-            localStorage.setItem('preferred-language', lang);
-        }
+// --- UPDATED: support ru, tj, en
+function updateLanguageSwitcher(lang) {
+  const flag = document.getElementById("language-flag");
+  const text = document.getElementById("language-text");
+  if (!flag || !text) return;
 
-        // Новая функция для обновления телефонных ссылок
-        function updatePhoneLinks(lang) {
-            const phoneNumber = translations[lang]["nav-phone"];
-            const cleanPhoneNumber = phoneNumber.replace(/[\s\-()]/g, '');
+  switch (lang) {
+    case "ru":
+      flag.src = "../images/flags/russia.png";
+      flag.srcset = "../images/flags/russia.png 2x";
+      flag.alt = "Русский флаг";
+      text.textContent = "РУС";
+      break;
+    case "tj":
+      flag.src = "../images/flags/tajikistan.png";
+      flag.srcset = "../images/flags/tajikistan.png 2x";
+      flag.alt = "Флаг Таджикистана";
+      text.textContent = "ТҶК";
+      break;
+    case "en":
+      flag.src = "../images/flags/uk.png";       // or us.png – your choice
+      flag.srcset = "../images/flags/uk.png 2x";
+      flag.alt = "English flag";
+      text.textContent = "EN";
+      break;
+  }
+}
 
-            const desktopLink = document.getElementById('desktop-phone-link');
-            if (desktopLink) {
-                desktopLink.href = `tel:${cleanPhoneNumber}`;
-                const phoneSpan = desktopLink.querySelector('[data-i18n="nav-phone"]');
-                if (phoneSpan) {
-                    phoneSpan.textContent = phoneNumber;
-                }
-            }
+function updateMobileLanguageSwitcher(lang) {
+  const flag = document.getElementById("mobile-language-flag");
+  const text = document.getElementById("mobile-language-text");
+  if (!flag || !text) return;
 
-            // Обновляем мобильную ссылку
-            const mobileLink = document.getElementById('mobile-phone-link');
-            if (mobileLink) {
-                mobileLink.href = `tel:${cleanPhoneNumber}`;
-                const phoneSpan = mobileLink.querySelector('[data-i18n="nav-phone"]');
-                if (phoneSpan) {
-                    phoneSpan.textContent = phoneNumber;
-                }
-            }
-        }
+  switch (lang) {
+    case "ru":
+      flag.src = "../images/flags/russia.png";
+      flag.srcset = "../images/flags/russia.png 2x";
+      flag.alt = "Русский флаг";
+      text.textContent = "РУС";
+      break;
+    case "tj":
+      flag.src = "../images/flags/tajikistan.png";
+      flag.srcset = "../images/flags/tajikistan.png 2x";
+      flag.alt = "Флаг Таджикистана";
+      text.textContent = "ТҶК";
+      break;
+    case "en":
+      flag.src = "../images/flags/uk.png";
+      flag.srcset = "../images/flags/uk.png 2x";
+      flag.alt = "English flag";
+      text.textContent = "EN";
+      break;
+  }
+}
 
-        function updateLanguageSwitcher(lang) {
-            const flag = document.getElementById("language-flag");
-            const text = document.getElementById("language-text");
+// --- OPTION A: cycle ru → tj → en → ru
+function toggleLanguage() {
+  const order = ["ru", "tj", "en"];
+  const next = order[(order.indexOf(currentLang) + 1) % order.length];
+  changeLanguage(next);
+}
 
-            if (lang === "ru") {
-                flag.src = "../images/flags/russia.png";
-                flag.srcset = "../images/flags/russia.png 2x";
-                flag.alt = "Русский флаг";
-                text.textContent = "РУС";
-            } else {
-                flag.src = "../images/flags/tajikistan.png";
-                flag.srcset = "../images/flags/tajikistan.png 2x";
-                flag.alt = "Флаг Таджикистана";
-                text.textContent = "ТҶК";
-            }
-        }
+// Init
+document.addEventListener("DOMContentLoaded", () => {
+  const saved = localStorage.getItem("preferred-language");
+  changeLanguage(saved && translations[saved] ? saved : "ru");
+});
 
-        function updateMobileLanguageSwitcher(lang) {
-            const mobileFlag = document.getElementById("mobile-language-flag");
-            const mobileText = document.getElementById("mobile-language-text");
-
-            if (lang === "ru") {
-                mobileFlag.src = "../images/flags/russia.png";
-                mobileFlag.srcset = "../images/flags/russia.png 2x";
-                mobileFlag.alt = "Русский флаг";
-                mobileText.textContent = "РУС";
-            } else {
-                mobileFlag.src = "../images/flags/tajikistan.png";
-                mobileFlag.srcset = "../images/flags/tajikistan.png 2x";
-                mobileFlag.alt = "Флаг Таджикистана";
-                mobileText.textContent = "ТҶК";
-            }
-        }
-
-        function toggleLanguage() {
-            const newLang = currentLang === "ru" ? "tj" : "ru";
-            changeLanguage(newLang);
-        }
-
-        // Инициализация при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function () {
-            // Проверяем сохраненный язык
-            const savedLang = localStorage.getItem("preferred-language");
-            if (savedLang) {
-                changeLanguage(savedLang);
-            }
-        });
-
-        function openMenu() {
-            document.getElementById('mobile-menu').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMenu() {
-            document.getElementById('mobile-menu').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Закрытие меню при нажатии на Escape
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape') {
-                closeMenu();
-            }
-        });

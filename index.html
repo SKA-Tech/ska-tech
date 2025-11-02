@@ -143,94 +143,20 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Закрытие меню при нажатии на Escape
+        // Close menu on Escape
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape') {
                 closeMenu();
+                document.getElementById('language-menu')?.classList.add('hidden');
+                document.getElementById('mobile-language-menu')?.classList.add('hidden');
             }
         });
 
-        // Плавная навигация по якорям
         document.addEventListener('DOMContentLoaded', function () {
-            // Загружаем сохраненный язык
             const savedLang = localStorage.getItem('preferred-language') || 'ru';
             changeLanguage(savedLang);
 
-            // Функция для кнопок "Узнать больше"
-            const readMoreButtons = document.querySelectorAll('.read-more-btn');
-            readMoreButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const card = this.closest('article');
-                    const description = card.querySelector('p');
-                    description.classList.toggle('line-clamp-3');
-                    this.textContent = description.classList.contains('line-clamp-3') ?
-                        (currentLang === 'ru' ? 'Узнать больше' : 'Маълумоти бештар') :
-                        (currentLang === 'ru' ? 'Свернуть' : 'Фуруд овардан');
-                });
-            });
-
-            // Функция для кнопки "Показать больше курсов"
-            const showMoreBtn = document.getElementById('show-more-btn');
-            const courseItems = document.querySelectorAll('.course-item');
-            let isExpanded = false;
-
-            if (showMoreBtn) {
-                showMoreBtn.addEventListener('click', function () {
-                    if (!isExpanded) {
-                        courseItems.forEach(item => {
-                            item.classList.remove('hidden');
-                            item.classList.add('animate-fadeIn');
-                        });
-                        showMoreBtn.setAttribute('data-i18n', 'show-less');
-                        showMoreBtn.textContent = currentLang === 'ru' ? 'Скрыть курсы' : 'Курсҳоро пинҳон кунед';
-                        isExpanded = true;
-                    } else {
-                        courseItems.forEach(item => {
-                            item.classList.add('hidden');
-                            item.classList.remove('animate-fadeIn');
-                        });
-                        showMoreBtn.setAttribute('data-i18n', 'show-more');
-                        showMoreBtn.textContent = currentLang === 'ru' ? 'Показать больше курсов' : 'Курсҳои бештар нишон диҳед';
-                        isExpanded = false;
-                    }
-                });
-            }
-
-            // Форматирование номера телефона
-            const phoneInput = document.getElementById('phone-number');
-            const countrySelect = document.getElementById('country');
-
-            if (phoneInput && countrySelect) {
-                phoneInput.addEventListener('input', function (e) {
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (countrySelect.value === '+7') {
-                        if (value.length > 0) {
-                            value = value.substring(0, 10);
-                            let formatted = value.substring(0, 3);
-                            if (value.length > 3) formatted += ' ' + value.substring(3, 6);
-                            if (value.length > 6) formatted += '-' + value.substring(6, 8);
-                            if (value.length > 8) formatted += '-' + value.substring(8, 10);
-                            e.target.value = formatted;
-                        }
-                    } else {
-                        if (value.length > 0) {
-                            value = value.substring(0, 9);
-                            let formatted = value.substring(0, 2);
-                            if (value.length > 2) formatted += ' ' + value.substring(2, 5);
-                            if (value.length > 5) formatted += ' ' + value.substring(5, 7);
-                            if (value.length > 7) formatted += ' ' + value.substring(7, 9);
-                            e.target.value = formatted;
-                        }
-                    }
-                });
-
-                countrySelect.addEventListener('change', function () {
-                    phoneInput.value = '';
-                    phoneInput.placeholder = this.value === '+7' ? '900 123-45-67' : '90 123 45 67';
-                });
-            }
-
-            // Плавная навигация по якорям
+            // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -238,13 +164,34 @@
                     if (target) {
                         const headerHeight = document.querySelector('header').offsetHeight;
                         const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
                     }
                 });
             });
+        });
+
+        // Language dropdowns (desktop + mobile)
+        document.addEventListener('click', (e) => {
+            const dBtn = document.getElementById('language-switcher-btn');
+            const dMenu = document.getElementById('language-menu');
+            const mBtn = document.getElementById('mobile-language-switcher-btn');
+            const mMenu = document.getElementById('mobile-language-menu');
+
+            if (dBtn && dMenu) {
+                if (dBtn.contains(e.target)) {
+                    dMenu.classList.toggle('hidden');
+                } else if (!dMenu.contains(e.target)) {
+                    dMenu.classList.add('hidden');
+                }
+            }
+
+            if (mBtn && mMenu) {
+                if (mBtn.contains(e.target)) {
+                    mMenu.classList.toggle('hidden');
+                } else if (!mMenu.contains(e.target)) {
+                    mMenu.classList.add('hidden');
+                }
+            }
         });
     </script>
 </head>
@@ -277,16 +224,43 @@
                 </div>
 
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
-                    <!-- Переключатель языка для десктопа -->
-                    <button id="language-switcher" onclick="toggleLanguage()"
-                        class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center">
-                        <img id="language-flag" src="./images/flags/russia.png" srcset="./images/flags/russia.png 2x"
-                            width="20" height="15" alt="Русский флаг" class="mr-2 rounded">
-                        <span id="language-text" class="font-medium">РУС</span>
-                    </button>
+                    <!-- Language dropdown (desktop) -->
+                    <div class="relative">
+                        <button id="language-switcher-btn" type="button"
+                            class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center hover:text-blue-600">
+                            <img id="language-flag" src="./images/flags/russia.png"
+                                srcset="./images/flags/russia.png 2x" width="20" height="15" alt="Русский флаг"
+                                class="mr-2 rounded">
+                            <span id="language-text" class="font-medium">РУС</span>
+                            <svg class="w-4 h-4 ml-1 text-gray-600" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 9l6 6 6-6" />
+                            </svg>
+                        </button>
+
+                        <div id="language-menu"
+                            class="hidden absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                            <button type="button" onclick="changeLanguage('ru')"
+                                class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                                <img src="./images/flags/russia.png" width="18" height="12" class="mr-2 rounded"
+                                    alt="Русский"> Русский
+                            </button>
+                            <button type="button" onclick="changeLanguage('tj')"
+                                class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                                <img src="./images/flags/tajikistan.png" width="18" height="12" class="mr-2 rounded"
+                                    alt="Тоҷикӣ"> Тоҷикӣ
+                            </button>
+                            <button type="button" onclick="changeLanguage('en')"
+                                class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                                <img src="./images/flags/uk.png" width="18" height="12" class="mr-2 rounded"
+                                    alt="English"> English
+                            </button>
+                        </div>
+                    </div>
 
                     <a href="tel:+79993227878" id="desktop-phone-link"
-                        class="text-sm  font-semibold leading-6 text-blue-600 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2">
+                        class="text-sm font-semibold leading-6 text-blue-600 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -296,14 +270,40 @@
                 </div>
 
                 <div class="flex lg:hidden items-center gap-4">
-                    <!-- Переключатель языка для мобильной версии -->
-                    <button onclick="toggleLanguage()"
-                        class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center p-2">
-                        <img id="mobile-language-flag" src="./images/flags/russia.png"
-                            srcset="./images/flags/russia.png 2x" width="20" height="15" alt="Русский флаг"
-                            class="mr-2 rounded">
-                        <span id="mobile-language-text" class="font-medium text-sm">РУС</span>
-                    </button>
+                    <!-- Language dropdown (mobile) -->
+                    <div class="relative">
+                        <button id="mobile-language-switcher-btn" type="button"
+                            class="text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center p-2 hover:text-blue-600">
+                            <img id="mobile-language-flag" src="./images/flags/russia.png"
+                                srcset="./images/flags/russia.png 2x" width="20" height="15" alt="Русский флаг"
+                                class="mr-2 rounded">
+                            <span id="mobile-language-text" class="font-medium text-sm">РУС</span>
+                            <svg class="w-4 h-4 ml-1 text-gray-600" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 9l6 6 6-6" />
+                            </svg>
+                        </button>
+
+                        <div id="mobile-language-menu"
+                            class="hidden absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                            <button type="button" onclick="changeLanguage('ru')"
+                                class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                                <img src="./images/flags/russia.png" width="18" height="12" class="mr-2 rounded"
+                                    alt="Русский"> Русский
+                            </button>
+                            <button type="button" onclick="changeLanguage('tj')"
+                                class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                                <img src="./images/flags/tajikistan.png" width="18" height="12" class="mr-2 rounded"
+                                    alt="Тоҷикӣ"> Тоҷикӣ
+                            </button>
+                            <button type="button" onclick="changeLanguage('en')"
+                                class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                                <img src="./images/flags/uk.png" width="18" height="12" class="mr-2 rounded"
+                                    alt="English"> English
+                            </button>
+                        </div>
+                    </div>
 
                     <button type="button"
                         class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:text-blue-600 transition-colors duration-200"
@@ -339,6 +339,7 @@
                             </svg>
                         </button>
                     </div>
+
                     <div class="mt-6 flow-root">
                         <div class="-my-6 divide-y divide-gray-500/10">
                             <div class="space-y-2 py-6">
