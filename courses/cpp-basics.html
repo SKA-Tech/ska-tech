@@ -12,42 +12,42 @@
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
-            overflow: hidden;
+            overflow: hidden
         }
 
         .animate-fadeIn {
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn .5s ease-in-out
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(20px)
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0)
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width:768px) {
             .mobile-padding {
                 padding-left: 1rem;
-                padding-right: 1rem;
+                padding-right: 1rem
             }
 
             .mobile-text-center {
-                text-align: center;
+                text-align: center
             }
 
             .mobile-stack {
                 display: flex;
-                flex-direction: column;
+                flex-direction: column
             }
 
             .mobile-full-width {
-                width: 100%;
+                width: 100%
             }
         }
     </style>
@@ -67,6 +67,11 @@
                 // Course Header
                 'course-cpp': 'Основы C++',
                 'course-cpp-desc': 'Освойте мощный язык программирования для создания производительных приложений',
+
+                // Header badges
+                'cpp-badge-systems': 'Системное программирование',
+                'cpp-badge-duration': '2.5 месяца',
+                'cpp-badge-level': 'Начальный уровень',
 
                 // Program
                 'course-program': 'Программа курса',
@@ -148,11 +153,14 @@
                 'footer-mobile': 'Мобильные приложения',
                 'footer-support': 'Техническая поддержка',
                 'service-design': 'Дизайн и брендинг',
-                'footer-copyright': '© 2025 <a href="../index.html" class="hover:text-white transition-colors duration-200">SKA-Tech</a>. Все права защищены.',
+                'footer-courses-mobile-dev': 'Мобильная разработка',
+                'footer-courses-kids': 'Для детей',
                 'footer-about': 'О нас',
                 'footer-privacy': 'Политика конфиденциальности',
-                'footer-contact': 'Контакты'
+                'footer-contact': 'Контакты',
+                'footer-copyright': '© 2025 <a href="../index.html" class="hover:text-white transition-colors duration-200">SKA-Tech</a>. Все права защищены.'
             },
+
             'tj': {
                 // Navigation
                 'nav-services': 'Хизматҳо',
@@ -164,6 +172,11 @@
                 // Course Header
                 'course-cpp': 'Асосҳои C++',
                 'course-cpp-desc': 'Забони барномасозии қавиро барои эҷоди барномаҳои суръатбахш омӯзед',
+
+                // Header badges
+                'cpp-badge-systems': 'Барномасозии системавӣ',
+                'cpp-badge-duration': '2.5 моҳ',
+                'cpp-badge-level': 'Сатҳи оғозӣ',
 
                 // Program
                 'course-program': 'Барномаи курс',
@@ -245,129 +258,263 @@
                 'footer-mobile': 'Барномаҳои мобилӣ',
                 'footer-support': 'Дастгирии техникӣ',
                 'service-design': 'Дизайн ва брендсозӣ',
-                'footer-copyright': '© 2025 <a href="../index.html" class="hover:text-white transition-colors duration-200">SKA-Tech</a>. Ҳама ҳуқуқҳо ҳифз шудаанд.',
+                'footer-courses-mobile-dev': 'Таҳияи мобилӣ',
+                'footer-courses-kids': 'Барои кӯдакон',
                 'footer-about': 'Дар бораи мо',
                 'footer-privacy': 'Сиёсати махфият',
-                'footer-contact': 'Тамос'
+                'footer-contact': 'Тамос',
+                'footer-copyright': '© 2025 <a href="../index.html" class="hover:text-white transition-colors duration-200">SKA-Tech</a>. Ҳама ҳуқуқҳо ҳифз шудаанд.'
+            },
+
+            'en': {
+                // Navigation
+                'nav-services': 'Services',
+                'nav-courses': 'Courses',
+                'nav-about': 'About',
+                'nav-contact': 'Contact Us',
+                'nav-phone': '+992 800 55-77-77',
+
+                // Course Header
+                'course-cpp': 'C++ Basics',
+                'course-cpp-desc': 'Master a powerful language for building high-performance applications',
+
+                // Header badges
+                'cpp-badge-systems': 'Systems Programming',
+                'cpp-badge-duration': '2.5 months',
+                'cpp-badge-level': 'Beginner level',
+
+                // Program
+                'course-program': 'Course Program',
+                'cpp-module-1': 'Module 1: C++ Fundamentals',
+                'cpp-module-1-item-1': '• Variables, data types, and operators',
+                'cpp-module-1-item-2': '• Conditionals and loops',
+                'cpp-module-1-item-3': '• Functions and overloading',
+                'cpp-module-1-item-4': '• Pointers and references',
+                'cpp-module-1-item-5': '• Working with arrays and strings',
+                'cpp-module-2': 'Module 2: Object-Oriented Programming',
+                'cpp-module-2-item-1': '• Classes and objects',
+                'cpp-module-2-item-2': '• Encapsulation, inheritance, polymorphism',
+                'cpp-module-2-item-3': '• Constructors and destructors',
+                'cpp-module-2-item-4': '• Operator overloading',
+                'cpp-module-2-item-5': '• Templates (classes & functions)',
+                'cpp-module-3': 'Module 3: Advanced Topics',
+                'cpp-module-3-item-1': '• Memory management',
+                'cpp-module-3-item-2': '• Exceptions and error handling',
+                'cpp-module-3-item-3': '• Standard Template Library (STL)',
+                'cpp-module-3-item-4': '• Files and streams',
+                'cpp-module-3-item-5': '• Multithreading',
+                'cpp-module-4': 'Module 4: Practical Projects',
+                'cpp-module-4-item-1': '• Console calculator',
+                'cpp-module-4-item-2': '• Student management system',
+                'cpp-module-4-item-3': '• Simple game (snake or tetris)',
+                'cpp-module-4-item-4': '• File-based database',
+                'cpp-module-4-item-5': '• Final project: banking management system',
+
+                // Registration Card
+                'cpp-course-price': '8,999 ₽',
+                'cpp-price-description': 'per month',
+                'cpp-feature-1': '28 hands-on lessons',
+                'cpp-feature-2': '5 real portfolio projects',
+                'cpp-feature-3': 'Certificate of completion',
+                'cpp-feature-4': 'Instructor code review',
+                'enroll-button': 'Enroll Now',
+
+                // Course Details
+                'course-details': 'Course Details',
+                'level': 'Level:',
+                'cpp-level-value': 'Beginner',
+                'duration': 'Duration:',
+                'cpp-duration-value': '10 weeks',
+                'classes-per-week': 'Classes per week:',
+                'cpp-classes-value': '3 times',
+                'format': 'Format:',
+                'format-value': 'Online/Offline',
+                'cpp-requirements': 'Prerequisites:',
+                'cpp-requirements-value': 'Basic programming knowledge',
+
+                // Audience
+                'course-for': 'Who This Course Is For',
+                'cpp-for-system': 'For systems programmers',
+                'cpp-for-system-desc': 'Those who want to work with low-level applications',
+                'cpp-for-beginners': 'For beginners',
+                'cpp-for-beginners-desc': 'Those who want to master a powerful language',
+                'cpp-for-game': 'For game developers',
+                'cpp-for-game-desc': 'Those who want to build high-performance games',
+                'cpp-for-it': 'For IT professionals',
+                'cpp-for-it-desc': 'Those who want to expand their tech stack',
+
+                // Benefits
+                'cpp-what-you-get': 'What You’ll Gain',
+                'cpp-benefit-1': 'Deep knowledge of C++',
+                'cpp-benefit-1-desc': 'Understanding of fundamentals and advanced concepts',
+                'cpp-benefit-2': '5 portfolio projects',
+                'cpp-benefit-2-desc': 'Real projects to show employers',
+                'cpp-benefit-3': 'Job-readiness',
+                'cpp-benefit-3-desc': 'Skills to start a C++ developer career',
+
+                // Footer
+                'footer-description': 'IT academy and development studio. We create digital solutions and train future professionals.',
+                'footer-courses': 'Courses',
+                'footer-services': 'Services',
+                'footer-frontend': 'Frontend Development',
+                'footer-backend': 'Backend Development',
+                'footer-design': 'Design',
+                'footer-web-dev': 'Website Development',
+                'footer-mobile': 'Mobile Apps',
+                'footer-support': 'Technical Support',
+                'service-design': 'Design & Branding',
+                'footer-courses-mobile-dev': 'Mobile development',
+                'footer-courses-kids': 'For kids',
+                'footer-about': 'About',
+                'footer-privacy': 'Privacy Policy',
+                'footer-contact': 'Contacts',
+                'footer-copyright': '© 2025 <a href="../index.html" class="hover:text-white transition-colors duration-200">SKA-Tech</a>. All rights reserved.'
             }
         };
 
-        // Обновленная функция changeLanguage
+        // Change language
         function changeLanguage(lang) {
+            if (!translations[lang]) lang = 'ru';
             currentLang = lang;
             document.documentElement.lang = lang;
 
-            // Обновляем все элементы с data-i18n атрибутом
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = translations[lang][key];
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const val = translations[lang][key];
+                if (!val) return;
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = val;
+                } else {
+                    el.innerHTML = val; // allow safe links in footer copyright
                 }
             });
 
-            // Обновляем телефонные ссылки
             updatePhoneLinks(lang);
-
-            // Обновляем переключатели языка
             updateLanguageSwitcher(lang);
             updateMobileLanguageSwitcher(lang);
-
-            // Сохраняем выбор языка в localStorage
             localStorage.setItem('preferred-language', lang);
         }
 
-        // Новая функция для обновления телефонных ссылок
+        // Update tel links
         function updatePhoneLinks(lang) {
-            const phoneNumber = translations[lang]["nav-phone"];
-            const cleanPhoneNumber = phoneNumber.replace(/\s+/g, ''); // Убираем пробелы для href
-
-            // Обновляем десктопную ссылку
+            const phoneNumber = translations[lang]['nav-phone'];
+            const clean = phoneNumber.replace(/[\s\-()]/g, ''); // keep +
             const desktopLink = document.getElementById('desktop-phone-link');
-            if (desktopLink) {
-                desktopLink.href = `tel:${cleanPhoneNumber}`;
-            }
-
-            // Обновляем мобильную ссылку
+            if (desktopLink) { desktopLink.href = `tel:${clean}`; }
             const mobileLink = document.getElementById('mobile-phone-link');
-            if (mobileLink) {
-                mobileLink.href = `tel:${cleanPhoneNumber}`;
-            }
+            if (mobileLink) { mobileLink.href = `tel:${clean}`; }
         }
 
         function updateLanguageSwitcher(lang) {
-            const flag = document.getElementById("language-flag");
-            const text = document.getElementById("language-text");
-
-            if (flag && text) {
-                if (lang === "ru") {
-                    flag.src = "../images/flags/russia.png";
-                    flag.srcset = "../images/flags/russia.png 2x";
-                    flag.alt = "Русский флаг";
-                    text.textContent = "РУС";
-                } else {
-                    flag.src = "../images/flags/tajikistan.png";
-                    flag.srcset = "../images/flags/tajikistan.png 2x";
-                    flag.alt = "Флаг Таджикистана";
-                    text.textContent = "ТҶК";
-                }
+            const flag = document.getElementById('language-flag');
+            const text = document.getElementById('language-text');
+            if (!flag || !text) return;
+            switch (lang) {
+                case 'ru':
+                    flag.src = '../images/flags/russia.png';
+                    flag.srcset = '../images/flags/russia.png 2x';
+                    flag.alt = 'Русский флаг';
+                    text.textContent = 'РУС';
+                    break;
+                case 'tj':
+                    flag.src = '../images/flags/tajikistan.png';
+                    flag.srcset = '../images/flags/tajikistan.png 2x';
+                    flag.alt = 'Флаг Таджикистана';
+                    text.textContent = 'ТҶК';
+                    break;
+                case 'en':
+                    flag.src = '../images/flags/uk.png'; // or us.png
+                    flag.srcset = '../images/flags/uk.png 2x';
+                    flag.alt = 'English flag';
+                    text.textContent = 'EN';
+                    break;
             }
         }
 
         function updateMobileLanguageSwitcher(lang) {
-            const mobileFlag = document.getElementById("mobile-language-flag");
-            const mobileText = document.getElementById("mobile-language-text");
-
-            if (mobileFlag && mobileText) {
-                if (lang === "ru") {
-                    mobileFlag.src = "../images/flags/russia.png";
-                    mobileFlag.srcset = "../images/flags/russia.png 2x";
-                    mobileFlag.alt = "Русский флаг";
-                    mobileText.textContent = "РУС";
-                } else {
-                    mobileFlag.src = "../images/flags/tajikistan.png";
-                    mobileFlag.srcset = "../images/flags/tajikistan.png 2x";
-                    mobileFlag.alt = "Флаг Таджикистана";
-                    mobileText.textContent = "ТҶК";
-                }
+            const flag = document.getElementById('mobile-language-flag');
+            const text = document.getElementById('mobile-language-text');
+            if (!flag || !text) return;
+            switch (lang) {
+                case 'ru':
+                    flag.src = '../images/flags/russia.png';
+                    flag.srcset = '../images/flags/russia.png 2x';
+                    flag.alt = 'Русский флаг';
+                    text.textContent = 'РУС';
+                    break;
+                case 'tj':
+                    flag.src = '../images/flags/tajikistan.png';
+                    flag.srcset = '../images/flags/tajikistan.png 2x';
+                    flag.alt = 'Флаг Таджикистана';
+                    text.textContent = 'ТҶК';
+                    break;
+                case 'en':
+                    flag.src = '../images/flags/uk.png';
+                    flag.srcset = '../images/flags/uk.png 2x';
+                    flag.alt = 'English flag';
+                    text.textContent = 'EN';
+                    break;
             }
         }
 
-        function toggleLanguage() {
-            const newLang = currentLang === "ru" ? "tj" : "ru";
-            changeLanguage(newLang);
-        }
-
+        // Mobile menu
         function openMenu() {
             document.getElementById('mobile-menu').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
-
         function closeMenu() {
             document.getElementById('mobile-menu').classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
 
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape') {
+        // Init + smooth anchors
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedLang = localStorage.getItem('preferred-language') || 'ru';
+            changeLanguage(savedLang);
+
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+
+        // Close on Escape and outside clicks
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
                 closeMenu();
+                document.getElementById('language-menu')?.classList.add('hidden');
+                document.getElementById('mobile-language-menu')?.classList.add('hidden');
             }
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const savedLang = localStorage.getItem("preferred-language");
-            if (savedLang) {
-                changeLanguage(savedLang);
+        // Language dropdown handlers
+        document.addEventListener('click', (e) => {
+            const dBtn = document.getElementById('language-switcher-btn');
+            const dMenu = document.getElementById('language-menu');
+            const mBtn = document.getElementById('mobile-language-switcher-btn');
+            const mMenu = document.getElementById('mobile-language-menu');
+
+            if (dBtn && dMenu) {
+                if (dBtn.contains(e.target)) { dMenu.classList.toggle('hidden'); }
+                else if (!dMenu.contains(e.target)) { dMenu.classList.add('hidden'); }
+            }
+            if (mBtn && mMenu) {
+                if (mBtn.contains(e.target)) { mMenu.classList.toggle('hidden'); }
+                else if (!mMenu.contains(e.target)) { mMenu.classList.add('hidden'); }
             }
         });
     </script>
 </head>
 
 <body class="bg-gray-50">
-    <!-- Хедер -->
+    <!-- Header -->
     <header class="absolute inset-x-0 top-0 z-50">
         <nav class="flex items-center justify-between p-4 lg:px-8" aria-label="Global">
             <div class="flex lg:flex-1">
@@ -394,16 +541,41 @@
             </div>
 
             <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
-                <!-- Переключатель языка для десктопа -->
-                <button id="language-switcher" onclick="toggleLanguage()"
-                    class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center">
-                    <img id="language-flag" src="../images/flags/russia.png" srcset="../images/flags/russia.png 2x"
-                        width="20" height="15" alt="Русский флаг" class="mr-2 rounded">
-                    <span id="language-text" class="font-medium">РУС</span>
-                </button>
+                <!-- Language dropdown (desktop) -->
+                <div class="relative">
+                    <button id="language-switcher-btn" type="button"
+                        class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center hover:text-blue-600">
+                        <img id="language-flag" src="../images/flags/russia.png" srcset="../images/flags/russia.png 2x"
+                            width="20" height="15" alt="Русский флаг" class="mr-2 rounded">
+                        <span id="language-text" class="font-medium">РУС</span>
+                        <svg class="w-4 h-4 ml-1 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+
+                    <div id="language-menu"
+                        class="hidden absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                        <button type="button" onclick="changeLanguage('ru')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/russia.png" width="18" height="12" class="mr-2 rounded"
+                                alt="Русский"> Русский
+                        </button>
+                        <button type="button" onclick="changeLanguage('tj')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/tajikistan.png" width="18" height="12" class="mr-2 rounded"
+                                alt="Тоҷикӣ"> Тоҷикӣ
+                        </button>
+                        <button type="button" onclick="changeLanguage('en')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/uk.png" width="18" height="12" class="mr-2 rounded" alt="English">
+                            English
+                        </button>
+                    </div>
+                </div>
 
                 <a href="tel:+79993227878" id="desktop-phone-link"
-                    class="text-sm  font-semibold leading-6 text-blue-600 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2">
+                    class="text-sm font-semibold leading-6 text-blue-600 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -413,14 +585,39 @@
             </div>
 
             <div class="flex lg:hidden items-center gap-4">
-                <!-- Переключатель языка для мобильной версии -->
-                <button onclick="toggleLanguage()"
-                    class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center p-2">
-                    <img id="mobile-language-flag" src="../images/flags/russia.png"
-                        srcset="../images/flags/russia.png 2x" width="20" height="15" alt="Русский флаг"
-                        class="mr-2 rounded">
-                    <span id="mobile-language-text" class="font-medium text-sm">РУС</span>
-                </button>
+                <!-- Language dropdown (mobile) -->
+                <div class="relative">
+                    <button id="mobile-language-switcher-btn" type="button"
+                        class="text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center p-2 hover:text-blue-600">
+                        <img id="mobile-language-flag" src="../images/flags/russia.png"
+                            srcset="../images/flags/russia.png 2x" width="20" height="15" alt="Русский флаг"
+                            class="mr-2 rounded">
+                        <span id="mobile-language-text" class="font-medium text-sm">РУС</span>
+                        <svg class="w-4 h-4 ml-1 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+
+                    <div id="mobile-language-menu"
+                        class="hidden absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                        <button type="button" onclick="changeLanguage('ru')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/russia.png" width="18" height="12" class="mr-2 rounded"
+                                alt="Русский"> Русский
+                        </button>
+                        <button type="button" onclick="changeLanguage('tj')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/tajikistan.png" width="18" height="12" class="mr-2 rounded"
+                                alt="Тоҷикӣ"> Тоҷикӣ
+                        </button>
+                        <button type="button" onclick="changeLanguage('en')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/uk.png" width="18" height="12" class="mr-2 rounded" alt="English">
+                            English
+                        </button>
+                    </div>
+                </div>
 
                 <button type="button"
                     class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:text-blue-600 transition-colors duration-200"
@@ -496,15 +693,22 @@
                     <span class="text-white font-bold text-2xl">C++</span>
                 </div>
                 <h1 class="text-4xl font-bold text-gray-900 mb-4" data-i18n="course-cpp">Основы C++</h1>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-i18n="course-cpp-desc">Освойте мощный язык
-                    программирования для создания производительных приложений</p>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-i18n="course-cpp-desc">
+                    Освойте мощный язык программирования для создания производительных приложений
+                </p>
                 <div class="flex justify-center gap-4 mt-6">
-                    <span class="px-4 py-2 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">Системное
-                        программирование</span>
-                    <span class="px-4 py-2 bg-green-100 text-green-800 text-sm font-medium rounded-full">2.5
-                        месяца</span>
-                    <span class="px-4 py-2 bg-purple-100 text-purple-800 text-sm font-medium rounded-full">Начальный
-                        уровень</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-800 text-sm font-medium rounded-full"
+                        data-i18n="cpp-badge-systems">
+                        Системное программирование
+                    </span>
+                    <span class="px-4 py-2 bg-green-100 text-green-800 text-sm font-medium rounded-full"
+                        data-i18n="cpp-badge-duration">
+                        2.5 месяца
+                    </span>
+                    <span class="px-4 py-2 bg-purple-100 text-purple-800 text-sm font-medium rounded-full"
+                        data-i18n="cpp-badge-level">
+                        Начальный уровень
+                    </span>
                 </div>
             </div>
 
@@ -525,6 +729,7 @@
                                     <li data-i18n="cpp-module-1-item-5">• Работа с массивами и строками</li>
                                 </ul>
                             </div>
+
                             <div class="border-l-4 border-blue-500 pl-4">
                                 <h3 class="text-lg font-semibold text-gray-900 mb-3" data-i18n="cpp-module-2">Модуль 2:
                                     Объектно-ориентированное программирование</h3>
@@ -536,6 +741,7 @@
                                     <li data-i18n="cpp-module-2-item-5">• Шаблоны классов и функций</li>
                                 </ul>
                             </div>
+
                             <div class="border-l-4 border-blue-500 pl-4">
                                 <h3 class="text-lg font-semibold text-gray-900 mb-3" data-i18n="cpp-module-3">Модуль 3:
                                     Продвинутые темы</h3>
@@ -547,6 +753,7 @@
                                     <li data-i18n="cpp-module-3-item-5">• Многопоточное программирование</li>
                                 </ul>
                             </div>
+
                             <div class="border-l-4 border-blue-500 pl-4">
                                 <h3 class="text-lg font-semibold text-gray-900 mb-3" data-i18n="cpp-module-4">Модуль 4:
                                     Практические проекты</h3>
@@ -609,6 +816,7 @@
                             Записаться на курс
                         </button>
                     </div>
+
                     <div class="bg-white rounded-2xl shadow-lg p-6">
                         <h3 class="font-semibold text-gray-900 mb-4" data-i18n="course-details">Детали курса</h3>
                         <div class="space-y-3 text-sm text-gray-600">
@@ -645,17 +853,17 @@
                         <div class="bg-blue-100 p-3 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
-                                </path>
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                             </svg>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-gray-900 mb-2" data-i18n="cpp-for-system">
-                                Системным программистам</h3>
+                            <h3 class="font-semibold text-gray-900 mb-2" data-i18n="cpp-for-system">Системным
+                                программистам</h3>
                             <p class="text-gray-600" data-i18n="cpp-for-system-desc">Кто хочет работать с
                                 низкоуровневыми приложениями</p>
                         </div>
                     </div>
+
                     <div class="flex items-start">
                         <div class="bg-green-100 p-3 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -670,12 +878,12 @@
                                 программирования</p>
                         </div>
                     </div>
+
                     <div class="flex items-start">
                         <div class="bg-purple-100 p-3 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
-                                </path>
+                                    d="M12 8c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                             </svg>
                         </div>
                         <div>
@@ -684,19 +892,18 @@
                                 игры</p>
                         </div>
                     </div>
+
                     <div class="flex items-start">
                         <div class="bg-indigo-100 p-3 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                </path>
+                                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2z" />
                             </svg>
                         </div>
                         <div>
                             <h3 class="font-semibold text-gray-900 mb-2" data-i18n="cpp-for-it">IT-специалистам</h3>
                             <p class="text-gray-600" data-i18n="cpp-for-it-desc">Кто хочет расширить свой стек
-                                технологий
-                            </p>
+                                технологий</p>
                         </div>
                     </div>
                 </div>
@@ -710,38 +917,37 @@
                         <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                             </svg>
                         </div>
                         <h3 class="font-semibold text-gray-900 mb-2" data-i18n="cpp-benefit-1">Глубокие знания C++</h3>
                         <p class="text-gray-600 text-sm" data-i18n="cpp-benefit-1-desc">Понимание основ и продвинутых
                             концепций языка</p>
                     </div>
+
                     <div class="text-center">
                         <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-                                </path>
+                                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                             </svg>
                         </div>
                         <h3 class="font-semibold text-gray-900 mb-2" data-i18n="cpp-benefit-2">5 проектов в портфолио
                         </h3>
                         <p class="text-gray-600 text-sm" data-i18n="cpp-benefit-2-desc">Реальные проекты для
-                            демонстрации
-                            работодателям</p>
+                            демонстрации работодателям</p>
                     </div>
+
                     <div class="text-center">
                         <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                                </path>
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                             </svg>
                         </div>
                         <h3 class="font-semibold text-gray-900 mb-2" data-i18n="cpp-benefit-3">Готовность к работе</h3>
-                        <p class="text-gray-600 text-sm" data-i18n="cpp-benefit-3-desc">Навыки для старта карьеры
-                            C++ разработчика</p>
+                        <p class="text-gray-600 text-sm" data-i18n="cpp-benefit-3-desc">Навыки для старта карьеры C++
+                            разработчика</p>
                     </div>
                 </div>
             </div>
@@ -775,7 +981,7 @@
                         <a href="#" class="text-gray-400 hover:text-green-500 transition-colors duration-200">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                                 <path
-                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893c0-3.189-1.248-6.189-3.515-8.444" />
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884" />
                             </svg>
                         </a>
                     </div>
@@ -788,11 +994,12 @@
                                 data-i18n="footer-frontend">Frontend разработка</a></li>
                         <li><a href="#" class="hover:text-white transition-colors duration-200"
                                 data-i18n="footer-backend">Backend разработка</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors duration-200">Мобильная разработка</a>
-                        </li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200"
+                                data-i18n="footer-courses-mobile-dev">Мобильная разработка</a></li>
                         <li><a href="#" class="hover:text-white transition-colors duration-200"
                                 data-i18n="footer-design">Дизайн</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors duration-200">Для детей</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200"
+                                data-i18n="footer-courses-kids">Для детей</a></li>
                     </ul>
                 </div>
 
@@ -819,18 +1026,12 @@
                     Все права защищены.
                 </span>
                 <ul class="flex flex-wrap items-center mt-4 text-sm font-medium text-gray-400 sm:mt-0 space-x-6">
-                    <li>
-                        <a href="../index.html#about-us" class="hover:text-white transition-colors duration-200"
-                            data-i18n="footer-about">О нас</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hover:text-white transition-colors duration-200"
-                            data-i18n="footer-privacy">Политика конфиденциальности</a>
-                    </li>
-                    <li>
-                        <a href="../index.html#contact-us" class="hover:text-white transition-colors duration-200"
-                            data-i18n="footer-contact">Контакты</a>
-                    </li>
+                    <li><a href="../index.html#about-us" class="hover:text-white transition-colors duration-200"
+                            data-i18n="footer-about">О нас</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-200"
+                            data-i18n="footer-privacy">Политика конфиденциальности</a></li>
+                    <li><a href="../index.html#contact-us" class="hover:text-white transition-colors duration-200"
+                            data-i18n="footer-contact">Контакты</a></li>
                 </ul>
             </div>
         </div>

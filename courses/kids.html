@@ -16,7 +16,7 @@
         }
 
         .animate-fadeIn {
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn .5s ease-in-out;
         }
 
         @keyframes fadeIn {
@@ -31,7 +31,6 @@
             }
         }
 
-        /* Улучшения для мобильной версии */
         @media (max-width: 768px) {
             .mobile-padding {
                 padding-left: 1rem;
@@ -54,334 +53,255 @@
     </style>
 
     <script>
-        // Language variables and functions
         let currentLang = 'ru';
 
         const translations = {
             'ru': {
-                // Navigation
-                'nav-services': 'Услуги',
-                'nav-courses': 'Курсы',
-                'nav-about': 'О нас',
-                'nav-contact': 'Свяжитесь с нами',
-                'nav-phone': '+7 999 322-78-78',
-
-                // Course page specific
-                'course-kids-title': 'Программирование для детей - SKA-Tech',
-                'kids-course-title': 'Программирование для детей',
+                'nav-services': 'Услуги', 'nav-courses': 'Курсы', 'nav-about': 'О нас', 'nav-contact': 'Свяжитесь с нами', 'nav-phone': '+7 999 322-78-78',
+                'course-kids-title': 'Программирование для детей - SKA-Tech', 'kids-course-title': 'Программирование для детей',
                 'kids-course-subtitle': 'Увлекательное знакомство с миром программирования через игры и творчество',
-                'kids-age': 'Дети 8-14 лет',
-                'course-duration': '6 месяцев',
-                'kids-format': 'Игровой формат',
-
-                // Program
-                'program-title': 'Программа курса',
-                'module-1-title': 'Модуль 1: Первые шаги в программировании',
-                'module-1-item-1': '• Знакомство с алгоритмами через игры',
-                'module-1-item-2': '• Блочное программирование в Scratch',
-                'module-1-item-3': '• Создание первых анимаций и игр',
-                'module-1-item-4': '• Логика и последовательность действий',
-                'module-1-item-5': '• Простые математические задачи в игровой форме',
-
-                'module-2-title': 'Модуль 2: Создание игр и мультфильмов',
-                'module-2-item-1': '• Разработка собственной игры в Scratch',
-                'module-2-item-2': '• Анимация персонажей и объектов',
-                'module-2-item-3': '• Звуковые эффекты и музыка',
-                'module-2-item-4': '• Интерактивные истории',
-                'module-2-item-5': '• Работа с графикой и цветом',
-
-                'module-3-title': 'Модуль 3: Основы веб-разработки',
-                'module-3-item-1': '• Знакомство с HTML и CSS в игровой форме',
-                'module-3-item-2': '• Создание первой веб-страницы',
-                'module-3-item-3': '• Дизайн и оформление сайтов',
-                'module-3-item-4': '• Простые интерактивные элементы',
-                'module-3-item-5': '• Публикация проекта в интернете',
-
-                'module-4-title': 'Модуль 4: Python для начинающих',
-                'module-4-item-1': '• Основы текстового программирования',
-                'module-4-item-2': '• Простые программы на Python',
-                'module-4-item-3': '• Создание текстовых игр',
-                'module-4-item-4': '• Работа с графикой в Turtle',
-                'module-4-item-5': '• Финальный проект: собственная игра',
-
-                // Features
-                'kids-features-title': 'Особенности обучения для детей',
-                'kids-feature-1-title': 'Игровой подход',
-                'kids-feature-1-desc': 'Обучение через создание игр и анимаций',
-                'kids-feature-2-title': 'Опытные преподаватели',
-                'kids-feature-2-desc': 'Специалисты по работе с детьми',
-                'kids-feature-3-title': 'Интерактивные материалы',
-                'kids-feature-3-desc': 'Яркие презентации и понятные примеры',
-                'kids-feature-4-title': 'Система достижений',
-                'kids-feature-4-desc': 'Награды и сертификаты за успехи',
-
-                // Pricing and details
-                'kids-price': '6 999 ₽',
-                'kids-price-desc': 'за весь курс',
-                'kids-partial-payment': 'Возможна оплата частями',
-                'kids-feature-list-1': '24 игровых занятия',
-                'kids-feature-list-2': 'Небольшие группы (до 8 человек)',
-                'kids-feature-list-3': 'Яркий сертификат о завершении',
-                'kids-feature-list-4': 'Отчеты для родителей',
-                'enroll-kids-button': 'Записать ребенка',
-
-                'course-details-title': 'Детали курса',
-                'age-label': 'Возраст:',
-                'age-value': '8-14 лет',
-                'duration-label': 'Продолжительность:',
-                'duration-value': '6 месяцев',
-                'classes-per-week-label': 'Занятия в неделю:',
-                'classes-value': '1-2 раза',
-                'lesson-duration': 'Длительность занятия:',
-                'lesson-duration-value': '60-90 минут',
-                'format-label': 'Формат:',
-                'format-value': 'Онлайн/Оффлайн',
-
-                // Results
-                'results-title': 'Результаты обучения',
-                'result-1': 'Развитие логического мышления',
-                'result-2': 'Навыки решения задач',
-                'result-3': 'Творческие проекты в портфолио',
-                'result-4': 'Основы программирования',
-                'result-5': 'Уверенность в работе с компьютером',
-
-                // Projects
-                'projects-title': 'Примеры проектов наших учеников',
-                'project-1-title': 'Игры в Scratch',
-                'project-1-desc': 'Платформеры, аркады, головоломки',
-                'project-2-title': 'Анимационные истории',
-                'project-2-desc': 'Интерактивные мультфильмы и комиксы',
-                'project-3-title': 'Веб-страницы',
-                'project-3-desc': 'Персональные сайты и галереи',
-
-                // Footer
+                'kids-age': 'Дети 8-14 лет', 'course-duration': '6 месяцев', 'kids-format': 'Игровой формат',
+                'program-title': 'Программа курса', 'module-1-title': 'Модуль 1: Первые шаги в программировании',
+                'module-1-item-1': '• Знакомство с алгоритмами через игры', 'module-1-item-2': '• Блочное программирование в Scratch',
+                'module-1-item-3': '• Создание первых анимаций и игр', 'module-1-item-4': '• Логика и последовательность действий',
+                'module-1-item-5': '• Простые математические задачи в игровой форме', 'module-2-title': 'Модуль 2: Создание игр и мультфильмов',
+                'module-2-item-1': '• Разработка собственной игры в Scratch', 'module-2-item-2': '• Анимация персонажей и объектов',
+                'module-2-item-3': '• Звуковые эффекты и музыка', 'module-2-item-4': '• Интерактивные истории',
+                'module-2-item-5': '• Работа с графикой и цветом', 'module-3-title': 'Модуль 3: Основы веб-разработки',
+                'module-3-item-1': '• Знакомство с HTML и CSS в игровой форме', 'module-3-item-2': '• Создание первой веб-страницы',
+                'module-3-item-3': '• Дизайн и оформление сайтов', 'module-3-item-4': '• Простые интерактивные элементы',
+                'module-3-item-5': '• Публикация проекта в интернете', 'module-4-title': 'Модуль 4: Python для начинающих',
+                'module-4-item-1': '• Основы текстового программирования', 'module-4-item-2': '• Простые программы на Python',
+                'module-4-item-3': '• Создание текстовых игр', 'module-4-item-4': '• Работа с графикой в Turtle',
+                'module-4-item-5': '• Финальный проект: собственная игра', 'kids-features-title': 'Особенности обучения для детей',
+                'kids-feature-1-title': 'Игровой подход', 'kids-feature-1-desc': 'Обучение через создание игр и анимаций',
+                'kids-feature-2-title': 'Опытные преподаватели', 'kids-feature-2-desc': 'Специалисты по работе с детьми',
+                'kids-feature-3-title': 'Интерактивные материалы', 'kids-feature-3-desc': 'Яркие презентации и понятные примеры',
+                'kids-feature-4-title': 'Система достижений', 'kids-feature-4-desc': 'Награды и сертификаты за успехи',
+                'kids-price': '6 999 ₽', 'kids-price-desc': 'за весь курс', 'kids-partial-payment': 'Возможна оплата частями',
+                'kids-feature-list-1': '24 игровых занятия', 'kids-feature-list-2': 'Небольшие группы (до 8 человек)',
+                'kids-feature-list-3': 'Яркий сертификат о завершении', 'kids-feature-list-4': 'Отчеты для родителей',
+                'enroll-kids-button': 'Записать ребенка', 'course-details-title': 'Детали курса', 'age-label': 'Возраст:',
+                'age-value': '8-14 лет', 'duration-label': 'Продолжительность:', 'duration-value': '6 месяцев',
+                'classes-per-week-label': 'Занятия в неделю:', 'classes-value': '1-2 раза', 'lesson-duration': 'Длительность занятия:',
+                'lesson-duration-value': '60-90 минут', 'format-label': 'Формат:', 'format-value': 'Онлайн/Оффлайн',
+                'results-title': 'Результаты обучения', 'result-1': 'Развитие логического мышления', 'result-2': 'Навыки решения задач',
+                'result-3': 'Творческие проекты в портфолио', 'result-4': 'Основы программирования', 'result-5': 'Уверенность в работе с компьютером',
+                'projects-title': 'Примеры проектов наших учеников', 'project-1-title': 'Игры в Scratch', 'project-1-desc': 'Платформеры, аркады, головоломки',
+                'project-2-title': 'Анимационные истории', 'project-2-desc': 'Интерактивные мультфильмы и комиксы',
+                'project-3-title': 'Веб-страницы', 'project-3-desc': 'Персональные сайты и галереи',
                 'footer-description': 'IT-академия и студия разработки. Мы создаем цифровые решения и обучаем будущих специалистов.',
-                'footer-courses': 'Курсы',
-                'footer-services': 'Услуги',
-                'footer-frontend': 'Frontend разработка',
-                'footer-backend': 'Backend разработка',
-                'footer-design': 'Дизайн',
-                'footer-web-dev': 'Разработка сайтов',
-                'footer-mobile': 'Мобильные приложения',
-                'footer-support': 'Техническая поддержка',
-                'footer-copyright': '© 2025 SKA-Tech. Все права защищены.',
-                'footer-about': 'О нас',
-                'footer-privacy': 'Политика конфиденциальности',
-                'footer-contact': 'Контакты'
+                'footer-courses': 'Курсы', 'footer-services': 'Услуги', 'footer-frontend': 'Frontend разработка', 'footer-backend': 'Backend разработка',
+                'footer-design': 'Дизайн', 'footer-web-dev': 'Разработка сайтов', 'footer-mobile': 'Мобильные приложения',
+                'footer-support': 'Техническая поддержка', 'footer-copyright': '© 2025 SKA-Tech. Все права защищены.',
+                'footer-about': 'О нас', 'footer-privacy': 'Политика конфиденциальности', 'footer-contact': 'Контакты', 'course-kids': 'Для детей'
             },
             'tj': {
-                // Navigation
-                'nav-services': 'Хизматҳо',
-                'nav-courses': 'Курсҳо',
-                'nav-about': 'Дар бораи мо',
-                'nav-contact': 'Бо мо тамос гиред',
-                'nav-phone': '+992 800 55-77-77',
-
-                // Course page specific
-                'course-kids-title': 'Барномасозӣ барои кӯдакон - SKA-Tech',
-                'kids-course-title': 'Барномасозӣ барои кӯдакон',
+                'nav-services': 'Хизматҳо', 'nav-courses': 'Курсҳо', 'nav-about': 'Дар бораи мо', 'nav-contact': 'Бо мо тамос гиред', 'nav-phone': '+992 800 55-77-77',
+                'course-kids-title': 'Барномасозӣ барои кӯдакон - SKA-Tech', 'kids-course-title': 'Барномасозӣ барои кӯдакон',
                 'kids-course-subtitle': 'Ошноии ҷолиб бо ҷаҳони барномасозӣ тавассути бозӣ ва эҷодкорӣ',
-                'kids-age': 'Кӯдакони 8-14-сола',
-                'course-duration': '6 моҳ',
-                'kids-format': 'Шакли бозӣ',
-
-                // Program
-                'program-title': 'Барномаи курс',
-                'module-1-title': 'Модули 1: Аввалин қадамҳо дар барномасозӣ',
-                'module-1-item-1': '• Ошноӣ бо алгоритмҳо тавассути бозӣ',
-                'module-1-item-2': '• Барномасозии блоки дар Scratch',
-                'module-1-item-3': '• Эҷоди аввалин аниматсияҳо ва бозӣҳо',
-                'module-1-item-4': '• Мантиқ ва пайдарпаии амалҳо',
-                'module-1-item-5': '• Масъалаҳои оддии математикӣ дар шакли бозӣ',
-
-                'module-2-title': 'Модули 2: Эҷоди бозӣ ва филмҳои мультаниматсионӣ',
-                'module-2-item-1': '• Таҳияи бозии худ дар Scratch',
-                'module-2-item-2': '• Аниматсияи персонажҳо ва объектҳо',
-                'module-2-item-3': '• Таъсироти садо ва мусиқӣ',
-                'module-2-item-4': '• Ҳикояҳои интерактивӣ',
-                'module-2-item-5': '• Кор бо графика ва ранг',
-
-                'module-3-title': 'Модули 3: Асосҳои таҳияи веб',
-                'module-3-item-1': '• Ошноӣ бо HTML ва CSS дар шакли бозӣ',
-                'module-3-item-2': '• Эҷоди аввалин саҳифаи веб',
-                'module-3-item-3': '• Дизайн ва ороиши вебсайтҳо',
-                'module-3-item-4': '• Элементҳои интерактивии оддӣ',
-                'module-3-item-5': '• Нашри лоиҳа дар интернет',
-
-                'module-4-title': 'Модули 4: Python барои оғозкунандагон',
-                'module-4-item-1': '• Асосҳои барномасозии матнӣ',
-                'module-4-item-2': '• Барномаҳои оддӣ дар Python',
-                'module-4-item-3': '• Эҷоди бозиҳои матнӣ',
-                'module-4-item-4': '• Кор бо графика дар Turtle',
-                'module-4-item-5': '• Лоиҳаи ниҳоӣ: бозии шахсӣ',
-
-                // Features
-                'kids-features-title': 'Хусусиятҳои таҳсил барои кӯдакон',
-                'kids-feature-1-title': 'Равиши бозӣ',
-                'kids-feature-1-desc': 'Таҳсил тавассути эҷоди бозӣ ва аниматсия',
-                'kids-feature-2-title': 'Муаллимон бо таҷриба',
-                'kids-feature-2-desc': 'Мутахассисони кор бо кӯдакон',
-                'kids-feature-3-title': 'Маводҳои интерактивӣ',
-                'kids-feature-3-desc': 'Тақдимҳои равшан ва мисолҳои фаҳмо',
-                'kids-feature-4-title': 'Системаи дастовардҳо',
-                'kids-feature-4-desc': 'Мукофот ва сертификат барои муваффақият',
-
-                // Pricing and details
-                'kids-price': '899 с',
-                'kids-price-desc': 'барои як моҳ',
-                'kids-partial-payment': 'Имконияти пардохти қисматҳо',
-                'kids-feature-list-1': '24 дарси бозӣ',
-                'kids-feature-list-2': 'Гурӯҳҳои хурд (то 8 нафар)',
-                'kids-feature-list-3': 'Сертификати равшан дар бораи анҷом',
-                'kids-feature-list-4': 'Ҳисоботҳо барои волидайн',
-                'enroll-kids-button': 'Кӯдакро сабт кунед',
-
-                'course-details-title': 'Тафсилоти курс',
-                'age-label': 'Синну сол:',
-                'age-value': '8-14 сол',
-                'duration-label': 'Давомнокӣ:',
-                'duration-value': '6 моҳ',
-                'classes-per-week-label': 'Дарсҳо дар як ҳафта:',
-                'classes-value': '1-2 маротиба',
-                'lesson-duration': 'Давомнокии дарс:',
-                'lesson-duration-value': '60-90 дақиқа',
-                'format-label': 'Шакл:',
-                'format-value': 'Онлайн/Офлайн',
-
-                // Results
-                'results-title': 'Натиҷаҳои таҳсил',
-                'result-1': 'Рушди фикри мантиқӣ',
-                'result-2': 'Маҳорати ҳалли масъалаҳо',
-                'result-3': 'Лоиҳаҳои эҷодӣ дар портфолио',
-                'result-4': 'Асосҳои барномасозӣ',
-                'result-5': 'Боварӣ дар кор бо компютер',
-
-                // Projects
-                'projects-title': 'Намунаҳои лоиҳаҳои хонандагони мо',
-                'project-1-title': 'Бозӣ дар Scratch',
-                'project-1-desc': 'Platformer, arcade, головоломкаҳо',
-                'project-2-title': 'Ҳикояҳои аниматсионӣ',
-                'project-2-desc': 'Филмҳои мультаниматсионӣ ва комиксҳои интерактивӣ',
-                'project-3-title': 'Саҳифаҳои веб',
-                'project-3-desc': 'Вебсайтҳои шахсӣ ва галереяҳо',
-
-                // Footer
+                'kids-age': 'Кӯдакони 8-14-сола', 'course-duration': '6 моҳ', 'kids-format': 'Шакли бозӣ',
+                'program-title': 'Барномаи курс', 'module-1-title': 'Модули 1: Аввалин қадамҳо дар барномасозӣ',
+                'module-1-item-1': '• Ошноӣ бо алгоритмҳо тавассути бозӣ', 'module-1-item-2': '• Барномасозии блоки дар Scratch',
+                'module-1-item-3': '• Эҷоди аввалин аниматсияҳо ва бозӣҳо', 'module-1-item-4': '• Мантиқ ва пайдарпаии амалҳо',
+                'module-1-item-5': '• Масъалаҳои оддии математикӣ дар шакли бозӣ', 'module-2-title': 'Модули 2: Эҷоди бозӣ ва филмҳои мультаниматсионӣ',
+                'module-2-item-1': '• Таҳияи бозии худ дар Scratch', 'module-2-item-2': '• Аниматсияи персонажҳо ва объектҳо',
+                'module-2-item-3': '• Таъсироти садо ва мусиқӣ', 'module-2-item-4': '• Ҳикояҳои интерактивӣ',
+                'module-2-item-5': '• Кор бо графика ва ранг', 'module-3-title': 'Модули 3: Асосҳои таҳияи веб',
+                'module-3-item-1': '• Ошноӣ бо HTML ва CSS дар шакли бозӣ', 'module-3-item-2': '• Эҷоди аввалин саҳифаи веб',
+                'module-3-item-3': '• Дизайн ва ороиши вебсайтҳо', 'module-3-item-4': '• Элементҳои интерактивии оддӣ',
+                'module-3-item-5': '• Нашри лоиҳа дар интернет', 'module-4-title': 'Модули 4: Python барои оғозкунандагон',
+                'module-4-item-1': '• Асосҳои барномасозии матнӣ', 'module-4-item-2': '• Барномаҳои оддӣ дар Python',
+                'module-4-item-3': '• Эҷоди бозиҳои матнӣ', 'module-4-item-4': '• Кор бо графика дар Turtle',
+                'module-4-item-5': '• Лоиҳаи ниҳоӣ: бозии шахсӣ', 'kids-features-title': 'Хусусиятҳои таҳсил барои кӯдакон',
+                'kids-feature-1-title': 'Равиши бозӣ', 'kids-feature-1-desc': 'Таҳсил тавассути эҷоди бозӣ ва аниматсия',
+                'kids-feature-2-title': 'Муаллимон бо таҷриба', 'kids-feature-2-desc': 'Мутахассисони кор бо кӯдакон',
+                'kids-feature-3-title': 'Маводҳои интерактивӣ', 'kids-feature-3-desc': 'Тақдимҳои равшан ва мисолҳои фаҳмо',
+                'kids-feature-4-title': 'Системаи дастовардҳо', 'kids-feature-4-desc': 'Мукофот ва сертификат барои муваффақият',
+                'kids-price': '899 с', 'kids-price-desc': 'барои як моҳ', 'kids-partial-payment': 'Имконияти пардохти қисматҳо',
+                'kids-feature-list-1': '24 дарси бозӣ', 'kids-feature-list-2': 'Гурӯҳҳои хурд (то 8 нафар)',
+                'kids-feature-list-3': 'Сертификати равшан дар бораи анҷом', 'kids-feature-list-4': 'Ҳисоботҳо барои волидайн',
+                'enroll-kids-button': 'Кӯдакро сабт кунед', 'course-details-title': 'Тафсилоти курс', 'age-label': 'Синну сол:',
+                'age-value': '8-14 сол', 'duration-label': 'Давомнокӣ:', 'duration-value': '6 моҳ', 'classes-per-week-label': 'Дарсҳо дар як ҳафта:',
+                'classes-value': '1-2 маротиба', 'lesson-duration': 'Давомнокии дарс:', 'lesson-duration-value': '60-90 дақиқа',
+                'format-label': 'Шакл:', 'format-value': 'Онлайн/Офлайн', 'results-title': 'Натиҷаҳои таҳсил',
+                'result-1': 'Рушди фикри мантиқӣ', 'result-2': 'Маҳорати ҳалли масъалаҳо', 'result-3': 'Лоиҳаҳои эҷодӣ дар портфолио',
+                'result-4': 'Асосҳои барномасозӣ', 'result-5': 'Боварӣ дар кор бо компютер', 'projects-title': 'Намунаҳои лоиҳаҳои хонандагони мо',
+                'project-1-title': 'Бозӣ дар Scratch', 'project-1-desc': 'Platformer, arcade, головоломкаҳо',
+                'project-2-title': 'Ҳикояҳои аниматсионӣ', 'project-2-desc': 'Филмҳои мультаниматсионӣ ва комиксҳои интерактивӣ',
+                'project-3-title': 'Саҳифаҳои веб', 'project-3-desc': 'Вебсайтҳои шахсӣ ва галереяҳо',
                 'footer-description': 'Академияи IT ва студияи таҳия. Мо ҳалли рақамӣ эҷод мекунем ва мутахассисони ояндаро таҳсил медиҳем.',
-                'footer-courses': 'Курсҳо',
-                'footer-services': 'Хизматҳо',
-                'footer-frontend': 'Таҳияи Frontend',
-                'footer-backend': 'Таҳияи Backend',
-                'footer-design': 'Дизайн',
-                'footer-web-dev': 'Таҳияи вебсайтҳо',
-                'footer-mobile': 'Барномаҳои мобилӣ',
-                'footer-support': 'Дастгирии техникӣ',
-                'footer-copyright': '© 2025 SKA-Tech. Ҳама ҳуқуқҳо ҳифз шудаанд.',
-                'footer-about': 'Дар бораи мо',
-                'footer-privacy': 'Сиёсати махфият',
-                'footer-contact': 'Тамос'
+                'footer-courses': 'Курсҳо', 'footer-services': 'Хизматҳо', 'footer-frontend': 'Таҳияи Frontend', 'footer-backend': 'Таҳияи Backend',
+                'footer-design': 'Дизайн', 'footer-web-dev': 'Таҳияи вебсайтҳо', 'footer-mobile': 'Барномаҳои мобилӣ',
+                'footer-support': 'Дастгирии техникӣ', 'footer-copyright': '© 2025 SKA-Tech. Ҳама ҳуқуқҳо ҳифз шудаанд.',
+                'footer-about': 'Дар бораи мо', 'footer-privacy': 'Сиёсати махфият', 'footer-contact': 'Тамос', 'course-kids': 'Барои кӯдакон'
+            },
+            'en': {
+                'nav-services': 'Services', 'nav-courses': 'Courses', 'nav-about': 'About Us', 'nav-contact': 'Contact Us', 'nav-phone': '+7 999 322-78-78',
+                'course-kids-title': 'Programming for Kids - SKA-Tech', 'kids-course-title': 'Programming for Kids',
+                'kids-course-subtitle': 'A fun introduction to the world of programming through games and creativity',
+                'kids-age': 'Kids 8-14 years', 'course-duration': '6 months', 'kids-format': 'Game-based format',
+                'program-title': 'Course Program', 'module-1-title': 'Module 1: First Steps in Programming',
+                'module-1-item-1': '• Getting to know algorithms through games', 'module-1-item-2': '• Block programming in Scratch',
+                'module-1-item-3': '• Creating first animations and games', 'module-1-item-4': '• Logic and sequence of actions',
+                'module-1-item-5': '• Simple math problems in a playful way', 'module-2-title': 'Module 2: Creating Games and Cartoons',
+                'module-2-item-1': '• Developing your own game in Scratch', 'module-2-item-2': '• Animating characters and objects',
+                'module-2-item-3': '• Sound effects and music', 'module-2-item-4': '• Interactive stories',
+                'module-2-item-5': '• Working with graphics and colors', 'module-3-title': 'Module 3: Basics of Web Development',
+                'module-3-item-1': '• Introduction to HTML and CSS in a playful way', 'module-3-item-2': '• Creating your first web page',
+                'module-3-item-3': '• Site design and styling', 'module-3-item-4': '• Simple interactive elements',
+                'module-3-item-5': '• Publishing the project online', 'module-4-title': 'Module 4: Python for Beginners',
+                'module-4-item-1': '• Basics of text-based programming', 'module-4-item-2': '• Simple programs in Python',
+                'module-4-item-3': '• Creating text-based games', 'module-4-item-4': '• Working with graphics in Turtle',
+                'module-4-item-5': '• Final project: your own game', 'kids-features-title': 'Learning Features for Kids',
+                'kids-feature-1-title': 'Game-based approach', 'kids-feature-1-desc': 'Learning by creating games and animations',
+                'kids-feature-2-title': 'Experienced teachers', 'kids-feature-2-desc': 'Specialists in working with children',
+                'kids-feature-3-title': 'Interactive materials', 'kids-feature-3-desc': 'Bright presentations and clear examples',
+                'kids-feature-4-title': 'Achievement system', 'kids-feature-4-desc': 'Rewards and certificates for success',
+                'kids-price': '6 999 ₽', 'kids-price-desc': 'for the whole course', 'kids-partial-payment': 'Installment payment available',
+                'kids-feature-list-1': '24 game lessons', 'kids-feature-list-2': 'Small groups (up to 8 people)',
+                'kids-feature-list-3': 'Bright completion certificate', 'kids-feature-list-4': 'Reports for parents',
+                'enroll-kids-button': 'Enroll Child', 'course-details-title': 'Course Details', 'age-label': 'Age:',
+                'age-value': '8-14 years', 'duration-label': 'Duration:', 'duration-value': '6 months', 'classes-per-week-label': 'Lessons per week:',
+                'classes-value': '1-2 times', 'lesson-duration': 'Lesson length:', 'lesson-duration-value': '60-90 minutes',
+                'format-label': 'Format:', 'format-value': 'Online / Offline', 'results-title': 'Learning Outcomes',
+                'result-1': 'Development of logical thinking', 'result-2': 'Problem-solving skills', 'result-3': 'Creative projects in portfolio',
+                'result-4': 'Programming fundamentals', 'result-5': 'Confidence working with computers', 'projects-title': 'Examples of Student Projects',
+                'project-1-title': 'Scratch Games', 'project-1-desc': 'Platformers, arcades, puzzles', 'project-2-title': 'Animated Stories',
+                'project-2-desc': 'Interactive cartoons and comics', 'project-3-title': 'Web Pages', 'project-3-desc': 'Personal sites and galleries',
+                'footer-description': 'IT academy and development studio. We create digital solutions and train future specialists.',
+                'footer-courses': 'Courses', 'footer-services': 'Services', 'footer-frontend': 'Frontend Development', 'footer-backend': 'Backend Development',
+                'footer-design': 'Design', 'footer-web-dev': 'Website Development', 'footer-mobile': 'Mobile Apps', 'footer-support': 'Technical Support',
+                'footer-copyright': '© 2025 SKA-Tech. All rights reserved.', 'footer-about': 'About Us', 'footer-privacy': 'Privacy Policy',
+                'footer-contact': 'Contacts', 'course-kids': 'For Kids'
             }
         };
 
-        // Обновленная функция changeLanguage
         function changeLanguage(lang) {
             currentLang = lang;
             document.documentElement.lang = lang;
-
-            // Обновляем все элементы с data-i18n атрибутом
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
                 if (translations[lang][key]) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = translations[lang][key];
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = translations[lang][key];
                     } else {
-                        element.textContent = translations[lang][key];
+                        el.textContent = translations[lang][key];
                     }
                 }
             });
-
-            // Обновляем телефонные ссылки
             updatePhoneLinks(lang);
-
-            // Обновляем переключатели языка
             updateLanguageSwitcher(lang);
             updateMobileLanguageSwitcher(lang);
-
-            // Сохраняем выбор языка в localStorage
             localStorage.setItem('preferred-language', lang);
         }
 
-        // Новая функция для обновления телефонных ссылок
         function updatePhoneLinks(lang) {
-            const phoneNumber = translations[lang]["nav-phone"];
-            const cleanPhoneNumber = phoneNumber.replace(/\s+/g, ''); // Убираем пробелы для href
-
-            // Обновляем десктопную ссылку
-            const desktopLink = document.getElementById('desktop-phone-link');
-            if (desktopLink) {
-                desktopLink.href = `tel:${cleanPhoneNumber}`;
-            }
-
-            // Обновляем мобильную ссылку
-            const mobileLink = document.getElementById('mobile-phone-link');
-            if (mobileLink) {
-                mobileLink.href = `tel:${cleanPhoneNumber}`;
-            }
+            const phone = translations[lang]["nav-phone"];
+            const clean = phone.replace(/\s+/g, '');
+            ['desktop-phone-link', 'mobile-phone-link'].forEach(id => {
+                const link = document.getElementById(id);
+                if (link) {
+                    link.href = `tel:${clean}`;
+                    link.querySelector('[data-i18n="nav-phone"]').textContent = phone;
+                }
+            });
         }
 
         function updateLanguageSwitcher(lang) {
             const flag = document.getElementById('language-flag');
             const text = document.getElementById('language-text');
-
-            if (flag && text) {
-                if (lang === 'ru') {
-                    flag.src = '../images/flags/russia.png';
-                    flag.srcset = '../images/flags/russia.png 2x';
-                    flag.alt = 'Русский флаг';
-                    text.textContent = 'РУС';
-                } else {
-                    flag.src = '../images/flags/tajikistan.png';
-                    flag.srcset = '../images/flags/tajikistan.png 2x';
-                    flag.alt = 'Флаг Таджикистана';
-                    text.textContent = 'ТҶК';
-                }
-            }
+            if (!flag || !text) return;
+            const map = {
+                'ru': { flag: 'russia.png', text: 'РУС' },
+                'tj': { flag: 'tajikistan.png', text: 'ТҶК' },
+                'en': { flag: 'united-kingdom.png', text: 'ENG' }
+            };
+            const { flag: f, text: t } = map[lang];
+            flag.src = `../images/flags/${f}`;
+            flag.srcset = `../images/flags/${f} 2x`;
+            text.textContent = t;
         }
 
         function updateMobileLanguageSwitcher(lang) {
-            const mobileFlag = document.getElementById('mobile-language-flag');
-            const mobileText = document.getElementById('mobile-language-text');
+            const flag = document.getElementById('mobile-language-flag');
+            const text = document.getElementById('mobile-language-text');
+            if (!flag || !text) return;
+            const map = {
+                'ru': { flag: 'russia.png', text: 'РУС' },
+                'tj': { flag: 'tajikistan.png', text: 'ТҶК' },
+                'en': { flag: 'united-kingdom.png', text: 'ENG' }
+            };
+            const { flag: f, text: t } = map[lang];
+            flag.src = `../images/flags/${f}`;
+            flag.srcset = `../images/flags/${f} 2x`;
+            text.textContent = t;
+        }
 
-            if (mobileFlag && mobileText) {
-                if (lang === 'ru') {
-                    mobileFlag.src = '../images/flags/russia.png';
-                    mobileFlag.srcset = '../images/flags/russia.png 2x';
-                    mobileFlag.alt = 'Русский флаг';
-                    mobileText.textContent = 'РУС';
-                } else {
-                    mobileFlag.src = '../images/flags/tajikistan.png';
-                    mobileFlag.srcset = '../images/flags/tajikistan.png 2x';
-                    mobileFlag.alt = 'Флаг Таджикистана';
-                    mobileText.textContent = 'ТҶК';
-                }
+        function openMenu() {
+            document.getElementById('mobile-menu').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeMenu();
+                document.getElementById('language-menu')?.classList.add('hidden');
+                document.getElementById('mobile-language-menu')?.classList.add('hidden');
             }
-        }
+        });
 
-        function toggleLanguage() {
-            const newLang = currentLang === 'ru' ? 'tj' : 'ru';
-            changeLanguage(newLang);
-        }
-
-        // Initialize on DOM load
         document.addEventListener('DOMContentLoaded', function () {
-            // Load saved language
             const savedLang = localStorage.getItem('preferred-language') || 'ru';
             changeLanguage(savedLang);
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+
+        // Language dropdowns (desktop + mobile)
+        document.addEventListener('click', (e) => {
+            const dBtn = document.getElementById('language-switcher-btn');
+            const dMenu = document.getElementById('language-menu');
+            const mBtn = document.getElementById('mobile-language-switcher-btn');
+            const mMenu = document.getElementById('mobile-language-menu');
+
+            if (dBtn && dMenu) {
+                if (dBtn.contains(e.target)) {
+                    dMenu.classList.toggle('hidden');
+                } else if (!dMenu.contains(e.target)) {
+                    dMenu.classList.add('hidden');
+                }
+            }
+
+            if (mBtn && mMenu) {
+                if (mBtn.contains(e.target)) {
+                    mMenu.classList.toggle('hidden');
+                } else if (!mMenu.contains(e.target)) {
+                    mMenu.classList.add('hidden');
+                }
+            }
         });
     </script>
 </head>
 
 <body class="bg-gray-50">
-    <!-- Хедер -->
+    <!-- Header -->
     <header class="absolute inset-x-0 top-0 z-50">
         <nav class="flex items-center justify-between p-4 lg:px-8" aria-label="Global">
             <div class="flex lg:flex-1">
@@ -408,16 +328,41 @@
             </div>
 
             <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
-                <!-- Переключатель языка для десктопа -->
-                <button id="language-switcher" onclick="toggleLanguage()"
-                    class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center">
-                    <img id="language-flag" src="./images/flags/russia.png" srcset="./images/flags/russia.png 2x"
-                        width="20" height="15" alt="Русский флаг" class="mr-2 rounded">
-                    <span id="language-text" class="font-medium">РУС</span>
-                </button>
+                <!-- Language dropdown (desktop) -->
+                <div class="relative">
+                    <button id="language-switcher-btn" type="button"
+                        class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center hover:text-blue-600">
+                        <img id="language-flag" src="../images/flags/russia.png" srcset="../images/flags/russia.png 2x"
+                            width="20" height="15" alt="Русский флаг" class="mr-2 rounded">
+                        <span id="language-text" class="font-medium">РУС</span>
+                        <svg class="w-4 h-4 ml-1 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
 
-                <a href="tel:+79993227878"
-                    class="text-sm  font-semibold leading-6 text-blue-600 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2">
+                    <div id="language-menu"
+                        class="hidden absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                        <button type="button" onclick="changeLanguage('ru')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/russia.png" width="18" height="12" class="mr-2 rounded"
+                                alt="Русский"> Русский
+                        </button>
+                        <button type="button" onclick="changeLanguage('tj')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/tajikistan.png" width="18" height="12" class="mr-2 rounded"
+                                alt="Тоҷикӣ"> Тоҷикӣ
+                        </button>
+                        <button type="button" onclick="changeLanguage('en')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/united-kingdom.png" width="18" height="12" class="mr-2 rounded"
+                                alt="English"> English
+                        </button>
+                    </div>
+                </div>
+
+                <a id="desktop-phone-link" href="tel:+79993227878"
+                    class="text-sm font-semibold leading-6 text-blue-600 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -427,13 +372,39 @@
             </div>
 
             <div class="flex lg:hidden items-center gap-4">
-                <!-- Переключатель языка для мобильной версии -->
-                <button onclick="toggleLanguage()"
-                    class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center p-2">
-                    <img id="mobile-language-flag" src="./images/flags/russia.png" srcset="./images/flags/russia.png 2x"
-                        width="20" height="15" alt="Русский флаг" class="mr-2 rounded">
-                    <span id="mobile-language-text" class="font-medium text-sm">РУС</span>
-                </button>
+                <!-- Language dropdown (mobile) -->
+                <div class="relative">
+                    <button id="mobile-language-switcher-btn" type="button"
+                        class="text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center p-2 hover:text-blue-600">
+                        <img id="mobile-language-flag" src="../images/flags/russia.png"
+                            srcset="../images/flags/russia.png 2x" width="20" height="15" alt="Русский флаг"
+                            class="mr-2 rounded">
+                        <span id="mobile-language-text" class="font-medium text-sm">РУС</span>
+                        <svg class="w-4 h-4 ml-1 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+
+                    <div id="mobile-language-menu"
+                        class="hidden absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                        <button type="button" onclick="changeLanguage('ru')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/russia.png" width="18" height="12" class="mr-2 rounded"
+                                alt="Русский"> Русский
+                        </button>
+                        <button type="button" onclick="changeLanguage('tj')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/tajikistan.png" width="18" height="12" class="mr-2 rounded"
+                                alt="Тоҷикӣ"> Тоҷикӣ
+                        </button>
+                        <button type="button" onclick="changeLanguage('en')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/united-kingdom.png" width="18" height="12" class="mr-2 rounded"
+                                alt="English"> English
+                        </button>
+                    </div>
+                </div>
 
                 <button type="button"
                     class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:text-blue-600 transition-colors duration-200"
@@ -469,6 +440,7 @@
                         </svg>
                     </button>
                 </div>
+
                 <div class="mt-6 flow-root">
                     <div class="-my-6 divide-y divide-gray-500/10">
                         <div class="space-y-2 py-6">
@@ -486,7 +458,7 @@
                                 data-i18n="nav-contact">Свяжитесь с нами</a>
                         </div>
                         <div class="py-6">
-                            <a href="tel:+79993227878"
+                            <a id="mobile-phone-link" href="tel:+79993227878"
                                 class="-mx-3 block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
