@@ -2,8 +2,8 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-i18n="course-git">Курс Git - SKA-Tech</title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,43 +12,47 @@
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
-            overflow: hidden;
+            overflow: hidden
         }
 
         .animate-fadeIn {
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn .5s ease-in-out
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(20px)
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0)
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width:768px) {
             .mobile-padding {
                 padding-left: 1rem;
-                padding-right: 1rem;
+                padding-right: 1rem
             }
 
             .mobile-text-center {
-                text-align: center;
+                text-align: center
             }
 
             .mobile-stack {
                 display: flex;
-                flex-direction: column;
+                flex-direction: column
             }
 
             .mobile-full-width {
-                width: 100%;
+                width: 100%
             }
+        }
+
+        .lang-item:hover {
+            background-color: #f3f4f6
         }
     </style>
 
@@ -56,18 +60,13 @@
         let currentLang = 'ru';
 
         const translations = {
-            'ru': {
+            ru: {
                 // Navigation
-                'nav-services': 'Услуги',
-                'nav-courses': 'Курсы',
-                'nav-about': 'О нас',
-                'nav-contact': 'Свяжитесь с нами',
-                'nav-phone': '+7 999 322-78-78',
-
+                'nav-services': 'Услуги', 'nav-courses': 'Курсы', 'nav-about': 'О нас', 'nav-contact': 'Свяжитесь с нами', 'nav-phone': '+7 999 322-78-78',
                 // Course Header
                 'course-git': 'Основы Git',
                 'course-git-desc': 'Освойте систему контроля версий для эффективной работы в команде и управления кодом',
-
+                'badge-track': 'Контроль версий', 'badge-duration': '1 месяц', 'badge-level': 'Начальный уровень',
                 // Program
                 'course-program': 'Программа курса',
                 'git-module-1': 'Модуль 1: Основы Git',
@@ -94,94 +93,57 @@
                 'git-module-4-item-3': '• Решение конфликтов слияния',
                 'git-module-4-item-4': '• Best practices и conventions',
                 'git-module-4-item-5': '• Финальный проект: командная разработка',
-
-                // Registration Card
-                'git-course-price': '4 999 ₽',
-                'git-price-description': 'за месяц',
-                'git-feature-1': '16 практических занятий',
-                'git-feature-2': '3 реальных проекта в портфолио',
-                'git-feature-3': 'Сертификат о завершении',
-                'git-feature-4': 'Code review от преподавателя',
+                // Pricing Card
+                'git-course-price': '4 999 ₽', 'git-price-description': 'за месяц',
+                'git-feature-1': '16 практических занятий', 'git-feature-2': '3 реальных проекта в портфолио',
+                'git-feature-3': 'Сертификат о завершении', 'git-feature-4': 'Code review от преподавателя',
                 'enroll-button': 'Записаться на курс',
-
-                // Course Details
-                'course-details': 'Детали курса',
-                'level': 'Уровень:',
-                'git-level-value': 'Начальный',
-                'duration': 'Продолжительность:',
-                'git-duration-value': '4 недели',
-                'classes-per-week': 'Занятия в неделю:',
-                'git-classes-value': '2 раза',
-                'format': 'Формат:',
-                'format-value': 'Онлайн/Оффлайн',
-                'git-requirements': 'Необходимые знания:',
-                'git-requirements-value': 'Базовые знания командной строки',
-
+                // Details
+                'course-details': 'Детали курса', 'level': 'Уровень:', 'git-level-value': 'Начальный',
+                'duration': 'Продолжительность:', 'git-duration-value': '4 недели',
+                'classes-per-week': 'Занятия в неделю:', 'git-classes-value': '2 раза',
+                'format': 'Формат:', 'format-value': 'Онлайн/Оффлайн',
+                'git-requirements': 'Необходимые знания:', 'git-requirements-value': 'Базовые знания командной строки',
                 // Audience
                 'course-for': 'Для кого этот курс',
-                'git-for-developers': 'Разработчикам',
-                'git-for-developers-desc': 'Кто хочет эффективно управлять версиями кода',
-                'git-for-beginners': 'Начинающим программистам',
-                'git-for-beginners-desc': 'Кто хочет освоить обязательный инструмент разработки',
-                'git-for-team': 'Командным игрокам',
-                'git-for-team-desc': 'Кто работает в команде над общими проектами',
-                'git-for-devops': 'DevOps специалистам',
-                'git-for-devops-desc': 'Кто хочет автоматизировать процессы разработки',
-
+                'git-for-developers': 'Разработчикам', 'git-for-developers-desc': 'Кто хочет эффективно управлять версиями кода',
+                'git-for-beginners': 'Начинающим программистам', 'git-for-beginners-desc': 'Кто хочет освоить обязательный инструмент разработки',
+                'git-for-team': 'Командным игрокам', 'git-for-team-desc': 'Кто работает в команде над общими проектами',
+                'git-for-devops': 'DevOps специалистам', 'git-for-devops-desc': 'Кто хочет автоматизировать процессы разработки',
                 // Benefits
                 'git-what-you-get': 'Что вы получите после курса',
-                'git-benefit-1': 'Уверенное владение Git',
-                'git-benefit-1-desc': 'Навыки работы с системой контроля версий',
-                'git-benefit-2': 'Опыт командной работы',
-                'git-benefit-2-desc': 'Умение эффективно работать в команде разработки',
-                'git-benefit-3': 'Готовность к работе',
-                'git-benefit-3-desc': 'Навыки для успешного участия в IT-проектах',
-
+                'git-benefit-1': 'Уверенное владение Git', 'git-benefit-1-desc': 'Навыки работы с системой контроля версий',
+                'git-benefit-2': 'Опыт командной работы', 'git-benefit-2-desc': 'Умение эффективно работать в команде разработки',
+                'git-benefit-3': 'Готовность к работе', 'git-benefit-3-desc': 'Навыки для успешного участия в IT-проектах',
                 // Footer
                 'footer-description': 'IT-академия и студия разработки. Мы создаем цифровые решения и обучаем будущих специалистов.',
-                'footer-courses': 'Курсы',
-                'footer-services': 'Услуги',
-                'footer-frontend': 'Frontend разработка',
-                'footer-backend': 'Backend разработка',
-                'footer-design': 'Дизайн',
-                'footer-web-dev': 'Разработка сайтов',
-                'footer-mobile': 'Мобильные приложения',
-                'footer-support': 'Техническая поддержка',
-                'service-design': 'Дизайн и брендинг',
-                'footer-copyright': '© 2025 <a href="../index.html" class="hover:text-white transition-colors duration-200">SKA-Tech</a>. Все права защищены.',
-                'footer-about': 'О нас',
-                'footer-privacy': 'Политика конфиденциальности',
-                'footer-contact': 'Контакты'
+                'footer-courses': 'Курсы', 'footer-services': 'Услуги', 'footer-frontend': 'Frontend разработка',
+                'footer-backend': 'Backend разработка', 'footer-design': 'Дизайн', 'footer-web-dev': 'Разработка сайтов',
+                'footer-mobile': 'Мобильные приложения', 'footer-support': 'Техническая поддержка', 'service-design': 'Дизайн и брендинг',
+                'footer-about': 'О нас', 'footer-privacy': 'Политика конфиденциальности', 'footer-contact': 'Контакты',
+                'footer-copyright': '© 2025 <a href="../index.html" class="hover:text-white transition-colors duration-200">SKA-Tech</a>. Все права защищены.'
             },
-            'tj': {
-                // Navigation
-                'nav-services': 'Хизматҳо',
-                'nav-courses': 'Курсҳо',
-                'nav-about': 'Дар бораи мо',
-                'nav-contact': 'Бо мо тамос гиред',
-                'nav-phone': '+992 800 55-77-77',
-
-                // Course Header
+            tj: {
+                'nav-services': 'Хизматҳо', 'nav-courses': 'Курсҳо', 'nav-about': 'Дар бораи мо', 'nav-contact': 'Бо мо тамос гиред', 'nav-phone': '+992 800 55-77-77',
                 'course-git': 'Асосҳои Git',
-                'course-git-desc': 'Системаи идоракунии версияҳоро барои корди самаранҷ дар даста ва идоракунии код омӯзед',
-
-                // Program
+                'course-git-desc': 'Системаи идоракунии версияҳоро барои кори самаранок дар даста ва идоракунии код омӯзед',
+                'badge-track': 'Идоракунии версияҳо', 'badge-duration': '1 моҳ', 'badge-level': 'Сатҳи оғозӣ',
                 'course-program': 'Барномаи курс',
                 'git-module-1': 'Модули 1: Асосҳои Git',
                 'git-module-1-item-1': '• Насб ва танзими Git',
-                'git-module-1-item-2': '• Эҷоди репозитори ва аввалин коммитҳо',
+                'git-module-1-item-2': '• Эҷоди репозиторӣ ва коммитҳои аввал',
                 'git-module-1-item-3': '• Кор бо таърихи тағйирот',
-                'git-module-1-item-4': '• Шохобандӣ ва якҷоясозӣ',
+                'git-module-1-item-4': '• Шохабандӣ ва якҷоясозӣ',
                 'git-module-1-item-5': '• Бекор кардани тағйирот ва reset',
                 'git-module-2': 'Модули 2: Кор бо репозиторияҳои дурдаст',
                 'git-module-2-item-1': '• GitHub, GitLab ва Bitbucket',
                 'git-module-2-item-2': '• Клон кардан ва кор бо origin',
                 'git-module-2-item-3': '• Push, pull ва fetch',
                 'git-module-2-item-4': '• Кор бо чанд репозитории дурдаст',
-                'git-module-2-item-5': '• Калидҳои SSH ва санҷиши ҳақиқият',
+                'git-module-2-item-5': '• Калидҳои SSH ва аутентификатсия',
                 'git-module-3': 'Модули 3: Техникаҳои пешрафта',
                 'git-module-3-item-1': '• Stash ва нигоҳдории муваққатии тағйирот',
-                'git-module-3-item-2': '• Rebase ва навиштани бори таърих',
+                'git-module-3-item-2': '• Rebase ва бознависии таърих',
                 'git-module-3-item-3': '• Кор бо тегҳо ва релизҳо',
                 'git-module-3-item-4': '• Git hooks ва автоматикунонӣ',
                 'git-module-3-item-5': '• Submodules ва кор бо вобастагиҳо',
@@ -191,184 +153,202 @@
                 'git-module-4-item-3': '• Ҳалли низоъҳои якҷоясозӣ',
                 'git-module-4-item-4': '• Best practices ва конвенсияҳо',
                 'git-module-4-item-5': '• Лоиҳаи ниҳоӣ: таҳияи дастаҷамъӣ',
-
-                // Registration Card
-                'git-course-price': '599 с',
-                'git-price-description': 'барои як моҳ',
-                'git-feature-1': '16 дарси амалӣ',
-                'git-feature-2': '3 лоиҳаи воқеӣ дар портфолио',
-                'git-feature-3': 'Сертификати анҷом додан',
-                'git-feature-4': 'Баррасии код аз устод',
+                'git-course-price': '599 c', 'git-price-description': 'барои як моҳ',
+                'git-feature-1': '16 дарси амалӣ', 'git-feature-2': '3 лоиҳаи воқеӣ дар портфолио',
+                'git-feature-3': 'Сертификати анҷом', 'git-feature-4': 'Баррасии код аз устод',
                 'enroll-button': 'Ба курс номнавис шавед',
-
-                // Course Details
-                'course-details': 'Тафсилоти курс',
-                'level': 'Сатҳ:',
-                'git-level-value': 'Асосӣ',
-                'duration': 'Давомнокӣ:',
-                'git-duration-value': '4 ҳафта',
-                'classes-per-week': 'Дарсҳо дар як ҳафта:',
-                'git-classes-value': '2 маротиба',
-                'format': 'Формат:',
-                'format-value': 'Онлайн/Оффлайн',
-                'git-requirements': 'Донишҳои зарурӣ:',
+                'course-details': 'Тафсилоти курс', 'level': 'Сатҳ:', 'git-level-value': 'Асосӣ',
+                'duration': 'Давомнокӣ:', 'git-duration-value': '4 ҳафта',
+                'classes-per-week': 'Дарсҳо дар ҳафта:', 'git-classes-value': '2 маротиба',
+                'format': 'Формат:', 'format-value': 'Онлайн/Оффлайн',
+                'git-requirements': 'Донишҳои зарурӣ:', 'git-reQUIREMENTS-value': '', // not used
                 'git-requirements-value': 'Донишҳои асосии сатри фармон',
-
-                // Audience
                 'course-for': 'Ин курс барои кист',
-                'git-for-developers': 'Барои таҳиягарон',
-                'git-for-developers-desc': 'Касоне, ки мехоҳанд версияҳои кодеро самаранҷ идора кунанд',
-                'git-for-beginners': 'Барои барномасозони навомӯз',
-                'git-for-beginners-desc': 'Касоне, ки мехоҳанд абзори зарурии таҳияро омӯзанд',
-                'git-for-team': 'Барои бозигарони дастаӣ',
-                'git-for-team-desc': 'Касоне, ки дар даста бо лоиҳаҳои муштарак кор мекунанд',
-                'git-for-devops': 'Барои мутахассисони DevOps',
-                'git-for-devops-desc': 'Касоне, ки мехоҳанд равандҳои таҳияро автоматикунонӣ кунанд',
-
-                // Benefits
-                'git-what-you-get': 'Пас аз курс чӣ ба даст меоред',
-                'git-benefit-1': 'Истифодаи боварии Git',
-                'git-benefit-1-desc': 'Малакаҳои кор бо системаи идоракунии версияҳо',
-                'git-benefit-2': 'Таҷрибаи кори дастаҷамъӣ',
-                'git-benefit-2-desc': 'Қобилияти корди самаранҷ дар дастаи таҳия',
-                'git-benefit-3': 'Омодагӣ ба кор',
-                'git-benefit-3-desc': 'Малакаҳо барои иштироки муваффақона дар лоиҳаҳои IT',
-
-                // Footer
+                'git-for-developers': 'Барои таҳиягарон', 'git-for-developers-desc': 'Идоракунии самараноки версияҳои код',
+                'git-for-beginners': 'Барои навомӯзон', 'git-for-beginners-desc': 'Омӯзиши абзори ҳатмии таҳия',
+                'git-for-team': 'Барои бозигарони даста', 'git-for-team-desc': 'Кор дар даста бо лоиҳаҳои муштарак',
+                'git-for-devops': 'Барои мутахассисони DevOps', 'git-for-devops-desc': 'Автоматикунонии равандҳои таҳия',
+                'git-what-you-get': 'Чӣ ба даст меоред',
+                'git-benefit-1': 'Истифодаи боварии Git', 'git-benefit-1-desc': 'Кор бо системаи идоракунии версияҳо',
+                'git-benefit-2': 'Таҷрибаи кори дастаӣ', 'git-benefit-2-desc': 'Кори самаранок дар дастаи таҳия',
+                'git-benefit-3': 'Омодагӣ ба кор', 'git-benefit-3-desc': 'Малакаҳо барои ширкат дар лоиҳаҳои IT',
                 'footer-description': 'Академияи IT ва студияи таҳия. Мо ҳалли рақамӣ эҷод мекунем ва мутахассисони ояндаро таълим медиҳем.',
-                'footer-courses': 'Курсҳо',
-                'footer-services': 'Хизматҳо',
-                'footer-frontend': 'Таҳияи Frontend',
-                'footer-backend': 'Таҳияи Backend',
-                'footer-design': 'Дизайн',
-                'footer-web-dev': 'Таҳияи вебсайтҳо',
-                'footer-mobile': 'Барномаҳои мобилӣ',
-                'footer-support': 'Дастгирии техникӣ',
-                'service-design': 'Дизайн ва брендсозӣ',
-                'footer-copyright': '© 2025 <a href="../index.html" class="hover:text-white transition-colors duration-200">SKA-Tech</a>. Ҳама ҳуқуқҳо ҳифз шудаанд.',
-                'footer-about': 'Дар бораи мо',
-                'footer-privacy': 'Сиёсати махфият',
-                'footer-contact': 'Тамос'
+                'footer-courses': 'Курсҳо', 'footer-services': 'Хизматҳо', 'footer-frontend': 'Таҳияи Frontend',
+                'footer-backend': 'Таҳияи Backend', 'footer-design': 'Дизайн', 'footer-web-dev': 'Таҳияи вебсайтҳо',
+                'footer-mobile': 'Барномаҳои мобилӣ', 'footer-support': 'Дастгирии техникӣ', 'service-design': 'Дизайн ва брендсозӣ',
+                'footer-about': 'Дар бораи мо', 'footer-privacy': 'Сиёсати махфият', 'footer-contact': 'Тамос',
+                'footer-copyright': '© 2025 <a href="../index.html" class="hover:text-white transition-colors duration-200">SKA-Tech</a>. Ҳама ҳуқуқҳо ҳифз шудаанд.'
+            },
+            en: {
+                'nav-services': 'Services', 'nav-courses': 'Courses', 'nav-about': 'About', 'nav-contact': 'Contact', 'nav-phone': '+44 20 1234 5678',
+                'course-git': 'Git Fundamentals',
+                'course-git-desc': 'Master version control for effective teamwork and code management',
+                'badge-track': 'Version Control', 'badge-duration': '1 month', 'badge-level': 'Beginner level',
+                'course-program': 'Course Program',
+                'git-module-1': 'Module 1: Git Basics',
+                'git-module-1-item-1': '• Install and configure Git',
+                'git-module-1-item-2': '• Create a repository & first commits',
+                'git-module-1-item-3': '• Work with commit history',
+                'git-module-1-item-4': '• Branching and merging',
+                'git-module-1-item-5': '• Revert changes and reset',
+                'git-module-2': 'Module 2: Remote Repositories',
+                'git-module-2-item-1': '• GitHub, GitLab, and Bitbucket',
+                'git-module-2-item-2': '• Clone and work with origin',
+                'git-module-2-item-3': '• Push, pull, and fetch',
+                'git-module-2-item-4': '• Multiple remotes',
+                'git-module-2-item-5': '• SSH keys and authentication',
+                'git-module-3': 'Module 3: Advanced Techniques',
+                'git-module-3-item-1': '• Stash and temporary saves',
+                'git-module-3-item-2': '• Rebase and rewriting history',
+                'git-module-3-item-3': '• Tags and releases',
+                'git-module-3-item-4': '• Git hooks and automation',
+                'git-module-3-item-5': '• Submodules and dependencies',
+                'git-module-4': 'Module 4: Teamwork',
+                'git-module-4-item-1': '• Git Flow and workflows',
+                'git-module-4-item-2': '• Code review and pull requests',
+                'git-module-4-item-3': '• Resolving merge conflicts',
+                'git-module-4-item-4': '• Best practices and conventions',
+                'git-module-4-item-5': '• Final project: team development',
+                'git-course-price': '£59', 'git-price-description': 'per month',
+                'git-feature-1': '16 hands-on classes', 'git-feature-2': '3 real projects in portfolio',
+                'git-feature-3': 'Certificate of completion', 'git-feature-4': 'Instructor code review',
+                'enroll-button': 'Enroll now',
+                'course-details': 'Course Details', 'level': 'Level:', 'git-level-value': 'Beginner',
+                'duration': 'Duration:', 'git-duration-value': '4 weeks',
+                'classes-per-week': 'Classes per week:', 'git-classes-value': '2 times',
+                'format': 'Format:', 'format-value': 'Online/Offline',
+                'git-requirements': 'Prerequisites:', 'git-requirements-value': 'Basic command-line knowledge',
+                'course-for': 'Who this course is for',
+                'git-for-developers': 'Developers', 'git-for-developers-desc': 'Who want reliable version control',
+                'git-for-beginners': 'Beginners', 'git-for-beginners-desc': 'Who need the essential dev tool',
+                'git-for-team': 'Team players', 'git-for-team-desc': 'Who collaborate on shared projects',
+                'git-for-devops': 'DevOps engineers', 'git-for-devops-desc': 'Who automate delivery pipelines',
+                'git-what-you-get': 'What you’ll get',
+                'git-benefit-1': 'Confident Git skills', 'git-benefit-1-desc': 'Work fluently with version control',
+                'git-benefit-2': 'Teamwork experience', 'git-benefit-2-desc': 'Collaborate effectively in teams',
+                'git-benefit-3': 'Job-ready skills', 'git-benefit-3-desc': 'Contribute to real IT projects',
+                'footer-description': 'IT academy & dev studio. We build digital products and train future professionals.',
+                'footer-courses': 'Courses', 'footer-services': 'Services', 'footer-frontend': 'Frontend Development',
+                'footer-backend': 'Backend Development', 'footer-design': 'Design', 'footer-web-dev': 'Website Development',
+                'footer-mobile': 'Mobile Apps', 'footer-support': 'Technical Support', 'service-design': 'Design & Branding',
+                'footer-about': 'About', 'footer-privacy': 'Privacy Policy', 'footer-contact': 'Contacts',
+                'footer-copyright': '© 2025 <a href="../index.html" class="hover:text-white transition-colors duration-200">SKA-Tech</a>. All rights reserved.'
             }
         };
 
-        // Обновленная функция changeLanguage
         function changeLanguage(lang) {
             currentLang = lang;
             document.documentElement.lang = lang;
 
-            // Обновляем все элементы с data-i18n атрибутом
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
                 if (translations[lang][key]) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = translations[lang][key];
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = translations[lang][key];
                     } else {
-                        element.textContent = translations[lang][key];
+                        el.innerHTML = translations[lang][key];
                     }
                 }
             });
 
-            // Обновляем телефонные ссылки
             updatePhoneLinks(lang);
-
-            // Обновляем переключатели языка
             updateLanguageSwitcher(lang);
-            updateMobileLanguageSwitcher(lang);
-
-            // Сохраняем выбор языка в localStorage
+            updateMobileLangButtons(lang);
             localStorage.setItem('preferred-language', lang);
         }
 
-        // Новая функция для обновления телефонных ссылок
         function updatePhoneLinks(lang) {
-            const phoneNumber = translations[lang]["nav-phone"];
-            const cleanPhoneNumber = phoneNumber.replace(/\s+/g, ''); // Убираем пробелы для href
-
-            // Обновляем десктопную ссылку
-            const desktopLink = document.getElementById('desktop-phone-link');
-            if (desktopLink) {
-                desktopLink.href = `tel:${cleanPhoneNumber}`;
+            const phoneNumber = translations[lang]['nav-phone'];
+            const clean = phoneNumber.replace(/[\s\-()]/g, '');
+            const desktop = document.getElementById('desktop-phone-link');
+            const mobile = document.getElementById('mobile-phone-link');
+            if (desktop) {
+                desktop.href = `tel:${clean}`;
+                const span = desktop.querySelector('[data-i18n="nav-phone"]');
+                if (span) span.textContent = phoneNumber;
             }
-
-            // Обновляем мобильную ссылку
-            const mobileLink = document.getElementById('mobile-phone-link');
-            if (mobileLink) {
-                mobileLink.href = `tel:${cleanPhoneNumber}`;
+            if (mobile) {
+                mobile.href = `tel:${clean}`;
+                const span = mobile.querySelector('[data-i18n="nav-phone"]');
+                if (span) span.textContent = phoneNumber;
             }
         }
 
         function updateLanguageSwitcher(lang) {
-            const flag = document.getElementById("language-flag");
-            const text = document.getElementById("language-text");
-
-            if (flag && text) {
-                if (lang === "ru") {
-                    flag.src = "../images/flags/russia.png";
-                    flag.srcset = "../images/flags/russia.png 2x";
-                    flag.alt = "Русский флаг";
-                    text.textContent = "РУС";
-                } else {
-                    flag.src = "../images/flags/tajikistan.png";
-                    flag.srcset = "../images/flags/tajikistan.png 2x";
-                    flag.alt = "Флаг Таджикистана";
-                    text.textContent = "ТҶК";
-                }
+            const btnFlag = document.getElementById('language-flag');
+            const btnText = document.getElementById('language-text');
+            if (!btnFlag || !btnText) return;
+            if (lang === 'ru') {
+                btnFlag.src = '../images/flags/russia.png'; btnFlag.alt = 'Русский';
+                btnText.textContent = 'РУС';
+            } else if (lang === 'tj') {
+                btnFlag.src = '../images/flags/tajikistan.png'; btnFlag.alt = 'Тоҷикӣ';
+                btnText.textContent = 'ТҶК';
+            } else {
+                btnFlag.src = '../images/flags/uk.png'; btnFlag.alt = 'English';
+                btnText.textContent = 'ENG';
             }
         }
 
-        function updateMobileLanguageSwitcher(lang) {
-            const mobileFlag = document.getElementById("mobile-language-flag");
-            const mobileText = document.getElementById("mobile-language-text");
+        function updateMobileLangButtons(lang) {
+            ['btn-ru', 'btn-tj', 'btn-en'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.remove('ring-2', 'ring-blue-500');
+            });
+            const map = { ru: 'btn-ru', tj: 'btn-tj', en: 'btn-en' };
+            const active = document.getElementById(map[lang]);
+            if (active) active.classList.add('ring-2', 'ring-blue-500');
+        }
 
-            if (mobileFlag && mobileText) {
-                if (lang === "ru") {
-                    mobileFlag.src = "../images/flags/russia.png";
-                    mobileFlag.srcset = "../images/flags/russia.png 2x";
-                    mobileFlag.alt = "Русский флаг";
-                    mobileText.textContent = "РУС";
-                } else {
-                    mobileFlag.src = "../images/flags/tajikistan.png";
-                    mobileFlag.srcset = "../images/flags/tajikistan.png 2x";
-                    mobileFlag.alt = "Флаг Таджикистана";
-                    mobileText.textContent = "ТҶК";
-                }
+        function openMenu() { document.getElementById('mobile-menu').classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeMenu() { document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow = 'auto'; }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('preferred-language') || 'ru';
+            changeLanguage(saved);
+
+            // language dropdown (desktop)
+            const trigger = document.getElementById('language-switcher');
+            const menu = document.getElementById('language-menu');
+            if (trigger && menu) {
+                trigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    menu.classList.toggle('hidden');
+                });
+                document.addEventListener('click', () => menu.classList.add('hidden'));
             }
-        }
 
-        function toggleLanguage() {
-            const newLang = currentLang === "ru" ? "tj" : "ru";
-            changeLanguage(newLang);
-        }
-
-        function openMenu() {
-            document.getElementById('mobile-menu').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMenu() {
-            document.getElementById('mobile-menu').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape') {
-                closeMenu();
-            }
+            // smooth anchor scroll
+            document.querySelectorAll('a[href^="../index.html#"], a[href^="#"]').forEach(a => {
+                a.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            const headerH = document.querySelector('header').offsetHeight;
+                            const top = target.getBoundingClientRect().top + window.pageYOffset - headerH - 20;
+                            window.scrollTo({ top, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const savedLang = localStorage.getItem("preferred-language");
-            if (savedLang) {
-                changeLanguage(savedLang);
-            }
-        });
+        // desktop menu selection
+        function setLang(lang) {
+            changeLanguage(lang);
+            const menu = document.getElementById('language-menu');
+            if (menu) menu.classList.add('hidden');
+        }
     </script>
 </head>
 
 <body class="bg-gray-50">
-    <!-- Хедер -->
-    <header class="absolute inset-x-0 top-0 z-50">
+    <!-- Header -->
+    <header class="absolute inset-x-0 top-0 z-50 bg-white/70 backdrop-blur">
         <nav class="flex items-center justify-between p-4 lg:px-8" aria-label="Global">
             <div class="flex lg:flex-1">
                 <a href="../index.html" class="-m-1.5 p-1.5">
@@ -393,17 +373,38 @@
                     data-i18n="nav-contact">Свяжитесь с нами</a>
             </div>
 
-            <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
-                <!-- Переключатель языка для десктопа -->
-                <button id="language-switcher" onclick="toggleLanguage()"
-                    class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center">
-                    <img id="language-flag" src="../images/flags/russia.png" srcset="../images/flags/russia.png 2x"
-                        width="20" height="15" alt="Русский флаг" class="mr-2 rounded">
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4 relative">
+                <!-- Language dropdown (desktop) -->
+                <button id="language-switcher"
+                    class="text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center px-2 py-1.5 rounded hover:bg-gray-100">
+                    <img id="language-flag" src="../images/flags/russia.png" width="20" height="15" alt="Русский"
+                        class="mr-2 rounded">
                     <span id="language-text" class="font-medium">РУС</span>
+                    <svg class="w-4 h-4 ml-2 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6" />
+                    </svg>
                 </button>
+                <div id="language-menu"
+                    class="hidden absolute right-28 top-12 w-44 bg-white shadow-lg rounded-md border border-gray-100 py-1">
+                    <button class="w-full text-left px-3 py-2 text-sm flex items-center gap-2 lang-item"
+                        onclick="setLang('ru')">
+                        <img src="../images/flags/russia.png" width="18" height="14" class="rounded"
+                            alt="Русский"><span>Русский</span>
+                    </button>
+                    <button class="w-full text-left px-3 py-2 text-sm flex items-center gap-2 lang-item"
+                        onclick="setLang('tj')">
+                        <img src="../images/flags/tajikistan.png" width="18" height="14" class="rounded"
+                            alt="Тоҷикӣ"><span>Тоҷикӣ</span>
+                    </button>
+                    <button class="w-full text-left px-3 py-2 text-sm flex items-center gap-2 lang-item"
+                        onclick="setLang('en')">
+                        <img src="../images/flags/uk.png" width="18" height="14" class="rounded"
+                            alt="English"><span>English</span>
+                    </button>
+                </div>
 
                 <a href="tel:+79993227878" id="desktop-phone-link"
-                    class="text-sm  font-semibold leading-6 text-blue-600 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2">
+                    class="text-sm font-semibold leading-6 text-blue-600 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -412,22 +413,34 @@
                 </a>
             </div>
 
-            <div class="flex lg:hidden items-center gap-4">
-                <!-- Переключатель языка для мобильной версии -->
-                <button onclick="toggleLanguage()"
-                    class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center p-2">
-                    <img id="mobile-language-flag" src="../images/flags/russia.png"
-                        srcset="../images/flags/russia.png 2x" width="20" height="15" alt="Русский флаг"
-                        class="mr-2 rounded">
-                    <span id="mobile-language-text" class="font-medium text-sm">РУС</span>
-                </button>
+            <div class="flex lg:hidden items-center gap-3">
+                <!-- Simple mobile language pills -->
+                <div class="flex items-center gap-2">
+                    <button id="btn-ru"
+                        class="px-2 py-1 rounded border border-gray-200 bg-white flex items-center gap-1"
+                        onclick="changeLanguage('ru')">
+                        <img src="../images/flags/russia.png" width="18" height="14" class="rounded" alt="RU"><span
+                            class="text-xs font-medium">RU</span>
+                    </button>
+                    <button id="btn-tj"
+                        class="px-2 py-1 rounded border border-gray-200 bg-white flex items-center gap-1"
+                        onclick="changeLanguage('tj')">
+                        <img src="../images/flags/tajikistan.png" width="18" height="14" class="rounded" alt="TJ"><span
+                            class="text-xs font-medium">TJ</span>
+                    </button>
+                    <button id="btn-en"
+                        class="px-2 py-1 rounded border border-gray-200 bg-white flex items-center gap-1"
+                        onclick="changeLanguage('en')">
+                        <img src="../images/flags/uk.png" width="18" height="14" class="rounded" alt="EN"><span
+                            class="text-xs font-medium">EN</span>
+                    </button>
+                </div>
 
                 <button type="button"
                     class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:text-blue-600 transition-colors duration-200"
                     onclick="openMenu()">
                     <span class="sr-only">Open main menu</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                        aria-hidden="true">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
@@ -437,7 +450,7 @@
 
         <!-- Mobile menu -->
         <div class="lg:hidden hidden" role="dialog" aria-modal="true" id="mobile-menu">
-            <div class="fixed inset-0 z-50 bg-black bg-opacity-50" onclick="closeMenu()"></div>
+            <div class="fixed inset-0 z-50 bg-black/50" onclick="closeMenu()"></div>
             <div
                 class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transform transition-transform duration-300 ease-in-out">
                 <div class="flex items-center justify-between">
@@ -450,8 +463,7 @@
                         class="-m-2.5 rounded-md p-2.5 text-gray-700 hover:text-blue-600 transition-colors duration-200"
                         onclick="closeMenu()">
                         <span class="sr-only">Close menu</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            aria-hidden="true">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
@@ -488,6 +500,7 @@
         </div>
     </header>
 
+    <!-- Main -->
     <div class="pt-24 pb-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -499,11 +512,12 @@
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-i18n="course-git-desc">Освойте систему контроля
                     версий для эффективной работы в команде и управления кодом</p>
                 <div class="flex justify-center gap-4 mt-6">
-                    <span class="px-4 py-2 bg-orange-100 text-orange-800 text-sm font-medium rounded-full">Контроль
-                        версий</span>
-                    <span class="px-4 py-2 bg-green-100 text-green-800 text-sm font-medium rounded-full">1 месяц</span>
-                    <span class="px-4 py-2 bg-purple-100 text-purple-800 text-sm font-medium rounded-full">Начальный
-                        уровень</span>
+                    <span class="px-4 py-2 bg-orange-100 text-orange-800 text-sm font-medium rounded-full"
+                        data-i18n="badge-track">Контроль версий</span>
+                    <span class="px-4 py-2 bg-green-100 text-green-800 text-sm font-medium rounded-full"
+                        data-i18n="badge-duration">1 месяц</span>
+                    <span class="px-4 py-2 bg-purple-100 text-purple-800 text-sm font-medium rounded-full"
+                        data-i18n="badge-level">Начальный уровень</span>
                 </div>
             </div>
 
@@ -573,7 +587,7 @@
                                 <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
+                                        d="M5 13l4 4L19 7" />
                                 </svg>
                                 <span data-i18n="git-feature-1">16 практических занятий</span>
                             </div>
@@ -581,7 +595,7 @@
                                 <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
+                                        d="M5 13l4 4L19 7" />
                                 </svg>
                                 <span data-i18n="git-feature-2">3 реальных проекта в портфолио</span>
                             </div>
@@ -589,7 +603,7 @@
                                 <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
+                                        d="M5 13l4 4L19 7" />
                                 </svg>
                                 <span data-i18n="git-feature-3">Сертификат о завершении</span>
                             </div>
@@ -597,7 +611,7 @@
                                 <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
+                                        d="M5 13l4 4L19 7" />
                                 </svg>
                                 <span data-i18n="git-feature-4">Code review от преподавателя</span>
                             </div>
@@ -608,6 +622,7 @@
                             Записаться на курс
                         </button>
                     </div>
+
                     <div class="bg-white rounded-2xl shadow-lg p-6">
                         <h3 class="font-semibold text-gray-900 mb-4" data-i18n="course-details">Детали курса</h3>
                         <div class="space-y-3 text-sm text-gray-600">
@@ -638,70 +653,6 @@
             </div>
 
             <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6" data-i18n="course-for">Для кого этот курс</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="flex items-start">
-                        <div class="bg-orange-100 p-3 rounded-lg mr-4">
-                            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-900 mb-2" data-i18n="git-for-developers">
-                                Разработчикам</h3>
-                            <p class="text-gray-600" data-i18n="git-for-developers-desc">Кто хочет эффективно управлять
-                                версиями кода</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
-                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 6v13m-6-7h12"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-900 mb-2" data-i18n="git-for-beginners">Начинающим
-                                программистам</h3>
-                            <p class="text-gray-600" data-i18n="git-for-beginners-desc">Кто хочет освоить обязательный
-                                инструмент разработки</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="bg-green-100 p-3 rounded-lg mr-4">
-                            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
-                                </path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-900 mb-2" data-i18n="git-for-team">Командным игрокам</h3>
-                            <p class="text-gray-600" data-i18n="git-for-team-desc">Кто работает в команде над общими
-                                проектами</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="bg-purple-100 p-3 rounded-lg mr-4">
-                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                </path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-900 mb-2" data-i18n="git-for-devops">DevOps специалистам
-                            </h3>
-                            <p class="text-gray-600" data-i18n="git-for-devops-desc">Кто хочет автоматизировать процессы
-                                разработки
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-2xl shadow-lg p-8">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6" data-i18n="git-what-you-get">Что вы получите после
                     курса</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -709,8 +660,7 @@
                         <div class="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                                </path>
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                             </svg>
                         </div>
                         <h3 class="font-semibold text-gray-900 mb-2" data-i18n="git-benefit-1">Уверенное владение Git
@@ -722,8 +672,7 @@
                         <div class="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
-                                </path>
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                             </svg>
                         </div>
                         <h3 class="font-semibold text-gray-900 mb-2" data-i18n="git-benefit-2">Опыт командной работы
@@ -735,8 +684,7 @@
                         <div class="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                </path>
+                                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                         </div>
                         <h3 class="font-semibold text-gray-900 mb-2" data-i18n="git-benefit-3">Готовность к работе</h3>
@@ -748,6 +696,7 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="bg-gray-900 text-white">
         <div class="w-full max-w-screen-xl mx-auto px-4 py-8 md:py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -819,18 +768,12 @@
                     Все права защищены.
                 </span>
                 <ul class="flex flex-wrap items-center mt-4 text-sm font-medium text-gray-400 sm:mt-0 space-x-6">
-                    <li>
-                        <a href="../index.html#about-us" class="hover:text-white transition-colors duration-200"
-                            data-i18n="footer-about">О нас</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hover:text-white transition-colors duration-200"
-                            data-i18n="footer-privacy">Политика конфиденциальности</a>
-                    </li>
-                    <li>
-                        <a href="../index.html#contact-us" class="hover:text-white transition-colors duration-200"
-                            data-i18n="footer-contact">Контакты</a>
-                    </li>
+                    <li><a href="../index.html#about-us" class="hover:text-white transition-colors duration-200"
+                            data-i18n="footer-about">О нас</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-200"
+                            data-i18n="footer-privacy">Политика конфиденциальности</a></li>
+                    <li><a href="../index.html#contact-us" class="hover:text-white transition-colors duration-200"
+                            data-i18n="footer-contact">Контакты</a></li>
                 </ul>
             </div>
         </div>

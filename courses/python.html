@@ -249,15 +249,136 @@
                 'footer-about': 'Дар бораи мо',
                 'footer-privacy': 'Сиёсати махфият',
                 'footer-contact': 'Тамос'
+            },
+            'en': {
+                // Navigation
+                'nav-services': 'Services',
+                'nav-courses': 'Courses',
+                'nav-about': 'About Us',
+                'nav-contact': 'Contact Us',
+                'nav-phone': '+7 999 322-78-78',
+
+                // Course Header
+                'course-python': 'Python Fundamentals',
+                'course-python-desc': 'Master the most popular programming language for web development, data analysis and automation',
+
+                // Program
+                'course-program': 'Course Program',
+                'python-module-1': 'Module 1: Python Basics',
+                'python-module-1-item-1': '• Variables, data types and operators',
+                'python-module-1-item-2': '• Conditional statements and loops',
+                'python-module-1-item-3': '• Functions and working with arguments',
+                'python-module-1-item-4': '• Working with lists, dictionaries and tuples',
+                'python-module-1-item-5': '• Exception handling',
+                'python-module-2': 'Module 2: Object-Oriented Programming',
+                'python-module-2-item-1': '• Classes and objects',
+                'python-module-2-item-2': '• Encapsulation, inheritance, polymorphism',
+                'python-module-2-item-3': '• Magic methods',
+                'python-module-2-item-4': '• Decorators and generators',
+                'python-module-2-item-5': '• Working with files and JSON',
+                'python-module-3': 'Module 3: Advanced Topics',
+                'python-module-3-item-1': '• Modules and packages',
+                'python-module-3-item-2': '• Virtual environments',
+                'python-module-3-item-3': '• Working with databases (SQLite)',
+                'python-module-3-item-4': '• Web scraping with BeautifulSoup',
+                'python-module-3-item-5': '• Django Framework basics',
+                'python-module-4': 'Module 4: Practical Projects',
+                'python-module-4-item-1': '• Telegram bot for finance tracking',
+                'python-module-4-item-2': '• Web application for notes',
+                'python-module-4-item-3': '• Data parser from websites',
+                'python-module-4-item-4': '• API for task management',
+                'python-module-4-item-5': '• Final project: e-commerce store on Django',
+
+                // Registration Card
+                'python-course-price': '6 999 ₽',
+                'python-price-description': 'per month',
+                'python-feature-1': '24 practical lessons',
+                'python-feature-2': '5 real projects in portfolio',
+                'python-feature-3': 'Completion certificate',
+                'python-feature-4': 'Code review from instructor',
+                'enroll-button': 'Enroll in the course',
+
+                // Course Details
+                'course-details': 'Course Details',
+                'level': 'Level:',
+                'python-level-value': 'Beginner',
+                'duration': 'Duration:',
+                'python-duration-value': '8 weeks',
+                'classes-per-week': 'Classes per week:',
+                'python-classes-value': '3 times',
+                'format': 'Format:',
+                'format-value': 'Online/Offline',
+                'python-requirements': 'Required knowledge:',
+                'python-requirements-value': 'Basic computer knowledge',
+
+                // Audience
+                'course-for': 'Who is this course for',
+                'python-for-beginners': 'Beginner programmers',
+                'python-for-beginners-desc': 'Who want to learn their first programming language',
+                'python-for-data': 'Data analysts',
+                'python-for-data-desc': 'Who want to automate data processing',
+                'python-for-web': 'Web developers',
+                'python-for-web-desc': 'Who want to create web applications on Django',
+                'python-for-auto': 'For automation',
+                'python-for-auto-desc': 'Who want to automate routine tasks',
+
+                // Benefits
+                'python-what-you-get': 'What you will get after the course',
+                'python-benefit-1': 'Deep Python knowledge',
+                'python-benefit-1-desc': 'Understanding of basic and advanced language concepts',
+                'python-benefit-2': '5 projects in portfolio',
+                'python-benefit-2-desc': 'Real projects to demonstrate to employers',
+                'python-benefit-3': 'Job readiness',
+                'python-benefit-3-desc': 'Skills to start a career as a Python developer',
+
+                // Footer
+                'footer-description': 'IT academy and development studio. We create digital solutions and train future specialists.',
+                'footer-courses': 'Courses',
+                'footer-services': 'Services',
+                'footer-frontend': 'Frontend development',
+                'footer-backend': 'Backend development',
+                'footer-design': 'Design',
+                'footer-web-dev': 'Website development',
+                'footer-mobile': 'Mobile applications',
+                'footer-support': 'Technical support',
+                'service-design': 'Design and branding',
+                'footer-copyright': '© 2025 <a href="../index.html" class="hover:text-white transition-colors duration-200">SKA-Tech</a>. All rights reserved.',
+                'footer-about': 'About Us',
+                'footer-privacy': 'Privacy Policy',
+                'footer-contact': 'Contacts'
             }
         };
 
-        // Обновленная функция changeLanguage
+        // Language dropdown functionality
+        document.addEventListener('click', (e) => {
+            const dBtn = document.getElementById('language-switcher-btn');
+            const dMenu = document.getElementById('language-menu');
+            const mBtn = document.getElementById('mobile-language-switcher-btn');
+            const mMenu = document.getElementById('mobile-language-menu');
+
+            if (dBtn && dMenu) {
+                if (dBtn.contains(e.target)) {
+                    dMenu.classList.toggle('hidden');
+                } else if (!dMenu.contains(e.target)) {
+                    dMenu.classList.add('hidden');
+                }
+            }
+
+            if (mBtn && mMenu) {
+                if (mBtn.contains(e.target)) {
+                    mMenu.classList.toggle('hidden');
+                } else if (!mMenu.contains(e.target)) {
+                    mMenu.classList.add('hidden');
+                }
+            }
+        });
+
+        // Updated changeLanguage function
         function changeLanguage(lang) {
             currentLang = lang;
             document.documentElement.lang = lang;
 
-            // Обновляем все элементы с data-i18n атрибутом
+            // Update all elements with data-i18n attribute
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
@@ -269,29 +390,29 @@
                 }
             });
 
-            // Обновляем телефонные ссылки
+            // Update phone links
             updatePhoneLinks(lang);
 
-            // Обновляем переключатели языка
+            // Update language switchers
             updateLanguageSwitcher(lang);
             updateMobileLanguageSwitcher(lang);
 
-            // Сохраняем выбор языка в localStorage
+            // Save language preference to localStorage
             localStorage.setItem('preferred-language', lang);
         }
 
-        // Новая функция для обновления телефонных ссылок
+        // Function to update phone links
         function updatePhoneLinks(lang) {
             const phoneNumber = translations[lang]["nav-phone"];
-            const cleanPhoneNumber = phoneNumber.replace(/\s+/g, ''); // Убираем пробелы для href
+            const cleanPhoneNumber = phoneNumber.replace(/\s+/g, ''); // Remove spaces for href
 
-            // Обновляем десктопную ссылку
+            // Update desktop link
             const desktopLink = document.getElementById('desktop-phone-link');
             if (desktopLink) {
                 desktopLink.href = `tel:${cleanPhoneNumber}`;
             }
 
-            // Обновляем мобильную ссылку
+            // Update mobile link
             const mobileLink = document.getElementById('mobile-phone-link');
             if (mobileLink) {
                 mobileLink.href = `tel:${cleanPhoneNumber}`;
@@ -308,11 +429,16 @@
                     flag.srcset = "../images/flags/russia.png 2x";
                     flag.alt = "Русский флаг";
                     text.textContent = "РУС";
-                } else {
+                } else if (lang === "tj") {
                     flag.src = "../images/flags/tajikistan.png";
                     flag.srcset = "../images/flags/tajikistan.png 2x";
                     flag.alt = "Флаг Таджикистана";
                     text.textContent = "ТҶК";
+                } else if (lang === "en") {
+                    flag.src = "../images/flags/uk.png";
+                    flag.srcset = "../images/flags/uk.png 2x";
+                    flag.alt = "UK flag";
+                    text.textContent = "ENG";
                 }
             }
         }
@@ -327,18 +453,18 @@
                     mobileFlag.srcset = "../images/flags/russia.png 2x";
                     mobileFlag.alt = "Русский флаг";
                     mobileText.textContent = "РУС";
-                } else {
+                } else if (lang === "tj") {
                     mobileFlag.src = "../images/flags/tajikistan.png";
                     mobileFlag.srcset = "../images/flags/tajikistan.png 2x";
                     mobileFlag.alt = "Флаг Таджикистана";
                     mobileText.textContent = "ТҶК";
+                } else if (lang === "en") {
+                    mobileFlag.src = "../images/flags/uk.png";
+                    mobileFlag.srcset = "../images/flags/uk.png 2x";
+                    mobileFlag.alt = "UK flag";
+                    mobileText.textContent = "ENG";
                 }
             }
-        }
-
-        function toggleLanguage() {
-            const newLang = currentLang === "ru" ? "tj" : "ru";
-            changeLanguage(newLang);
         }
 
         function openMenu() {
@@ -351,17 +477,31 @@
             document.body.style.overflow = 'auto';
         }
 
+        // Close menu on Escape
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape') {
                 closeMenu();
+                document.getElementById('language-menu')?.classList.add('hidden');
+                document.getElementById('mobile-language-menu')?.classList.add('hidden');
             }
         });
 
         document.addEventListener('DOMContentLoaded', function () {
-            const savedLang = localStorage.getItem("preferred-language");
-            if (savedLang) {
-                changeLanguage(savedLang);
-            }
+            const savedLang = localStorage.getItem('preferred-language') || 'ru';
+            changeLanguage(savedLang);
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                });
+            });
         });
     </script>
 </head>
@@ -394,16 +534,41 @@
             </div>
 
             <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
-                <!-- Переключатель языка для десктопа -->
-                <button id="language-switcher" onclick="toggleLanguage()"
-                    class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center">
-                    <img id="language-flag" src="../images/flags/russia.png" srcset="../images/flags/russia.png 2x"
-                        width="20" height="15" alt="Русский флаг" class="mr-2 rounded">
-                    <span id="language-text" class="font-medium">РУС</span>
-                </button>
+                <!-- Language dropdown (desktop) -->
+                <div class="relative">
+                    <button id="language-switcher-btn" type="button"
+                        class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center hover:text-blue-600">
+                        <img id="language-flag" src="../images/flags/russia.png" srcset="../images/flags/russia.png 2x"
+                            width="20" height="15" alt="Русский флаг" class="mr-2 rounded">
+                        <span id="language-text" class="font-medium">РУС</span>
+                        <svg class="w-4 h-4 ml-1 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+
+                    <div id="language-menu"
+                        class="hidden absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                        <button type="button" onclick="changeLanguage('ru')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/russia.png" width="18" height="12" class="mr-2 rounded"
+                                alt="Русский"> Русский
+                        </button>
+                        <button type="button" onclick="changeLanguage('tj')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/tajikistan.png" width="18" height="12" class="mr-2 rounded"
+                                alt="Тоҷикӣ"> Тоҷикӣ
+                        </button>
+                        <button type="button" onclick="changeLanguage('en')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/uk.png" width="18" height="12" class="mr-2 rounded" alt="English">
+                            English
+                        </button>
+                    </div>
+                </div>
 
                 <a href="tel:+79993227878" id="desktop-phone-link"
-                    class="text-sm  font-semibold leading-6 text-blue-600 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2">
+                    class="text-sm font-semibold leading-6 text-blue-600 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -413,14 +578,39 @@
             </div>
 
             <div class="flex lg:hidden items-center gap-4">
-                <!-- Переключатель языка для мобильной версии -->
-                <button onclick="toggleLanguage()"
-                    class="language-switcher text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center p-2">
-                    <img id="mobile-language-flag" src="../images/flags/russia.png"
-                        srcset="../images/flags/russia.png 2x" width="20" height="15" alt="Русский флаг"
-                        class="mr-2 rounded">
-                    <span id="mobile-language-text" class="font-medium text-sm">РУС</span>
-                </button>
+                <!-- Language dropdown (mobile) -->
+                <div class="relative">
+                    <button id="mobile-language-switcher-btn" type="button"
+                        class="text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 flex items-center p-2 hover:text-blue-600">
+                        <img id="mobile-language-flag" src="../images/flags/russia.png"
+                            srcset="../images/flags/russia.png 2x" width="20" height="15" alt="Русский флаг"
+                            class="mr-2 rounded">
+                        <span id="mobile-language-text" class="font-medium text-sm">РУС</span>
+                        <svg class="w-4 h-4 ml-1 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+
+                    <div id="mobile-language-menu"
+                        class="hidden absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                        <button type="button" onclick="changeLanguage('ru')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/russia.png" width="18" height="12" class="mr-2 rounded"
+                                alt="Русский"> Русский
+                        </button>
+                        <button type="button" onclick="changeLanguage('tj')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/tajikistan.png" width="18" height="12" class="mr-2 rounded"
+                                alt="Тоҷикӣ"> Тоҷикӣ
+                        </button>
+                        <button type="button" onclick="changeLanguage('en')"
+                            class="flex items-center w-full px-3 py-2 hover:bg-gray-100">
+                            <img src="../images/flags/uk.png" width="18" height="12" class="mr-2 rounded" alt="English">
+                            English
+                        </button>
+                    </div>
+                </div>
 
                 <button type="button"
                     class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:text-blue-600 transition-colors duration-200"
